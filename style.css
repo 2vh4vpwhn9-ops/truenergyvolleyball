@@ -1,142 +1,145 @@
-  * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  background: #0c0f12;
+  margin: 0;
+  background: #0b0f12;
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.top-bar {
-  background: #15191d;
-  border-bottom: 1px solid #31363b;
-  padding: 14px 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.header {
+  background: #12171b;
+  border-bottom: 1px solid #2e353b;
 }
 
-.label {
-  color: #c8ff00;
-  font-size: 14px;
+.top-line {
+  padding: 14px 24px;
+  color: #c7ff00;
   font-weight: 700;
+  border-bottom: 1px solid #2e353b;
 }
 
-.top-bar nav a {
-  color: #d5d5d5;
+.brand {
+  padding: 34px 24px 24px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.brand span {
+  color: #c7ff00;
+}
+
+.brand p {
+  margin: 8px 0 0;
+  letter-spacing: 4px;
+  font-size: 13px;
+  color: #d9d9d9;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid #2e353b;
+}
+
+.menu a {
+  color: #ffffff;
   text-decoration: none;
-  margin-left: 22px;
-  font-size: 14px;
+  font-weight: 800;
+  padding: 18px 24px;
+  border-right: 1px solid #2e353b;
+}
+
+.menu a:hover {
+  color: #c7ff00;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px 24px;
 }
 
 .hero {
-  background: linear-gradient(135deg, #11161a, #1c2228);
-  padding: 42px 32px;
-  border-bottom: 1px solid #343a40;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: #161c21;
+  border: 1px solid #2e353b;
+  padding: 34px;
+  margin-bottom: 40px;
 }
 
-.logo {
-  font-size: 34px;
-  font-weight: 900;
-  letter-spacing: -1px;
-}
-
-.logo span {
-  color: #c8ff00;
-}
-
-.logo p {
-  margin-top: 8px;
-  font-size: 13px;
-  letter-spacing: 4px;
-  color: #e1e1e1;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 12px;
-}
-
-button {
-  border: none;
-  cursor: pointer;
+.tag {
+  color: #c7ff00;
   font-weight: 800;
+  margin: 0 0 12px;
 }
 
-.search {
-  width: 48px;
-  height: 48px;
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid #555;
-  font-size: 26px;
+.hero h2 {
+  font-size: 36px;
+  margin: 0 0 16px;
 }
 
-.latest {
-  background: #c8ff00;
+.hero p {
+  color: #d0d0d0;
+  line-height: 1.6;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 12px;
+  background: #c7ff00;
   color: #111;
-  padding: 0 24px;
-  height: 48px;
-  font-size: 15px;
-}
-
-.content {
-  padding: 36px 32px;
-}
-
-.content h2 {
-  font-size: 24px;
-  margin-bottom: 28px;
-  letter-spacing: 1px;
-}
-
-.news-list {
-  border-top: 1px solid #333;
-}
-
-.news-item {
-  display: block;
-  padding: 22px 0;
-  border-bottom: 1px solid #333;
-  color: #ffffff;
+  padding: 14px 18px;
   text-decoration: none;
-  font-size: 22px;
   font-weight: 900;
-  letter-spacing: 1px;
 }
 
-.news-item.active {
-  color: #c8ff00;
+.section-title p {
+  color: #c7ff00;
+  font-weight: 800;
+  margin: 0 0 8px;
 }
 
-.news-item:hover {
-  color: #c8ff00;
+.section-title h2 {
+  font-size: 30px;
+  margin: 0 0 24px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #161c21;
+  border: 1px solid #2e353b;
+  padding: 24px;
+}
+
+.card p {
+  color: #c7ff00;
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.3;
 }
 
 @media (max-width: 700px) {
-  .top-bar,
-  .hero {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
+  .brand h1 {
+    font-size: 30px;
   }
 
-  .top-bar nav a {
-    margin-left: 0;
-    margin-right: 14px;
-  }
-
-  .logo {
+  .hero h2 {
     font-size: 28px;
   }
 
-  .news-item {
-    font-size: 18px;
+  .news-grid {
+    grid-template-columns: 1fr;
   }
 }
