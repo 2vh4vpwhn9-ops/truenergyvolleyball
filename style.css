@@ -177,3 +177,18 @@ body {
     grid-template-columns: 1fr;
   }
 }
+.card:hover {
+  border-color: #ffd400;
+  transform: translateY(-4px);
+  transition: 0.25s ease;
+}
+
+.card:hover h3 {
+  color: #ffd400;
+}
+
+.yellow-button:hover,
+.search-link:hover {
+  background: #ffffff;
+  color: #0b0b0b;
+}
