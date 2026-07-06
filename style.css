@@ -282,3 +282,26 @@ footer{
     border-color:#d8ff00;
     transition:0.3s;
 }
+.ukraine-section{
+  max-width:1200px;
+  margin:60px auto;
+  padding:0 15px;
+}
+
+.ukraine-card{
+  background:linear-gradient(135deg, #181818, #202020);
+  padding:35px;
+  border-radius:16px;
+  border-left:6px solid #d8ff00;
+}
+
+.ukraine-card h2{
+  color:#fff;
+  margin-bottom:15px;
+}
+
+.ukraine-card p{
+  color:#cfcfcf;
+  line-height:1.7;
+  margin-bottom:20px;
+}
