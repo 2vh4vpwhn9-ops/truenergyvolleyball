@@ -168,3 +168,39 @@ footer{
     margin-right:15px;
   }
 }
+.stats-section{
+    max-width:1200px;
+    margin:50px auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.stats-card{
+    background:#1b1b1b;
+    padding:25px;
+    border-radius:12px;
+    border-top:5px solid #d8ff00;
+}
+
+.stats-card h2{
+    margin-bottom:20px;
+    color:#d8ff00;
+}
+
+.stats-card ul,
+.stats-card ol{
+    padding-left:20px;
+}
+
+.stats-card li{
+    margin-bottom:12px;
+    line-height:1.5;
+}
+
+@media(max-width:900px){
+    .stats-section{
+        grid-template-columns:1fr;
+        padding:0 15px;
+    }
+}
