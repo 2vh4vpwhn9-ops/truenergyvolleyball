@@ -1,17 +1,17 @@
 [
   {
-    "title": "Canada Volleyball News",
-    "description": "Latest updates from Canadian volleyball.",
-    "link": "#"
+    "title": "Canada qualifies for VNL Finals",
+    "description": "Canada secured a place in the Volleyball Nations League Finals.",
+    "link": "https://en.volleyballworld.com/"
   },
   {
-    "title": "World Volleyball Updates",
-    "description": "International volleyball news, results and tournament stories.",
-    "link": "#"
+    "title": "Latest FIVB News",
+    "description": "International volleyball news and tournament updates.",
+    "link": "https://en.volleyballworld.com/"
   },
   {
-    "title": "Local Volleyball Community",
-    "description": "News from local clubs, players and coaches.",
-    "link": "#"
+    "title": "NORCECA Updates",
+    "description": "News from NORCECA competitions and Canadian volleyball.",
+    "link": "https://norceca.net/"
   }
 ]
