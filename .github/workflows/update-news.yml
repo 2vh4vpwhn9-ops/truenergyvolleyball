@@ -1,0 +1,47 @@
+name: Update Volleyball News
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create news.json
+        run: |
+          cat > news.json << 'EOF'
+          [
+            {
+              "title": "Canada qualifies for VNL Finals",
+              "description": "Canada secured a place in the Volleyball Nations League Finals.",
+              "link": "https://en.volleyballworld.com/"
+            },
+            {
+              "title": "Latest FIVB News",
+              "description": "International volleyball news and tournament updates.",
+              "link": "https://en.volleyballworld.com/"
+            },
+            {
+              "title": "NORCECA Updates",
+              "description": "News from NORCECA competitions and Canadian volleyball.",
+              "link": "https://norceca.net/"
+            }
+          ]
+          EOF
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add news.json
+          git diff --cached --quiet || git commit -m "Automatic news update"
+          git push
