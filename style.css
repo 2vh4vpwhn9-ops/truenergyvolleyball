@@ -204,3 +204,23 @@ footer{
         padding:0 15px;
     }
 }
+.updated{
+    color:#9f9f9f;
+    font-size:14px;
+    margin-bottom:15px;
+}
+
+.source-btn{
+    display:inline-block;
+    margin-top:18px;
+    padding:10px 14px;
+    background:#d8ff00;
+    color:#111;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:6px;
+}
+
+.source-btn:hover{
+    background:white;
+}
