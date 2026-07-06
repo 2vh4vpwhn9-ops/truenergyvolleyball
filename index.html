@@ -20,42 +20,65 @@
   <a href="#">World Volleyball</a>
   <a href="#">Tournaments</a>
   <a href="#">Rankings</a>
+  <a href="#">Players</a>
 </nav>
 
 <main>
+
   <section class="hero">
     <div class="tag">Featured</div>
     <h1>Canada Men's Team Qualifies for VNL Finals</h1>
-    <p>The Canadian men's national volleyball team has secured its spot in the VNL Finals after a dominant performance.</p>
+    <p>Latest volleyball news, results, rankings, tournaments and player stories.</p>
   </section>
 
-  <section class="content">
-    <div>
-      <h2>Latest News</h2>
-
-      <article>
-        <h3>Canada Secures Historic Volleyball Win</h3>
-        <p>Canada continues to build momentum on the international volleyball stage.</p>
-      </article>
-
-      <article>
-        <h3>Local Volleyball Community Keeps Growing</h3>
-        <p>More players, clubs and coaches are helping volleyball grow across Canada.</p>
-      </article>
+  <section>
+    <h2 class="section-title">Automatic Volleyball News</h2>
+    <div id="auto-news" class="news-grid">
+      <p>Loading news...</p>
     </div>
-
-    <aside>
-      <h2>Top Stories</h2>
-      <p>Match Analysis: How Poland Dominated the Semifinals</p>
-      <p>2026 FIVB World Championship Preview</p>
-      <p>New World Rankings Released</p>
-    </aside>
   </section>
+
+  <section class="news-grid">
+    <article class="news-card">
+      <h3>Canada Secures Spot in VNL Finals</h3>
+      <p>Canadian volleyball continues to rise on the international stage.</p>
+    </article>
+
+    <article class="news-card">
+      <h3>Local Volleyball News</h3>
+      <p>Stories from clubs, athletes and volleyball communities across Canada.</p>
+    </article>
+
+    <article class="news-card">
+      <h3>World Volleyball Rankings</h3>
+      <p>Follow the latest rankings, tournaments and international results.</p>
+    </article>
+  </section>
+
 </main>
 
 <footer>
   © 2026 True Energy VB
 </footer>
+
+<script>
+fetch('news.json')
+  .then(response => response.json())
+  .then(news => {
+    const container = document.getElementById('auto-news');
+    container.innerHTML = '';
+
+    news.forEach(item => {
+      container.innerHTML += `
+        <article class="news-card">
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          <a href="${item.link}" target="_blank">Read more</a>
+        </article>
+      `;
+    });
+  });
+</script>
 
 </body>
 </html>
