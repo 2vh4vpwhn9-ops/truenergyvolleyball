@@ -256,3 +256,29 @@ footer{
         padding:0 15px;
     }
 }
+.category{
+    display:inline-block;
+    background:#d8ff00;
+    color:#111;
+    padding:6px 14px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.feature-list{
+    margin:0 0 18px;
+    padding-left:20px;
+}
+
+.feature-list li{
+    margin-bottom:10px;
+    color:#e6e6e6;
+}
+
+.feature-card:hover{
+    transform:translateY(-6px);
+    border-color:#d8ff00;
+    transition:0.3s;
+}
