@@ -224,3 +224,35 @@ footer{
 .source-btn:hover{
     background:white;
 }
+.feature-section{
+    max-width:1200px;
+    margin:50px auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.feature-card{
+    background:#181818;
+    padding:30px;
+    border-radius:12px;
+    border:1px solid #2d2d2d;
+}
+
+.feature-card h2{
+    color:#d8ff00;
+    margin-bottom:15px;
+}
+
+.feature-card p{
+    color:#cfcfcf;
+    line-height:1.6;
+    margin-bottom:10px;
+}
+
+@media(max-width:900px){
+    .feature-section{
+        grid-template-columns:1fr;
+        padding:0 15px;
+    }
+}
