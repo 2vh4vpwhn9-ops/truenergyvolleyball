@@ -341,3 +341,15 @@ background:url("https://images.unsplash.com/photo-1517649763962-0c623066013b?aut
 .logo span{
     color:#d7ff00;
 }
+header .logo,
+header .logo:link,
+header .logo:visited,
+header .logo:hover,
+header .logo:active {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+header .logo span {
+  color: #d7ff00 !important;
+}
