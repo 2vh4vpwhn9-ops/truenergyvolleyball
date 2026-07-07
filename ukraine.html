@@ -32,26 +32,10 @@
   </section>
 
   <section>
-    <h2 class="section-title">Ukrainian Volleyball</h2>
+    <h2 class="section-title">Latest Ukrainian Volleyball News</h2>
 
-    <div class="news-grid">
-      <article class="news-card">
-        <h3>Ukraine National Team</h3>
-        <p>Coverage of Ukraine’s men’s and women’s national volleyball teams.</p>
-        <a href="https://www.cev.eu/" target="_blank">Source: CEV</a>
-      </article>
-
-      <article class="news-card">
-        <h3>European Competitions</h3>
-        <p>News about Ukrainian teams and players competing in European tournaments.</p>
-        <a href="https://www.cev.eu/" target="_blank">Source: CEV</a>
-      </article>
-
-      <article class="news-card">
-        <h3>Ukrainian Players Abroad</h3>
-        <p>Stories about Ukrainian athletes playing professionally around the world.</p>
-        <a href="https://www.cev.eu/" target="_blank">Source: CEV</a>
-      </article>
+    <div id="ukraine-news" class="news-grid">
+      <p>Loading Ukrainian news...</p>
     </div>
   </section>
 
@@ -60,6 +44,25 @@
 <footer>
   © 2026 True Energy VB
 </footer>
+
+<script>
+fetch('ukraine-news.json')
+  .then(response => response.json())
+  .then(news => {
+    const container = document.getElementById('ukraine-news');
+    container.innerHTML = '';
+
+    news.forEach(item => {
+      container.innerHTML += `
+        <article class="news-card">
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          <a href="${item.link}" target="_blank">Read more</a>
+        </article>
+      `;
+    });
+  });
+</script>
 
 </body>
 </html>
