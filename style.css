@@ -323,3 +323,21 @@ background:url("https://images.unsplash.com/photo-1517649763962-0c623066013b?aut
 .players-hero{
   background:url("https://images.unsplash.com/photo-1592656094267-764a45160876?auto=format&fit=crop&w=1800&q=80") center/cover;
 }
+/* ===== Logo ===== */
+
+.logo{
+    color: white;
+    text-decoration: none;
+}
+
+.logo:visited{
+    color: white;
+}
+
+.logo:hover{
+    color: white;
+}
+
+.logo span{
+    color:#d7ff00;
+}
