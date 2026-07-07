@@ -17,7 +17,13 @@ header{
   border-bottom:3px solid #d8ff00;
 }
 
-.logo{
+.logo,
+.logo:link,
+.logo:visited,
+.logo:hover,
+.logo:active{
+  color:white;
+  text-decoration:none;
   font-size:38px;
   font-weight:800;
   letter-spacing:1px;
@@ -50,18 +56,18 @@ nav a{
 nav a:hover{
   color:#d8ff00;
 }
-
 .hero{
-  max-width:1200px;
+  max-width:1600px;
   margin:40px auto;
   background:url("images/IMG_5656.jpeg") center center/cover no-repeat;
   min-height:520px;
-  border-radius:10px;
+  border-radius:14px;
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
   padding:40px;
   position:relative;
+  overflow:hidden;
 }
 
 .hero::before{
@@ -69,7 +75,6 @@ nav a:hover{
   position:absolute;
   inset:0;
   background:rgba(0,0,0,.45);
-  border-radius:10px;
 }
 
 .hero>*{
@@ -96,25 +101,37 @@ nav a:hover{
   max-width:700px;
   font-size:20px;
 }
+
 .section-title{
-  max-width:1200px;
-  margin:40px auto 20px;
+  margin:40px 0 20px;
   border-left:5px solid #d8ff00;
   padding-left:15px;
 }
+.main-layout{
+  display:grid;
+  grid-template-columns:1fr 360px;
+  gap:30px;
+  max-width:1600px;
+  margin:40px auto;
+  padding:0 24px;
+  align-items:start;
+}
+
+.content{
+  min-width:0;
+}
 
 .news-grid{
-  max-width:1200px;
-  margin:20px auto 40px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:25px;
+  margin:20px 0 40px;
 }
 
 .news-card{
   background:#1d1d1d;
   padding:30px;
-  border-radius:10px;
+  border-radius:12px;
   border-top:5px solid #d8ff00;
   transition:.3s;
 }
@@ -144,45 +161,11 @@ nav a:hover{
 .news-card a:hover{
   color:white;
 }
-
-footer{
-  background:#0f0f0f;
-  text-align:center;
-  padding:30px;
-  margin-top:60px;
-  color:#999;
-}
-
-@media(max-width:900px){
-  .news-grid{
-    grid-template-columns:1fr;
-    padding:0 15px;
-  }
-
-  .hero{
-    margin:20px 15px;
-    min-height:420px;
-  }
-
-  .hero h1{
-    font-size:36px;
-  }
-
-  nav{
-    gap:15px;
-  }
-
-  .section-title{
-    margin-left:15px;
-    margin-right:15px;
-  }
-}
 .stats-section{
-  max-width:1200px;
-  margin:50px auto;
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:25px;
+  margin:50px 0;
 }
 
 .stats-card{
@@ -207,13 +190,6 @@ footer{
   line-height:1.5;
 }
 
-@media(max-width:900px){
-  .stats-section{
-    grid-template-columns:1fr;
-    padding:0 15px;
-  }
-}
-
 .updated{
   color:#9f9f9f;
   font-size:14px;
@@ -235,11 +211,10 @@ footer{
   background:white;
 }
 .feature-section{
-  max-width:1200px;
-  margin:50px auto;
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:25px;
+  margin:50px 0;
 }
 
 .feature-card{
@@ -248,6 +223,11 @@ footer{
   border-radius:12px;
   border:1px solid #2d2d2d;
   transition:.3s;
+}
+
+.feature-card:hover{
+  transform:translateY(-6px);
+  border-color:#d8ff00;
 }
 
 .feature-card h2{
@@ -259,13 +239,6 @@ footer{
   color:#cfcfcf;
   line-height:1.6;
   margin-bottom:10px;
-}
-
-@media(max-width:900px){
-  .feature-section{
-    grid-template-columns:1fr;
-    padding:0 15px;
-  }
 }
 
 .category{
@@ -288,12 +261,74 @@ footer{
   margin-bottom:10px;
   color:#e6e6e6;
 }
-
-.feature-card:hover{
-  transform:translateY(-6px);
-  border-color:#d8ff00;
+.sidebar{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  position:sticky;
+  top:20px;
 }
 
+.side-card{
+  background:linear-gradient(180deg, #202020, #171717);
+  border:1px solid #333;
+  border-left:5px solid #d8ff00;
+  padding:22px;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.side-card h3{
+  color:#d8ff00;
+  margin-bottom:16px;
+  font-size:22px;
+  line-height:1.2;
+}
+
+.side-card p{
+  color:#e6e6e6;
+  font-size:15px;
+  line-height:1.5;
+  margin-bottom:10px;
+}
+
+.side-card a{
+  display:inline-block;
+  margin-top:10px;
+  color:#d8ff00;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.side-card a:hover{
+  color:white;
+}
+
+.newsletter input{
+  width:100%;
+  padding:13px;
+  border:none;
+  border-radius:8px;
+  margin:12px 0;
+  font-size:15px;
+}
+
+.newsletter button{
+  width:100%;
+  padding:13px;
+  background:#d8ff00;
+  color:#121212;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.newsletter button:hover{
+  background:white;
+}
 .ukraine-section{
   max-width:1200px;
   margin:60px auto;
@@ -341,97 +376,45 @@ footer{
 .players-hero{
   background:url("https://images.unsplash.com/photo-1592656094267-764a45160876?auto=format&fit=crop&w=1800&q=80") center/cover;
 }
-
-/* ===== Logo ===== */
-
-header .logo,
-header .logo:link,
-header .logo:visited,
-header .logo:hover,
-header .logo:active{
-  color:white !important;
-  text-decoration:none !important;
+footer{
+  background:#0f0f0f;
+  text-align:center;
+  padding:30px;
+  margin-top:60px;
+  color:#999;
 }
 
-header .logo span{
-  color:#d7ff00 !important;
-}
-.main-layout{
-  display:flex;
-  gap:30px;
-  max-width:1200px;
-  margin:40px auto;
-  padding:0 20px;
-  align-items:flex-start;
-}
-
-.content{
-  flex:1;
-}
-
-.sidebar{
-  width:300px;
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-
-.side-card{
-  background:#1d1d1d;
-  border:1px solid #2c2c2c;
-  border-left:4px solid #d8ff00;
-  padding:18px;
-  border-radius:12px;
-}
-
-.side-card h3{
-  color:#d8ff00;
-  margin-bottom:12px;
-  font-size:20px;
-}
-
-.side-card p{
-  color:#dcdcdc;
-  font-size:15px;
-  line-height:1.5;
-  margin-bottom:8px;
-}
-
-.side-card a{
-  color:#d8ff00;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-.newsletter input{
-  width:100%;
-  padding:10px;
-  border:none;
-  border-radius:6px;
-  margin:10px 0;
-}
-
-.newsletter button{
-  width:100%;
-  padding:10px;
-  background:#d8ff00;
-  color:#121212;
-  border:none;
-  border-radius:6px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.newsletter button:hover{
-  background:white;
-}
-
- @media(max-width:700px){
+@media(max-width:1100px){
   .main-layout{
-    flex-direction:column;
+    grid-template-columns:1fr;
   }
 
   .sidebar{
-    width:100%;
+    position:static;
+  }
+
+  .hero{
+    margin:20px 15px;
+  }
+}
+
+@media(max-width:900px){
+  .news-grid,
+  .stats-section,
+  .feature-section{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    min-height:420px;
+    padding:30px;
+  }
+
+  .hero h1{
+    font-size:36px;
+  }
+
+  nav{
+    gap:15px;
   }
 }
