@@ -32,26 +32,10 @@
   </section>
 
   <section>
-    <h2 class="section-title">Canadian Volleyball</h2>
+    <h2 class="section-title">Latest Canadian Volleyball News</h2>
 
-    <div class="news-grid">
-      <article class="news-card">
-        <h3>Team Canada</h3>
-        <p>Coverage of Canada’s men’s and women’s national volleyball teams.</p>
-        <a href="https://volleyball.ca/en/news" target="_blank">Source: Volleyball Canada</a>
-      </article>
-
-      <article class="news-card">
-        <h3>Canadian Tournaments</h3>
-        <p>Updates from Canadian championships, provincial tournaments and club volleyball.</p>
-        <a href="https://volleyball.ca/en/news" target="_blank">Source: Volleyball Canada</a>
-      </article>
-
-      <article class="news-card">
-        <h3>Canadian Players</h3>
-        <p>Stories about Canadian players competing in Canada and around the world.</p>
-        <a href="https://volleyball.ca/en/news" target="_blank">Source: Volleyball Canada</a>
-      </article>
+    <div id="canada-news" class="news-grid">
+      <p>Loading Canadian news...</p>
     </div>
   </section>
 
@@ -60,6 +44,25 @@
 <footer>
   © 2026 True Energy VB
 </footer>
+
+<script>
+fetch('canada-news.json')
+  .then(response => response.json())
+  .then(news => {
+    const container = document.getElementById('canada-news');
+    container.innerHTML = '';
+
+    news.forEach(item => {
+      container.innerHTML += `
+        <article class="news-card">
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          <a href="${item.link}" target="_blank">Read more</a>
+        </article>
+      `;
+    });
+  });
+</script>
 
 </body>
 </html>
