@@ -110,8 +110,8 @@ nav a:hover{
 }
 .main-layout{
   display:grid;
-  grid-template-columns:280px minmax(0, 1fr);
-  gap:22px;
+  grid-template-columns:220px minmax(0, 1fr);
+  gap:20px;
   max-width:1200px;
   margin:35px auto;
   padding:0 15px;
@@ -274,32 +274,32 @@ nav a:hover{
   width:100%;
   display:flex;
   flex-direction:column;
-  gap:18px;
+  gap:14px;
   position:sticky;
   top:20px;
 }
 
 .side-card{
-  background:linear-gradient(180deg, #202020, #171717);
+  background:linear-gradient(180deg,#202020,#171717);
   border:1px solid #333;
-  border-left:5px solid #d8ff00;
-  padding:18px;
-  border-radius:14px;
-  box-shadow:0 10px 25px rgba(0,0,0,.25);
+  border-left:4px solid #d8ff00;
+  padding:14px;
+  border-radius:12px;
+  box-shadow:0 8px 18px rgba(0,0,0,.25);
 }
 
 .side-card h3{
   color:#d8ff00;
-  margin-bottom:14px;
-  font-size:19px;
+  margin-bottom:10px;
+  font-size:17px;
   line-height:1.2;
 }
 
 .side-card p{
   color:#e6e6e6;
-  font-size:14px;
-  line-height:1.45;
-  margin-bottom:8px;
+  font-size:13px;
+  line-height:1.35;
+  margin-bottom:6px;
 }
 
 .side-card a{
@@ -308,6 +308,7 @@ nav a:hover{
   color:#d8ff00;
   text-decoration:none;
   font-weight:bold;
+  font-size:13px;
 }
 
 .side-card a:hover{
@@ -316,22 +317,22 @@ nav a:hover{
 
 .newsletter input{
   width:100%;
-  padding:12px;
+  padding:10px;
   border:none;
   border-radius:8px;
-  margin:10px 0;
-  font-size:14px;
+  margin:8px 0;
+  font-size:13px;
 }
 
 .newsletter button{
   width:100%;
-  padding:12px;
+  padding:10px;
   background:#d8ff00;
   color:#121212;
   border:none;
   border-radius:8px;
   font-weight:bold;
-  font-size:14px;
+  font-size:13px;
   cursor:pointer;
 }
 
