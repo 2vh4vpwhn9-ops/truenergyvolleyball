@@ -13,17 +13,27 @@
 </url>
 
 <url>
-<loc>https://truenergyvolleyball.ca/international.html</loc>
-<priority>0.9</priority>
-</url>
-
-<url>
 <loc>https://truenergyvolleyball.ca/ukraine.html</loc>
 <priority>0.9</priority>
 </url>
 
 <url>
-<loc>https://truenergyvolleyball.ca/about.html</loc>
+<loc>https://truenergyvolleyball.ca/world.html</loc>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://truenergyvolleyball.ca/tournaments.html</loc>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://truenergyvolleyball.ca/rankings.html</loc>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://truenergyvolleyball.ca/players.html</loc>
 <priority>0.8</priority>
 </url>
 
