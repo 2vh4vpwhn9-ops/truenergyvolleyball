@@ -3,13 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>True Energy VB</title>
+
+  <title>True Energy VB | Volleyball News, Results & International Coverage</title>
+
+  <meta name="description" content="True Energy VB is your source for volleyball news, match results, international tournaments, Canadian volleyball, Ukrainian volleyball, player stories and rankings.">
+  <meta name="keywords" content="volleyball, volleyball news, volleyball canada, ukraine volleyball, volleyball world, FIVB, CEV, volleyball results, volleyball rankings, volleyball players">
+  <meta name="author" content="True Energy VB">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://truenergyvolleyball.ca/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="True Energy VB">
+  <meta property="og:description" content="The Home of Volleyball News">
+  <meta property="og:url" content="https://truenergyvolleyball.ca/">
+  <meta property="og:image" content="https://truenergyvolleyball.ca/images/logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="True Energy VB">
+  <meta name="twitter:description" content="The Home of Volleyball News">
+  <meta name="twitter:image" content="https://truenergyvolleyball.ca/images/logo.png">
+
+  <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>
-  <div class="logo">TRUE ENERGY <span>VB</span></div>
+  <a href="index.html" class="logo">TRUE ENERGY <span>VB</span></a>
   <p>The Home of Volleyball News</p>
 </header>
 
@@ -184,6 +206,9 @@ fetch('news.json')
         </article>
       `;
     });
+  })
+  .catch(error => {
+    document.getElementById('auto-news').innerHTML = '<p>News is currently loading. Please check back soon.</p>';
   });
 </script>
 
