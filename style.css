@@ -356,3 +356,82 @@ header .logo:active{
 header .logo span{
   color:#d7ff00 !important;
 }
+.main-layout{
+  display:flex;
+  gap:30px;
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 20px;
+  align-items:flex-start;
+}
+
+.content{
+  flex:1;
+}
+
+.sidebar{
+  width:300px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.side-card{
+  background:#1d1d1d;
+  border:1px solid #2c2c2c;
+  border-left:4px solid #d8ff00;
+  padding:18px;
+  border-radius:12px;
+}
+
+.side-card h3{
+  color:#d8ff00;
+  margin-bottom:12px;
+  font-size:20px;
+}
+
+.side-card p{
+  color:#dcdcdc;
+  font-size:15px;
+  line-height:1.5;
+  margin-bottom:8px;
+}
+
+.side-card a{
+  color:#d8ff00;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.newsletter input{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:6px;
+  margin:10px 0;
+}
+
+.newsletter button{
+  width:100%;
+  padding:10px;
+  background:#d8ff00;
+  color:#121212;
+  border:none;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.newsletter button:hover{
+  background:white;
+}
+
+@media(max-width:900px){
+  .main-layout{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+  }
+}
