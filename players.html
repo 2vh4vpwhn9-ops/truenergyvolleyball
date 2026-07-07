@@ -1,99 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Players | True Energy VB</title>
-  <meta name="description" content="Top volleyball player profiles, achievements, clubs, national teams and latest news.">
-  <link rel="icon" type="image/png" href="images/logo.png">
-  <link rel="stylesheet" href="style.css">
-</head>
+.players-page{
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 15px;
+}
 
-<body>
+.players-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:24px;
+}
 
-<header>
-  <a href="index.html" class="logo">TRUE ENERGY <span>VB</span></a>
-  <p>The Home of Volleyball News</p>
-</header>
+.player-card{
+  background:linear-gradient(180deg,#202020,#171717);
+  border:1px solid #333;
+  border-top:5px solid #d8ff00;
+  border-radius:14px;
+  padding:24px;
+  transition:.3s;
+}
 
-<nav>
-  <a href="index.html">Latest News</a>
-  <a href="canada.html">Canada</a>
-  <a href="ukraine.html">Ukraine</a>
-  <a href="world.html">World</a>
-  <a href="tournaments.html">Tournaments</a>
-  <a href="rankings.html">Rankings</a>
-  <a href="players.html">Players</a>
-</nav>
+.player-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 30px rgba(216,255,0,.15);
+}
 
-<main>
+.player-photo{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:#d8ff00;
+  color:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  font-weight:800;
+  margin-bottom:18px;
+}
 
-  <section class="hero players-hero">
-    <div class="tag">Players</div>
-    <h1>Volleyball Player Profiles</h1>
-    <p>Top volleyball stars, achievements, clubs, national teams and latest news.</p>
-  </section>
+.player-card h3{
+  color:#d8ff00;
+  margin-bottom:15px;
+  font-size:24px;
+}
 
-  <section class="players-page">
+.player-card p{
+  color:#e6e6e6;
+  margin-bottom:8px;
+  line-height:1.5;
+}
 
-    <h2 class="section-title">Featured Players</h2>
+.player-card a{
+  display:inline-block;
+  margin-top:15px;
+  color:#d8ff00;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-    <div class="players-grid">
+.player-card a:hover{
+  color:white;
+}
 
-      <article class="player-card">
-        <div class="player-photo">WL</div>
-        <h3>Wilfredo Leon</h3>
-        <p><strong>Height:</strong> 201 cm</p>
-        <p><strong>National Team:</strong> Poland</p>
-        <p><strong>Position:</strong> Outside Hitter</p>
-        <a href="wilfredo-leon.html">View Profile →</a>
-      </article>
+@media(max-width:900px){
+  .players-grid{
+    grid-template-columns:1fr;
+  }
+}
+.players-page{
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 15px;
+}
 
-      <article class="player-card">
-        <div class="player-photo">EN</div>
-        <h3>Earvin Ngapeth</h3>
-        <p><strong>Height:</strong> 194 cm</p>
-        <p><strong>National Team:</strong> France</p>
-        <p><strong>Position:</strong> Outside Hitter</p>
-        <a href="earvin-ngapeth.html">View Profile →</a>
-      </article>
+.players-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:24px;
+}
 
-      <article class="player-card">
-        <div class="player-photo">YN</div>
-        <h3>Yuji Nishida</h3>
-        <p><strong>Height:</strong> 187 cm</p>
-        <p><strong>National Team:</strong> Japan</p>
-        <p><strong>Position:</strong> Opposite</p>
-        <a href="yuji-nishida.html">View Profile →</a>
-      </article>
+.player-card{
+  background:linear-gradient(180deg,#202020,#171717);
+  border:1px solid #333;
+  border-top:5px solid #d8ff00;
+  border-radius:14px;
+  padding:24px;
+  transition:.3s;
+}
 
-      <article class="player-card">
-        <div class="player-photo">TB</div>
-        <h3>Tijana Boskovic</h3>
-        <p><strong>Height:</strong> 194–195 cm</p>
-        <p><strong>National Team:</strong> Serbia</p>
-        <p><strong>Position:</strong> Opposite</p>
-        <a href="tijana-boskovic.html">View Profile →</a>
-      </article>
+.player-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 30px rgba(216,255,0,.15);
+}
 
-      <article class="player-card">
-        <div class="player-photo">PE</div>
-        <h3>Paola Egonu</h3>
-        <p><strong>Height:</strong> 193–195 cm</p>
-        <p><strong>National Team:</strong> Italy</p>
-        <p><strong>Position:</strong> Opposite</p>
-        <a href="paola-egonu.html">View Profile →</a>
-      </article>
+.player-photo{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:#d8ff00;
+  color:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  font-weight:800;
+  margin-bottom:18px;
+}
 
-    </div>
+.player-card h3{
+  color:#d8ff00;
+  margin-bottom:15px;
+  font-size:24px;
+}
 
-  </section>
+.player-card p{
+  color:#e6e6e6;
+  margin-bottom:8px;
+  line-height:1.5;
+}
 
-</main>
+.player-card a{
+  display:inline-block;
+  margin-top:15px;
+  color:#d8ff00;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-<footer>
-  © 2026 True Energy VB
-</footer>
+.player-card a:hover{
+  color:white;
+}
 
-</body>
-</html>
+@media(max-width:900px){
+  .players-grid{
+    grid-template-columns:1fr;
+  }
+}
