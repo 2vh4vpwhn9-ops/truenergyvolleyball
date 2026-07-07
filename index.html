@@ -10,7 +10,7 @@
   <meta name="keywords" content="volleyball, volleyball news, volleyball canada, ukraine volleyball, volleyball world, FIVB, CEV, volleyball results, volleyball rankings, volleyball players">
   <meta name="author" content="True Energy VB">
   <meta name="robots" content="index, follow">
-  <meta name="google-site-verification" content="qHbIeYEOp4oRU38-bPjfeoTNzy35DFApmHVrBOhY8Sw" />
+  <meta name="google-site-verification" content="qHbIeYEOp4oRU38-bPjfeoTNzy35DFApmHVrBOhY8Sw">
 
   <link rel="canonical" href="https://truenergyvolleyball.ca/">
 
@@ -27,6 +27,17 @@
 
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXG0H7JQ9C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BXG0H7JQ9C');
+  </script>
+
 </head>
 
 <body>
@@ -62,6 +73,7 @@
   </section>
 
   <section class="news-grid">
+
     <article class="news-card">
       <h3>Canada Secures Spot in VNL Finals</h3>
       <p>Canadian volleyball continues to rise on the international stage.</p>
@@ -76,9 +88,9 @@
       <h3>World Volleyball Rankings</h3>
       <p>Follow the latest rankings, tournaments and international results.</p>
     </article>
-  </section>
 
-  <section class="stats-section">
+  </section>
+    <section class="stats-section">
 
     <div class="stats-card">
       <h2>🏐 Match Results</h2>
@@ -89,7 +101,9 @@
         <li>Ukraine 3–1 Belgium</li>
         <li>USA 3–1 Slovenia</li>
       </ul>
-      <a class="source-btn" href="https://en.volleyballworld.com/" target="_blank">Source: Volleyball World</a>
+      <a class="source-btn" href="https://en.volleyballworld.com/" target="_blank">
+        Source: Volleyball World
+      </a>
     </div>
 
     <div class="stats-card">
@@ -101,7 +115,9 @@
         <li>Italy vs USA</li>
         <li>Brazil vs Slovenia</li>
       </ul>
-      <a class="source-btn" href="https://en.volleyballworld.com/" target="_blank">Source: Volleyball World</a>
+      <a class="source-btn" href="https://en.volleyballworld.com/" target="_blank">
+        Source: Volleyball World
+      </a>
     </div>
 
     <div class="stats-card">
@@ -116,7 +132,9 @@
         <li>🇨🇦 Canada</li>
         <li>🇺🇦 Ukraine</li>
       </ol>
-      <a class="source-btn" href="https://www.fivb.com/volleyball/world-ranking/" target="_blank">Source: FIVB Rankings</a>
+      <a class="source-btn" href="https://www.fivb.com/volleyball/world-ranking/" target="_blank">
+        Source: FIVB Rankings
+      </a>
     </div>
 
   </section>
@@ -126,9 +144,10 @@
     <div class="feature-card">
       <span class="category">CANADA</span>
       <h2>🇨🇦 Canadian Volleyball</h2>
+
       <p>
-        Follow Team Canada, Volleyball Canada, local clubs, athletes, youth programs,
-        university volleyball and national tournament updates.
+        Follow Team Canada, Volleyball Canada, local clubs, athletes,
+        youth programs, university volleyball and national tournament updates.
       </p>
 
       <ul class="feature-list">
@@ -138,17 +157,25 @@
         <li>📰 Canadian Volleyball News</li>
       </ul>
 
-      <a class="source-btn" href="https://volleyball.ca/en/news" target="_blank">
-        Official Volleyball Canada →
+      <a class="source-btn"
+         href="https://volleyball.ca/en/news"
+         target="_blank">
+         Official Volleyball Canada →
       </a>
+
     </div>
 
     <div class="feature-card">
+
       <span class="category">UKRAINE</span>
+
       <h2>🇺🇦 Ukrainian Volleyball</h2>
+
       <p>
-        Follow Ukraine’s national volleyball teams, European competitions,
-        international results, player stories and Ukrainian athletes playing abroad.
+        Follow Ukraine’s national volleyball teams,
+        European competitions,
+        international results,
+        player stories and Ukrainian athletes playing abroad.
       </p>
 
       <ul class="feature-list">
@@ -158,17 +185,27 @@
         <li>👤 Ukrainian Players Abroad</li>
       </ul>
 
-      <a class="source-btn" href="https://www.cev.eu/" target="_blank">
-        Source: CEV European Volleyball →
+      <a class="source-btn"
+         href="https://www.cev.eu/"
+         target="_blank">
+         Source: CEV European Volleyball →
       </a>
+
     </div>
 
     <div class="feature-card">
+
       <span class="category">WORLD</span>
+
       <h2>🌍 World Volleyball</h2>
+
       <p>
-        International volleyball news, Volleyball Nations League, FIVB tournaments,
-        World Championships, beach volleyball and global player stories.
+        International volleyball news,
+        Volleyball Nations League,
+        FIVB tournaments,
+        World Championships,
+        beach volleyball
+        and global player stories.
       </p>
 
       <ul class="feature-list">
@@ -178,14 +215,16 @@
         <li>🔥 Global Volleyball News</li>
       </ul>
 
-      <a class="source-btn" href="https://en.volleyballworld.com/" target="_blank">
-        Official Volleyball World →
+      <a class="source-btn"
+         href="https://en.volleyballworld.com/"
+         target="_blank">
+         Official Volleyball World →
       </a>
+
     </div>
 
   </section>
-
-</main>
+  </main>
 
 <footer>
   © 2026 True Energy VB
@@ -193,7 +232,12 @@
 
 <script>
 fetch('news.json')
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to load news');
+    }
+    return response.json();
+  })
   .then(news => {
     const container = document.getElementById('auto-news');
     container.innerHTML = '';
@@ -203,13 +247,17 @@ fetch('news.json')
         <article class="news-card">
           <h3>${item.title}</h3>
           <p>${item.description}</p>
-          <a href="${item.link}" target="_blank">Read more</a>
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer">
+            Read more →
+          </a>
         </article>
       `;
     });
   })
   .catch(error => {
-    document.getElementById('auto-news').innerHTML = '<p>News is currently loading. Please check back soon.</p>';
+    console.error(error);
+    document.getElementById('auto-news').innerHTML =
+      '<p>News is currently loading. Please check back soon.</p>';
   });
 </script>
 
