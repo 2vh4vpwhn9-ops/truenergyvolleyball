@@ -3,66 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canada Volleyball | True Energy VB</title>
+  <title>Canada Volleyball Team | True Energy VB</title>
+  <meta name="description" content="Canada national volleyball team profile: squad, news, schedule and results.">
+  <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <div class="logo">TRUE ENERGY <span>VB</span></div>
-  <p>Canadian Volleyball News</p>
+  <a href="index.html" class="logo">TRUE ENERGY <span>VB</span></a>
+  <p>The Home of Volleyball News</p>
 </header>
 
 <nav>
   <a href="index.html">Latest News</a>
+  <a href="teams.html">Teams</a>
+  <a href="players.html">Players</a>
   <a href="canada.html">Canada</a>
   <a href="ukraine.html">Ukraine</a>
   <a href="world.html">World</a>
   <a href="tournaments.html">Tournaments</a>
   <a href="rankings.html">Rankings</a>
-  <a href="players.html">Players</a>
 </nav>
 
 <main>
-
-  <section class="hero canada-hero">
-    <div class="tag">Canada Focus</div>
-    <h1>Canadian Volleyball on the Rise</h1>
-    <p>National teams, local clubs, university volleyball, tournaments and Canadian athletes.</p>
+  <section class="hero team-profile-hero">
+    <div class="tag">🇨🇦 National Team</div>
+    <h1>Canada Volleyball Team</h1>
+    <p>North American volleyball program with growing international success.</p>
   </section>
 
-  <section>
-    <h2 class="section-title">Latest Canadian Volleyball News</h2>
+  <section class="team-profile">
 
-    <div id="canada-news" class="news-grid">
-      <p>Loading Canadian news...</p>
+    <div class="team-header-card">
+      <div class="team-big-flag">🇨🇦</div>
+      <div>
+        <h2>Canada National Team</h2>
+        <p>Squad, news, schedule and results hub for Canada volleyball.</p>
+      </div>
     </div>
-  </section>
 
+    <section class="team-block">
+      <h2>Squad</h2>
+      <div class="table-wrap">
+        <table class="team-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Player</th>
+              <th>Position</th>
+              <th>Club</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1</td>
+            <td>Stephen Maar</td>
+            <td>Outside Hitter</td>
+            <td>Club information to be updated</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Arthur Szwarc</td>
+            <td>Opposite</td>
+            <td>Club information to be updated</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Nicholas Hoag</td>
+            <td>Outside Hitter</td>
+            <td>Club information to be updated</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Lucas Van Berkel</td>
+            <td>Middle Blocker</td>
+            <td>Club information to be updated</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Luke Herr</td>
+            <td>Setter</td>
+            <td>Club information to be updated</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="team-block">
+      <h2>Latest News</h2>
+      <div class="team-news-grid">
+        <article class="news-card">
+          <h3>Canada prepares for upcoming international matches</h3>
+          <p>Latest updates, roster notes and tournament coverage will appear here.</p>
+        </article>
+        <article class="news-card">
+          <h3>Players to watch</h3>
+          <p>Follow key athletes, club form and national team performance.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="team-block">
+      <h2>Schedule</h2>
+      <ul class="team-list">
+        <li>Upcoming match information will be updated here.</li>
+        <li>Volleyball Nations League fixtures</li>
+        <li>International tournament schedule</li>
+      </ul>
+    </section>
+
+    <section class="team-block">
+      <h2>Results</h2>
+      <ul class="team-list">
+        <li>Recent match results will be updated here.</li>
+        <li>Set scores and tournament outcomes</li>
+        <li>Links to official match pages</li>
+      </ul>
+    </section>
+
+    <a class="source-btn" href="teams.html">← Back to Teams</a>
+
+  </section>
 </main>
 
 <footer>
   © 2026 True Energy VB
 </footer>
-
-<script>
-fetch('canada-news.json')
-  .then(response => response.json())
-  .then(news => {
-    const container = document.getElementById('canada-news');
-    container.innerHTML = '';
-
-    news.forEach(item => {
-      container.innerHTML += `
-        <article class="news-card">
-          <h3>${item.title}</h3>
-          <p>${item.description}</p>
-          <a href="${item.link}" target="_blank">Read more</a>
-        </article>
-      `;
-    });
-  });
-</script>
 
 </body>
 </html>
