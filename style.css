@@ -1420,3 +1420,258 @@ th{
     align-items:flex-start;
   }
 }
+/* ===== Canada Pro Team Page ===== */
+
+.team-hero-pro{
+  max-width:1200px;
+  min-height:520px;
+  margin:35px auto;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  background:center/cover no-repeat;
+}
+
+.canada-team-hero{
+  background-image:url("https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=1800&q=80");
+}
+
+.team-hero-overlay{
+  min-height:520px;
+  padding:45px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  background:linear-gradient(90deg, rgba(0,0,0,.88), rgba(0,0,0,.45), rgba(0,0,0,.2));
+}
+
+.team-label{
+  background:#d8ff00;
+  color:#111;
+  padding:9px 16px;
+  border-radius:30px;
+  font-weight:bold;
+  width:fit-content;
+  margin-bottom:18px;
+}
+
+.team-hero-pro h1{
+  font-size:56px;
+  max-width:800px;
+  margin-bottom:14px;
+}
+
+.team-hero-pro p{
+  color:#e6e6e6;
+  font-size:20px;
+  max-width:750px;
+  line-height:1.5;
+}
+
+.team-hero-stats{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:16px;
+  margin-top:28px;
+  max-width:850px;
+}
+
+.team-hero-stats div{
+  background:rgba(29,29,29,.88);
+  border-left:5px solid #d8ff00;
+  padding:16px;
+  border-radius:12px;
+}
+
+.team-hero-stats span{
+  display:block;
+  color:#aaa;
+  font-size:14px;
+  margin-bottom:7px;
+}
+
+.team-hero-stats strong{
+  color:#d8ff00;
+  font-size:20px;
+}
+
+.team-profile-pro{
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 15px;
+}
+
+.team-main-grid{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) 300px;
+  gap:24px;
+  align-items:start;
+}
+
+.team-panel{
+  margin-bottom:35px;
+}
+
+.team-panel h2{
+  color:#d8ff00;
+  margin-bottom:20px;
+  border-left:5px solid #d8ff00;
+  padding-left:14px;
+  font-size:30px;
+}
+
+.team-roster-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:18px;
+}
+
+.roster-card{
+  background:linear-gradient(180deg,#202020,#171717);
+  border:1px solid #333;
+  border-top:5px solid #d8ff00;
+  border-radius:14px;
+  padding:20px;
+  transition:.3s;
+}
+
+.roster-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 30px rgba(216,255,0,.13);
+}
+
+.roster-avatar{
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  background:#d8ff00;
+  color:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  margin-bottom:14px;
+  font-size:20px;
+}
+
+.roster-card h3{
+  color:#fff;
+  margin-bottom:8px;
+  font-size:19px;
+}
+
+.roster-card p{
+  color:#d8ff00;
+  margin-bottom:8px;
+  font-weight:bold;
+}
+
+.roster-card span{
+  color:#aaa;
+  font-size:14px;
+}
+
+.team-news-grid-pro{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:22px;
+}
+
+.match-table-wrap{
+  overflow-x:auto;
+  background:#1d1d1d;
+  border-radius:14px;
+}
+
+.match-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.match-table th,
+.match-table td{
+  padding:15px;
+  border-bottom:1px solid #333;
+  text-align:left;
+}
+
+.match-table th{
+  background:#d8ff00;
+  color:#111;
+}
+
+.match-table td{
+  color:#e6e6e6;
+}
+
+.team-side-pro{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  position:sticky;
+  top:20px;
+}
+
+.team-side-card{
+  background:linear-gradient(180deg,#202020,#171717);
+  border:1px solid #333;
+  border-left:5px solid #d8ff00;
+  border-radius:14px;
+  padding:20px;
+}
+
+.team-side-card h3{
+  color:#d8ff00;
+  margin-bottom:15px;
+}
+
+.team-side-card p{
+  color:#e6e6e6;
+  margin-bottom:9px;
+  line-height:1.5;
+}
+
+.team-side-card a{
+  display:block;
+  color:#d8ff00;
+  text-decoration:none;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.team-side-card a:hover{
+  color:white;
+}
+
+@media(max-width:1000px){
+  .team-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .team-side-pro{
+    position:static;
+  }
+
+  .team-roster-grid,
+  .team-news-grid-pro,
+  .team-hero-stats{
+    grid-template-columns:1fr;
+  }
+
+  .team-hero-pro,
+  .team-hero-overlay{
+    min-height:440px;
+  }
+
+  .team-hero-pro{
+    margin:20px 15px;
+  }
+
+  .team-hero-overlay{
+    padding:30px;
+  }
+
+  .team-hero-pro h1{
+    font-size:38px;
+  }
+}
