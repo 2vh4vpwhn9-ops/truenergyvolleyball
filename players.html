@@ -136,3 +136,141 @@
     grid-template-columns:1fr;
   }
 }
+.players-page{
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 15px;
+}
+
+.players-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:24px;
+}
+
+.player-card{
+  background:linear-gradient(180deg,#202020,#171717);
+  border:1px solid #333;
+  border-top:5px solid #d8ff00;
+  border-radius:14px;
+  padding:24px;
+  transition:.3s;
+}
+
+.player-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 30px rgba(216,255,0,.15);
+}
+
+.player-photo{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:#d8ff00;
+  color:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.player-card h3{
+  color:#d8ff00;
+  margin-bottom:15px;
+  font-size:24px;
+}
+
+.player-card p{
+  color:#e6e6e6;
+  margin-bottom:8px;
+  line-height:1.5;
+}
+
+.player-card a{
+  display:inline-block;
+  margin-top:15px;
+  color:#d8ff00;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.player-card a:hover{
+  color:white;
+}
+
+@media(max-width:900px){
+  .players-grid{
+    grid-template-columns:1fr;
+  }
+}
+.players-page{
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 15px;
+}
+
+.players-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:24px;
+}
+
+.player-card{
+  background:linear-gradient(180deg,#202020,#171717);
+  border:1px solid #333;
+  border-top:5px solid #d8ff00;
+  border-radius:14px;
+  padding:24px;
+  transition:.3s;
+}
+
+.player-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 30px rgba(216,255,0,.15);
+}
+
+.player-photo{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:#d8ff00;
+  color:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.player-card h3{
+  color:#d8ff00;
+  margin-bottom:15px;
+  font-size:24px;
+}
+
+.player-card p{
+  color:#e6e6e6;
+  margin-bottom:8px;
+  line-height:1.5;
+}
+
+.player-card a{
+  display:inline-block;
+  margin-top:15px;
+  color:#d8ff00;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.player-card a:hover{
+  color:white;
+}
+
+@media(max-width:900px){
+  .players-grid{
+    grid-template-columns:1fr;
+  }
+}
