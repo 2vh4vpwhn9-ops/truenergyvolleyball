@@ -8,6 +8,7 @@ body{
   font-family:Arial, Helvetica, sans-serif;
   background:#121212;
   color:white;
+  overflow-x:hidden;
 }
 
 header{
@@ -57,15 +58,15 @@ nav a:hover{
   color:#d8ff00;
 }
 .hero{
-  max-width:1600px;
-  margin:40px auto;
+  max-width:1200px;
+  margin:35px auto;
   background:url("images/IMG_5656.jpeg") center center/cover no-repeat;
-  min-height:520px;
+  min-height:430px;
   border-radius:14px;
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
-  padding:40px;
+  padding:35px;
   position:relative;
   overflow:hidden;
 }
@@ -92,28 +93,28 @@ nav a:hover{
 }
 
 .hero h1{
-  font-size:54px;
+  font-size:46px;
   max-width:850px;
 }
 
 .hero p{
-  margin-top:20px;
+  margin-top:18px;
   max-width:700px;
-  font-size:20px;
+  font-size:19px;
 }
 
 .section-title{
-  margin:40px 0 20px;
+  margin:35px 0 20px;
   border-left:5px solid #d8ff00;
   padding-left:15px;
 }
 .main-layout{
   display:grid;
-  grid-template-columns:1fr 360px;
-  gap:30px;
-  max-width:1600px;
-  margin:40px auto;
-  padding:0 24px;
+  grid-template-columns:280px minmax(0, 1fr);
+  gap:22px;
+  max-width:1200px;
+  margin:35px auto;
+  padding:0 15px;
   align-items:start;
 }
 
@@ -123,17 +124,18 @@ nav a:hover{
 
 .news-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:22px;
   margin:20px 0 40px;
 }
 
 .news-card{
   background:#1d1d1d;
-  padding:30px;
+  padding:24px;
   border-radius:12px;
   border-top:5px solid #d8ff00;
   transition:.3s;
+  overflow:hidden;
 }
 
 .news-card:hover{
@@ -143,11 +145,18 @@ nav a:hover{
 
 .news-card h3{
   margin-bottom:15px;
+  line-height:1.3;
 }
 
 .news-card p{
   color:#cfcfcf;
   line-height:1.5;
+}
+
+.news-card img{
+  width:100%;
+  height:auto;
+  border-radius:8px;
 }
 
 .news-card a{
@@ -163,14 +172,14 @@ nav a:hover{
 }
 .stats-section{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-  margin:50px 0;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:22px;
+  margin:45px 0;
 }
 
 .stats-card{
   background:#1b1b1b;
-  padding:25px;
+  padding:24px;
   border-radius:12px;
   border-top:5px solid #d8ff00;
 }
@@ -212,14 +221,14 @@ nav a:hover{
 }
 .feature-section{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-  margin:50px 0;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:22px;
+  margin:45px 0;
 }
 
 .feature-card{
   background:#181818;
-  padding:30px;
+  padding:24px;
   border-radius:12px;
   border:1px solid #2d2d2d;
   transition:.3s;
@@ -265,7 +274,7 @@ nav a:hover{
   width:100%;
   display:flex;
   flex-direction:column;
-  gap:22px;
+  gap:18px;
   position:sticky;
   top:20px;
 }
@@ -274,28 +283,28 @@ nav a:hover{
   background:linear-gradient(180deg, #202020, #171717);
   border:1px solid #333;
   border-left:5px solid #d8ff00;
-  padding:22px;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  padding:18px;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,.25);
 }
 
 .side-card h3{
   color:#d8ff00;
-  margin-bottom:16px;
-  font-size:22px;
+  margin-bottom:14px;
+  font-size:19px;
   line-height:1.2;
 }
 
 .side-card p{
   color:#e6e6e6;
-  font-size:15px;
-  line-height:1.5;
-  margin-bottom:10px;
+  font-size:14px;
+  line-height:1.45;
+  margin-bottom:8px;
 }
 
 .side-card a{
   display:inline-block;
-  margin-top:10px;
+  margin-top:8px;
   color:#d8ff00;
   text-decoration:none;
   font-weight:bold;
@@ -307,22 +316,22 @@ nav a:hover{
 
 .newsletter input{
   width:100%;
-  padding:13px;
+  padding:12px;
   border:none;
   border-radius:8px;
-  margin:12px 0;
-  font-size:15px;
+  margin:10px 0;
+  font-size:14px;
 }
 
 .newsletter button{
   width:100%;
-  padding:13px;
+  padding:12px;
   background:#d8ff00;
   color:#121212;
   border:none;
   border-radius:8px;
   font-weight:bold;
-  font-size:15px;
+  font-size:14px;
   cursor:pointer;
 }
 
@@ -391,6 +400,11 @@ footer{
 
   .sidebar{
     position:static;
+    order:2;
+  }
+
+  .content{
+    order:1;
   }
 
   .hero{
