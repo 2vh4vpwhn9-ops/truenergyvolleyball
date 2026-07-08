@@ -1,128 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>True Energy VB</title>
-  <link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>True Energy VB</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <header class="site-header">
 
-  <div class="socials">
-    <span>●</span>
-    <span>●</span>
-    <span>●</span>
-  </div>
+    <div class="socials">
+        <span>●</span>
+        <span>●</span>
+        <span>●</span>
+    </div>
 
-  <a href="index.html" class="logo">
-    <img src="images/logo.png" alt="True Energy Volleyball">
-  </a>
+    <a href="./index.html" class="logo">
+        <img src="./images/logo.png" alt="True Energy Volleyball">
+    </a>
 
-  <div class="live-status">
-    Live updates <span></span>
-  </div>
+    <div class="live-status">
+        Live Updates <span></span>
+    </div>
 
 </header>
 
 <nav class="main-nav">
-  <button class="active" data-region="World">World</button>
-  <button data-region="Europe">Europe</button>
-  <button data-region="Asia">Asia</button>
-  <button data-region="North America">North America</button>
+
+    <button class="active">World</button>
+    <button>Europe</button>
+    <button>Asia</button>
+    <button>North America</button>
+
 </nav>
 
 <section class="search-section">
-  <input type="text" id="searchInput" placeholder="Search tournaments, teams, players...">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search tournaments, teams, players...">
+
 </section>
 
 <main class="layout">
 
-  <aside class="left-panel">
-    <h3>Live Now</h3>
+    <aside class="left-panel">
 
-    <div class="small-card">
-      <p>VNL Men</p>
-      <strong>France 2 : 1 Slovenia</strong>
-      <span>Set 4 · 21-25, 25-20, 25-18</span>
-    </div>
+        <h3>Live Now</h3>
 
-    <h3>Upcoming Matches</h3>
+        <div class="small-card">
+            <p>VNL Men</p>
+            <strong>France 2 : 1 Slovenia</strong>
+            <span>Set 4 • 21-25 • 25-20 • 25-18</span>
+        </div>
 
-    <div class="small-card">
-      <p>Today · 19:00</p>
-      <strong>Italy vs Poland</strong>
-      <span>VNL Men</span>
-    </div>
+        <h3>Upcoming Matches</h3>
 
-    <div class="small-card">
-      <p>Tomorrow · 14:00</p>
-      <strong>USA vs Canada</strong>
-      <span>NORCECA</span>
-    </div>
-  </aside>
+        <div class="small-card">
+            <p>Today • 19:00</p>
+            <strong>Italy vs Poland</strong>
+            <span>Volleyball Nations League</span>
+        </div>
 
-  <section class="main-content">
+        <div class="small-card">
+            <p>Tomorrow • 14:00</p>
+            <strong>USA vs Canada</strong>
+            <span>NORCECA Championship</span>
+        </div>
 
-    <section class="hero-card">
-      <div>
-        <span class="tag">Top Story</span>
-        <h1 id="regionTitle">World Volleyball</h1>
-        <p>The latest volleyball matches, tournaments and updates organized by region.</p>
-      </div>
+    </aside>
+
+    <section class="main-content">
+
+        <section class="hero-card">
+
+            <div>
+
+                <span class="tag">
+                    World Volleyball
+                </span>
+
+                <h1 id="regionTitle">
+                    World Volleyball
+                </h1>
+
+                <p>
+                    Results, standings and volleyball updates from around the world.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <h2>Today's Matches</h2>
+
+            <div class="match-grid" id="matchesContainer"></div>
+
+        </section>
+
+        <section>
+
+            <h2>Latest News</h2>
+
+            <div class="news-grid" id="newsContainer"></div>
+
+        </section>
+
     </section>
 
-    <section>
-      <h2>Today's Matches</h2>
+    <aside class="right-panel">
 
-      <div class="match-grid" id="matchesContainer"></div>
-    </section>
+        <h3>Competitions</h3>
 
-    <section>
-      <h2>Latest News</h2>
+        <div class="small-card">
+            <strong>World</strong>
+            <span>VNL • World Championship • Olympic Games</span>
+        </div>
 
-      <div class="news-grid" id="newsContainer"></div>
-    </section>
+        <div class="small-card">
+            <strong>Europe</strong>
+            <span>CEV Champions League • PlusLiga • SuperLega</span>
+        </div>
 
-  </section>
+        <div class="small-card">
+            <strong>Asia</strong>
+            <span>Japan SV League • Korean League • AVC</span>
+        </div>
 
-  <aside class="right-panel">
-    <h3>Region Structure</h3>
+        <div class="small-card">
+            <strong>North America</strong>
+            <span>Canada • USA • NORCECA • Local Volleyball</span>
+        </div>
 
-    <div class="small-card">
-      <strong>World</strong>
-      <span>VNL · World Championship · Olympics</span>
-    </div>
-
-    <div class="small-card">
-      <strong>Europe</strong>
-      <span>CEV · PlusLiga · SuperLega</span>
-    </div>
-
-    <div class="small-card">
-      <strong>Asia</strong>
-      <span>Japan SV League · Korea · AVC</span>
-    </div>
-
-    <div class="small-card">
-      <strong>North America</strong>
-      <span>Canada · USA · NORCECA · Local</span>
-    </div>
-  </aside>
+    </aside>
 
 </main>
 
 <footer>
-  <div class="footer-logo">
-    <img src="images/logo.png" alt="True Energy Volleyball">
-  </div>
 
-  <p>© 2026 True Energy Volleyball</p>
+    <div class="footer-logo">
+
+        <img src="./images/logo.png" alt="True Energy Volleyball">
+
+    </div>
+
+    <p>
+
+        © 2026 True Energy Volleyball
+
+    </p>
+
 </footer>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
