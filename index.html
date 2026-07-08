@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>True Energy VB</title>
+  <meta name="description" content="True Energy VB — volleyball matches, news, leagues and players by region." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<header class="site-top">
+  <a href="index.html" class="brand" aria-label="True Energy VB home">
+    <img src="tev-logo.svg" alt="True Energy Volleyball" />
+  </a>
+
+  <nav class="nav" aria-label="Main navigation">
+    <button class="active" data-region="World">World</button>
+    <button data-region="Europe">Europe</button>
+    <button data-region="Asia">Asia</button>
+    <button data-region="North America">North America</button>
+    <button data-region="Local">Local</button>
+  </nav>
+
+  <div class="search-box">
+    <span>⌕</span>
+    <input id="searchInput" type="text" placeholder="Search..." />
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="hero-grid">
+
+    <article class="top-story">
+      <div class="story-content">
+        <span class="label">Top Story</span>
+        <h1 id="heroHeadline">France edge Slovenia in five-set thriller</h1>
+        <p id="heroText">Latest volleyball results, matches, leagues, news and player updates by region.</p>
+        <button class="read-btn">Read More</button>
+      </div>
+      <div class="story-player" aria-hidden="true"></div>
+    </article>
+
+    <aside class="live-card">
+      <div class="card-head">
+        <h2>Live Matches</h2>
+        <span class="live-dot">● Live</span>
+      </div>
+
+      <div class="live-row">
+        <span>🇫🇷 France</span>
+        <strong>2 - 1</strong>
+        <span>Slovenia 🇸🇮</span>
+      </div>
+
+      <div class="live-row">
+        <span>🇮🇹 Italy</span>
+        <strong>1 - 0</strong>
+        <span>Poland 🇵🇱</span>
+      </div>
+
+      <div class="live-row">
+        <span>🇺🇸 USA</span>
+        <strong>0 - 0</strong>
+        <span>Canada 🇨🇦</span>
+      </div>
+    </aside>
+
+    <aside class="today-card">
+      <div class="card-head">
+        <h2>Today's Matches</h2>
+        <span>📅</span>
+      </div>
+
+      <div class="schedule-row">
+        <time>14:00</time>
+        <span>🇧🇷 Brazil</span>
+        <small>vs</small>
+        <span>Japan 🇯🇵</span>
+      </div>
+
+      <div class="schedule-row">
+        <time>19:00</time>
+        <span>🇮🇹 Italy</span>
+        <small>vs</small>
+        <span>Poland 🇵🇱</span>
+      </div>
+
+      <div class="schedule-row">
+        <time>21:30</time>
+        <span>🇺🇸 USA</span>
+        <small>vs</small>
+        <span>Canada 🇨🇦</span>
+      </div>
+    </aside>
+
+  </section>
+
+  <section class="region-hero">
+    <span class="label" id="regionTag">World Volleyball</span>
+    <h2 id="regionTitle">World Volleyball</h2>
+    <p id="regionDescription">Global volleyball matches, news, leagues and player stories.</p>
+  </section>
+
+  <section class="content-grid">
+
+    <article class="content-card">
+      <h3>🏐 Matches</h3>
+      <ul id="matchesList"></ul>
+    </article>
+
+    <article class="content-card">
+      <h3>📰 News</h3>
+      <ul id="newsList"></ul>
+    </article>
+
+    <article class="content-card">
+      <h3>🏆 Leagues & Tournaments</h3>
+      <ul id="leaguesList"></ul>
+    </article>
+
+    <article class="content-card">
+      <h3>👤 Players</h3>
+      <ul id="playersList"></ul>
+    </article>
+
+  </section>
+
+  <section class="latest-news">
+    <div class="section-title">
+      <h2>Latest News</h2>
+      <button>View All News →</button>
+    </div>
+
+    <div class="news-grid">
+      <article class="news-card">
+        <div class="news-img img-one"></div>
+        <span>World</span>
+        <h3>Poland stay perfect in VNL with win over Italy</h3>
+      </article>
+
+      <article class="news-card">
+        <div class="news-img img-two"></div>
+        <span>Europe</span>
+        <h3>Champions League draw sets up epic clashes</h3>
+      </article>
+
+      <article class="news-card">
+        <div class="news-img img-three"></div>
+        <span>Asia</span>
+        <h3>Japan SV League prepares for a new season</h3>
+      </article>
+
+      <article class="news-card">
+        <div class="news-img img-four"></div>
+        <span>Local</span>
+        <h3>Volleyball Manitoba community events announced</h3>
+      </article>
+    </div>
+  </section>
+
+  <section class="bottom-grid">
+    <article class="mini-panel">
+      <h3>Leagues</h3>
+      <p>VNL • CEV • PlusLiga • SuperLega • SV League • NORCECA</p>
+    </article>
+
+    <article class="mini-panel">
+      <h3>Top Players</h3>
+      <p>World stars, rising talents and local profiles.</p>
+    </article>
+
+    <article class="mini-panel">
+      <h3>Stay Connected</h3>
+      <p>Subscribe later for volleyball updates and local news.</p>
+    </article>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <img src="tev-logo.svg" alt="True Energy Volleyball" />
+  <p>© 2026 True Energy Volleyball</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
