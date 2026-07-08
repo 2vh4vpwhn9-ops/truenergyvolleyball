@@ -1,98 +1,168 @@
 const data = {
   "World": {
-    tag: "World Volleyball",
+    query: "volleyball world VNL FIVB",
     title: "World Volleyball",
-    description: "Global volleyball matches, news, leagues and player stories.",
-    headline: "France edge Slovenia in five-set thriller",
-    text: "France come from behind to win a dramatic VNL match.",
-    matches: ["Live Matches", "Today's Matches", "Latest Results", "Upcoming Matches"],
-    news: ["Latest World News", "FIVB Updates", "Volleyball World Stories"],
-    leagues: ["Volleyball Nations League", "World Championship", "Olympic Games", "Club World Championship", "World Cup"],
-    players: ["Top World Players", "Rising Stars", "Player Statistics"]
+    description: "Global volleyball news, matches, tournaments and player stories.",
+    matches: ["France vs Slovenia", "Poland vs Brazil", "Italy vs Japan"],
+    leagues: ["VNL", "World Championship", "Olympic Games", "Club World Championship"],
+    players: ["Wilfredo Leon", "Yuji Nishida", "Oleg Plotnytskyi"]
   },
-
   "Europe": {
-    tag: "Europe Volleyball",
+    query: "CEV volleyball Europe",
     title: "Europe Volleyball",
-    description: "European volleyball leagues, tournaments, results and player stories.",
-    headline: "Champions League draw sets up major European clashes",
-    text: "European clubs prepare for another intense volleyball season.",
-    matches: ["Live Matches", "Today's Matches", "Latest Results", "Upcoming Matches"],
-    news: ["European Volleyball News", "CEV Updates", "Club Stories"],
-    leagues: ["Champions League", "CEV Cup", "PlusLiga", "Italian SuperLega", "French Ligue A", "German Bundesliga", "Ukraine Super League"],
-    players: ["Top European Players", "Young Talents", "Player Statistics"]
+    description: "European leagues, CEV competitions, clubs and national teams.",
+    matches: ["Italy vs Poland", "France vs Germany", "Ukraine vs Belgium"],
+    leagues: ["CEV Champions League", "SuperLega", "PlusLiga", "Turkish League"],
+    players: ["Wilfredo Leon", "Oleg Plotnytskyi", "Alessandro Michieletto"]
   },
-
   "Asia": {
-    tag: "Asia Volleyball",
+    query: "Asian volleyball AVC Japan Korea China",
     title: "Asia Volleyball",
-    description: "Asian volleyball leagues, national teams, tournaments and players.",
-    headline: "Japan SV League prepares for a new era",
-    text: "Asian volleyball continues to grow with strong clubs and national teams.",
-    matches: ["Live Matches", "Today's Matches", "Latest Results", "Upcoming Matches"],
-    news: ["Asian Volleyball News", "AVC Updates", "Club Stories"],
-    leagues: ["Japan SV League", "Korea V-League", "China League", "AVC"],
-    players: ["Japan Stars", "Korean League Players", "Asian Rising Stars"]
+    description: "Asian volleyball news, national teams, clubs and tournaments.",
+    matches: ["Japan vs Iran", "China vs Korea", "Thailand vs Vietnam"],
+    leagues: ["AVC", "Japan SV League", "Korean V-League", "Asian Championship"],
+    players: ["Yuji Nishida", "Yuki Ishikawa", "Ran Takahashi"]
   },
-
   "North America": {
-    tag: "North America Volleyball",
+    query: "Canada USA NORCECA volleyball",
     title: "North America Volleyball",
-    description: "Canada, USA, NORCECA and North American volleyball coverage.",
-    headline: "USA and Canada continue NORCECA rivalry",
-    text: "North American volleyball brings national teams, college players and local stories together.",
-    matches: ["Live Matches", "Today's Matches", "Latest Results", "Upcoming Matches"],
-    news: ["Canada Volleyball News", "USA Volleyball News", "NORCECA Updates"],
-    leagues: ["Canada", "USA", "NORCECA", "NCAA"],
-    players: ["Canada Players", "USA Players", "NCAA Players"]
+    description: "Canada, USA, NORCECA, college volleyball and professional leagues.",
+    matches: ["Canada vs USA", "USA vs Mexico", "Canada vs Cuba"],
+    leagues: ["NORCECA", "NCAA", "PVF", "LOVB"],
+    players: ["TJ DeFalco", "Micah Christenson", "Stephen Maar"]
   },
-
   "Local": {
-    tag: "Local Volleyball",
+    query: "Volleyball Manitoba Winnipeg Morden volleyball",
     title: "Local Volleyball",
-    description: "Local volleyball stories, results and community events from Manitoba, Winnipeg and Morden.",
-    headline: "Local volleyball stories deserve a bigger platform",
-    text: "True Energy VB highlights Manitoba, Winnipeg, Morden, schools and community volleyball.",
-    matches: ["Local Match Results", "School Matches", "Community Tournaments", "Upcoming Local Events"],
-    news: ["Local News", "Volleyball Manitoba Updates", "Community Stories"],
-    leagues: ["Volleyball Manitoba", "Winnipeg", "Morden", "Schools", "Colleges", "Community Events"],
-    players: ["Local Players", "Young Athletes", "Community Profiles"]
+    description: "Volleyball Manitoba, Winnipeg, Morden, schools and local clubs.",
+    matches: ["Winnipeg Club Match", "Morden School Volleyball", "Manitoba Tournament"],
+    leagues: ["Volleyball Manitoba", "School Volleyball", "Local Clubs", "College Volleyball"],
+    players: ["Local Manitoba athletes", "School players", "College players"]
   }
 };
 
-function fillList(id, items) {
-  document.getElementById(id).innerHTML = items.map(item => `<li>${item}</li>`).join("");
-}
+const navButtons = document.querySelectorAll(".nav button");
+const regionTag = document.getElementById("regionTag");
+const regionTitle = document.getElementById("regionTitle");
+const regionDescription = document.getElementById("regionDescription");
 
-function showRegion(region) {
-  const selected = data[region];
+const matchesList = document.getElementById("matchesList");
+const newsList = document.getElementById("newsList");
+const leaguesList = document.getElementById("leaguesList");
+const playersList = document.getElementById("playersList");
 
-  document.getElementById("regionTag").textContent = selected.tag;
-  document.getElementById("regionTitle").textContent = selected.title;
-  document.getElementById("regionDescription").textContent = selected.description;
-  document.getElementById("heroHeadline").textContent = selected.headline;
-  document.getElementById("heroText").textContent = selected.text;
+const searchInput = document.getElementById("searchInput");
 
-  fillList("matchesList", selected.matches);
-  fillList("newsList", selected.news);
-  fillList("leaguesList", selected.leagues);
-  fillList("playersList", selected.players);
+navButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    const region = button.dataset.region;
 
-  document.querySelectorAll(".nav button").forEach(button => {
-    button.classList.toggle("active", button.dataset.region === region);
-  });
-}
+    navButtons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
 
-document.querySelectorAll(".nav button").forEach(button => {
-  button.addEventListener("click", () => showRegion(button.dataset.region));
-});
-
-document.getElementById("searchInput").addEventListener("input", event => {
-  const term = event.target.value.toLowerCase().trim();
-
-  document.querySelectorAll(".content-card li, .news-card h3").forEach(item => {
-    item.style.opacity = !term || item.textContent.toLowerCase().includes(term) ? "1" : "0.25";
+    loadRegion(region);
   });
 });
 
-showRegion("World");
+searchInput.addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    const searchValue = searchInput.value.trim();
+
+    if (searchValue.length > 1) {
+      loadAutomaticNews(searchValue + " volleyball");
+    }
+  }
+});
+
+function loadRegion(region) {
+  const regionData = data[region];
+
+  regionTag.textContent = regionData.title;
+  regionTitle.textContent = regionData.title;
+  regionDescription.textContent = regionData.description;
+
+  fillList(matchesList, regionData.matches);
+  fillList(leaguesList, regionData.leagues);
+  fillList(playersList, regionData.players);
+
+  loadAutomaticNews(regionData.query);
+}
+
+function fillList(element, items) {
+  element.innerHTML = "";
+
+  items.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    element.appendChild(li);
+  });
+}
+
+async function loadAutomaticNews(query) {
+  newsList.innerHTML = "<li>Loading news...</li>";
+
+  const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-CA&gl=CA&ceid=CA:en`;
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+  try {
+    const response = await fetch(apiUrl);
+    const result = await response.json();
+
+    if (!result.items || result.items.length === 0) {
+      newsList.innerHTML = "<li>No news found.</li>";
+      return;
+    }
+
+    newsList.innerHTML = "";
+
+    result.items.slice(0, 5).forEach(item => {
+      const li = document.createElement("li");
+      const link = document.createElement("a");
+
+      link.href = item.link;
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.textContent = cleanTitle(item.title);
+
+      li.appendChild(link);
+      newsList.appendChild(li);
+    });
+
+    updateLatestNewsCards(result.items.slice(0, 4));
+
+  } catch (error) {
+    newsList.innerHTML = "<li>News could not be loaded.</li>";
+    console.error(error);
+  }
+}
+
+function updateLatestNewsCards(items) {
+  const cards = document.querySelectorAll(".latest-news .news-card");
+
+  cards.forEach((card, index) => {
+    if (!items[index]) return;
+
+    const title = card.querySelector("h3");
+    const category = card.querySelector("span");
+
+    title.textContent = cleanTitle(items[index].title);
+    category.textContent = getSource(items[index].title);
+
+    card.onclick = () => {
+      window.open(items[index].link, "_blank");
+    };
+
+    card.style.cursor = "pointer";
+  });
+}
+
+function cleanTitle(title) {
+  return title.replace(/ - .*/, "");
+}
+
+function getSource(title) {
+  const parts = title.split(" - ");
+  return parts.length > 1 ? parts[parts.length - 1] : "Volleyball News";
+}
+
+loadRegion("World");
