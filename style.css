@@ -530,3 +530,30 @@ input {
     gap: 14px;
   }
 }
+#newsList a{
+  color:white;
+  text-decoration:none;
+}
+
+#newsList a:hover{
+  color:#d8ff00;
+}
+
+.latest-news .news-card{
+  cursor:pointer;
+  transition:0.25s ease;
+}
+
+.latest-news .news-card:hover{
+  transform:translateY(-4px);
+  border-color:#d8ff00;
+}
+
+.content-card li{
+  margin-bottom:10px;
+  line-height:1.4;
+}
+
+.content-card li::marker{
+  color:#d8ff00;
+}
