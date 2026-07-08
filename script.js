@@ -42,6 +42,7 @@ const data = {
 };
 
 const navButtons = document.querySelectorAll(".nav button");
+
 const regionTag = document.getElementById("regionTag");
 const regionTitle = document.getElementById("regionTitle");
 const regionDescription = document.getElementById("regionDescription");
@@ -64,18 +65,22 @@ navButtons.forEach(button => {
   });
 });
 
-searchInput.addEventListener("keydown", event => {
-  if (event.key === "Enter") {
-    const searchValue = searchInput.value.trim();
+if (searchInput) {
+  searchInput.addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+      const searchValue = searchInput.value.trim();
 
-    if (searchValue.length > 1) {
-      loadAutomaticNews(searchValue + " volleyball");
+      if (searchValue.length > 1) {
+        loadAutomaticNews(searchValue + " volleyball");
+      }
     }
-  }
-});
+  });
+}
 
 function loadRegion(region) {
   const regionData = data[region];
+
+  if (!regionData) return;
 
   regionTag.textContent = regionData.title;
   regionTitle.textContent = regionData.title;
@@ -89,6 +94,8 @@ function loadRegion(region) {
 }
 
 function fillList(element, items) {
+  if (!element) return;
+
   element.innerHTML = "";
 
   items.forEach(item => {
@@ -142,17 +149,16 @@ function updateLatestNewsCards(items) {
   cards.forEach((card, index) => {
     if (!items[index]) return;
 
-    const title = card.querySelector("h3");
-    const category = card.querySelector("span");
+    const image = card.querySelector(".news-img");
+    const imageClass = image ? image.className : "news-img";
 
-    title.textContent = cleanTitle(items[index].title);
-    category.textContent = getSource(items[index].title);
-
-    card.onclick = () => {
-      window.open(items[index].link, "_blank");
-    };
-
-    card.style.cursor = "pointer";
+    card.innerHTML = `
+      <a href="${items[index].link}" target="_blank" rel="noopener" class="news-card-link">
+        <div class="${imageClass}"></div>
+        <span>${getSource(items[index].title)}</span>
+        <h3>${cleanTitle(items[index].title)}</h3>
+      </a>
+    `;
   });
 }
 
