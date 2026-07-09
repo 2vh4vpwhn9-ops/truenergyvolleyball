@@ -90,10 +90,12 @@
     }
 
     .brand-name .tru { color: #ffffff; }
+
     .brand-name .energy {
       color: var(--energy);
       text-shadow: 0 0 12px rgba(200,255,0,0.5);
     }
+
     .brand-name .volleyball {
       color: var(--blue);
       text-shadow: 0 0 12px rgba(18,140,255,0.5);
@@ -103,7 +105,7 @@
 
     .menu {
       display: flex;
-      gap: 18px;
+      gap: 22px;
       align-items: center;
     }
 
@@ -117,6 +119,10 @@
     }
 
     .menu a:hover { color: var(--energy); }
+
+    .login-link {
+      color: var(--energy) !important;
+    }
 
     .mobile-btn {
       display: none;
@@ -154,7 +160,11 @@
       margin-bottom: 36px;
     }
 
-    .buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
 
     .btn {
       display: inline-flex;
@@ -182,13 +192,31 @@
     section {
       width: min(1320px, 92%);
       margin: auto;
-      padding: 45px 0;
+      padding: 60px 0;
+    }
+
+    .section-title {
+      margin-bottom: 32px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 760px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 22px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     .card {
@@ -220,22 +248,79 @@
       letter-spacing: 1px;
     }
 
-    .card h3 { font-size: 24px; margin-bottom: 12px; }
-    .card p { color: var(--muted); font-size: 15px; }
-
-    .search {
-      width: 100%;
-      padding: 18px 22px;
-      margin-bottom: 28px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: var(--panel2);
-      color: white;
-      font-size: 16px;
-      outline: none;
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
     }
 
-    .search:focus { border-color: var(--energy); }
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .skill-card {
+      min-height: 160px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .step {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+    }
+
+    .step strong {
+      display: block;
+      color: var(--energy);
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .coach {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 28px;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(200,255,0,0.12), rgba(18,140,255,0.1));
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 42px;
+    }
+
+    .coach-photo {
+      min-height: 280px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(200,255,0,0.18), rgba(18,140,255,0.18)),
+        #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .coach h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      margin-bottom: 16px;
+    }
+
+    .coach p {
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 16px;
+    }
 
     footer {
       border-top: 1px solid var(--line);
@@ -250,6 +335,8 @@
       .brand-name { font-size: 16px; }
       .menu { gap: 14px; }
       .menu a { font-size: 11px; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 1050px) {
@@ -257,8 +344,6 @@
     }
 
     @media (max-width: 980px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
-
       .menu {
         display: none;
         position: absolute;
@@ -275,6 +360,10 @@
       .menu.active { display: flex; }
       .mobile-btn { display: block; }
       .brand-name { display: block; font-size: 13px; }
+
+      .coach {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 640px) {
@@ -299,8 +388,16 @@
         font-size: 17px;
       }
 
-      .grid { grid-template-columns: 1fr; }
+      .grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
       .btn { width: 100%; }
+
+      .coach {
+        padding: 28px;
+      }
     }
 
     @media (max-width: 430px) {
@@ -325,14 +422,11 @@
       </div>
 
       <nav class="menu" id="menu">
-        <a href="#academy">Academy</a>
-        <a href="#online">Online Training</a>
-        <a href="#skills">Skills Library</a>
-        <a href="#programs">Programs</a>
-        <a href="#analysis">Video Analysis</a>
-        <a href="#shop">Shop</a>
-        <a href="#mytraining">My Training</a>
-        <a href="#contact">Contact</a>
+        <a href="index.html">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#coach">About</a>
+        <a href="mailto:info@truenergyvolleyball.ca">Contact</a>
+        <a href="#" class="login-link">Login</a>
       </nav>
 
       <button class="mobile-btn" onclick="toggleMenu()">Menu</button>
@@ -350,46 +444,167 @@
         </h1>
 
         <p>
-          TruEnergyVolleyball is an online volleyball academy built for players
-          who want to improve their skills, technique, strength, and volleyball IQ.
+          TruEnergyVolleyball is a modern online volleyball academy where players
+          learn step by step, track progress, complete challenges, and improve with purpose.
         </p>
 
         <div class="buttons">
-          <a href="#skills" class="btn">Start Training</a>
-          <a href="serving.html" class="btn btn-outline">Serving Course</a>
+          <a href="#courses" class="btn">Start Learning</a>
+          <a href="serving.html" class="btn btn-outline">Start Serving</a>
         </div>
       </div>
     </section>
 
-    <section id="academy">
+    <section id="why">
+      <div class="section-title">
+        <h2>Why True Energy Volleyball?</h2>
+        <p>Not random videos. A clear volleyball learning path built around progress, feedback, and player development.</p>
+      </div>
+
       <div class="grid">
-        <div class="card"><span class="tag">Method</span><h3>Step-by-Step Learning</h3><p>Players learn volleyball through clear progressions from basic technique to game situations.</p></div>
-        <div class="card"><span class="tag">Levels</span><h3>Beginner to Advanced</h3><p>Training can be adapted for young athletes, school players, and motivated volleyball players.</p></div>
-        <div class="card"><span class="tag">Online</span><h3>Train Anywhere</h3><p>No gym is required to start. Players can improve technique, footwork, and strength at home.</p></div>
+        <div class="card">
+          <span class="tag">Learning</span>
+          <h3>🎓 Structured Learning</h3>
+          <p>Learn step by step instead of jumping between random drills and videos.</p>
+        </div>
+
+        <div class="card">
+          <span class="tag">Progress</span>
+          <h3>📈 Track Your Progress</h3>
+          <p>See your development after every lesson, quiz, drill, and module.</p>
+        </div>
+
+        <div class="card">
+          <span class="tag">Feedback</span>
+          <h3>📹 Personal Video Review</h3>
+          <p>Upload your technique and receive correction points and training recommendations.</p>
+        </div>
+
+        <div class="card">
+          <span class="tag">Motivation</span>
+          <h3>🏆 Earn Achievements</h3>
+          <p>Complete modules, unlock badges, build streaks, and level up your game.</p>
+        </div>
       </div>
     </section>
 
-    <section id="online">
-      <div class="grid">
-        <a href="serving.html" class="card card-link"><span class="tag">Skill</span><h3>Serving</h3><p>Float serve, jump serve, accuracy, power, and consistency.</p></a>
-        <div class="card"><span class="tag">Skill</span><h3>Passing</h3><p>Platform control, footwork, serve receive, and first contact quality.</p></div>
-        <div class="card"><span class="tag">Skill</span><h3>Attacking</h3><p>Approach, timing, arm swing, shot selection, and power.</p></div>
-        <div class="card"><span class="tag">Skill</span><h3>Blocking</h3><p>Footwork, hands, timing, reading the setter, and sealing the net.</p></div>
-        <div class="card"><span class="tag">Skill</span><h3>Defense</h3><p>Ready position, reaction, digging, movement, and emergency defense.</p></div>
-        <div class="card"><span class="tag">Body</span><h3>Strength & Jump</h3><p>At-home training for explosive movement, balance, and injury prevention.</p></div>
+    <section id="courses">
+      <div class="section-title">
+        <h2>Choose Your Skill</h2>
+        <p>Select a volleyball skill and enter a full course with lessons, progress, quizzes, and training challenges.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <a href="serving.html" class="card card-link skill-card">
+          <span class="tag">Course</span>
+          <h3>🏐 Serving</h3>
+          <p>Float serve, jump serve, accuracy, power, strategy, and pressure serving.</p>
+        </a>
+
+        <div class="card skill-card">
+          <span class="tag">Coming Soon</span>
+          <h3>🏐 Passing</h3>
+          <p>Platform control, serve receive, footwork, angles, and first contact quality.</p>
+        </div>
+
+        <div class="card skill-card">
+          <span class="tag">Coming Soon</span>
+          <h3>🏐 Attacking</h3>
+          <p>Approach, timing, arm swing, shot selection, power, and transition attack.</p>
+        </div>
+
+        <div class="card skill-card">
+          <span class="tag">Coming Soon</span>
+          <h3>🏐 Blocking</h3>
+          <p>Footwork, hands, timing, reading the setter, and strong net position.</p>
+        </div>
+
+        <div class="card skill-card">
+          <span class="tag">Coming Soon</span>
+          <h3>🏐 Defense</h3>
+          <p>Ready position, reaction, digging, movement, and emergency defense.</p>
+        </div>
+
+        <div class="card skill-card">
+          <span class="tag">Coming Soon</span>
+          <h3>🏐 Strength & Jump</h3>
+          <p>At-home training for explosive movement, balance, strength, and injury prevention.</p>
+        </div>
       </div>
     </section>
 
-    <section id="skills">
-      <input type="text" class="search" id="skillSearch" placeholder="Search skills: serve, spike, pass, block, libero..." onkeyup="searchSkills()">
+    <section id="how">
+      <div class="section-title">
+        <h2>How It Works</h2>
+        <p>A simple learning system designed to help players improve one step at a time.</p>
+      </div>
 
-      <div class="grid" id="skillsGrid">
-        <a href="serving.html" class="card card-link skill"><span class="tag">Serve</span><h3>Float Serve</h3><p>Clean contact, stable toss, and controlled ball movement.</p></a>
-        <a href="serving.html" class="card card-link skill"><span class="tag">Serve</span><h3>Jump Serve</h3><p>Approach rhythm, power contact, and landing control.</p></a>
-        <div class="card skill"><span class="tag">Pass</span><h3>Forearm Pass</h3><p>Platform angle, body position, footwork, and target control.</p></div>
-        <div class="card skill"><span class="tag">Attack</span><h3>Spike Approach</h3><p>Three-step and four-step approach with timing and acceleration.</p></div>
-        <div class="card skill"><span class="tag">Block</span><h3>Blocking Footwork</h3><p>Shuffle, crossover, timing, and strong net position.</p></div>
-        <div class="card skill"><span class="tag">Defense</span><h3>Digging</h3><p>Reading the hitter, defensive angles, and reaction control.</p></div>
+      <div class="steps">
+        <div class="step">
+          <strong>1</strong>
+          Watch Lesson
+        </div>
+
+        <div class="step">
+          <strong>2</strong>
+          Practice Drills
+        </div>
+
+        <div class="step">
+          <strong>3</strong>
+          Pass Quiz
+        </div>
+
+        <div class="step">
+          <strong>4</strong>
+          Upload Video
+        </div>
+
+        <div class="step">
+          <strong>5</strong>
+          Unlock Next Module
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="section-title">
+        <h2>What You'll Get</h2>
+        <p>Everything inside the academy is built around progress, motivation, and real improvement.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card"><span class="tag">System</span><h3>🟢 Progress</h3><p>Track completed lessons, modules, quizzes, and drills.</p></div>
+        <div class="card"><span class="tag">Rewards</span><h3>🏆 Achievements</h3><p>Earn badges for skill development and training milestones.</p></div>
+        <div class="card"><span class="tag">Data</span><h3>📈 Statistics</h3><p>Follow your training streak, lesson completion, and skill growth.</p></div>
+        <div class="card"><span class="tag">Learning</span><h3>📝 Quizzes</h3><p>Check your understanding after each module.</p></div>
+        <div class="card"><span class="tag">Feedback</span><h3>📹 Video Review</h3><p>Upload technique videos for personal feedback and correction points.</p></div>
+        <div class="card"><span class="tag">Growth</span><h3>🎖 Certificates</h3><p>Complete courses and receive proof of progress.</p></div>
+      </div>
+    </section>
+
+    <section id="coach">
+      <div class="coach">
+        <div class="coach-photo">
+          Coach Photo<br>
+          Add your image later
+        </div>
+
+        <div>
+          <h2>Meet Your Coach</h2>
+          <p>
+            True Energy Volleyball was created to help players train with structure,
+            confidence, and purpose — no matter where they live.
+          </p>
+
+          <p>
+            The goal is simple: give athletes a clear learning path from basic technique
+            to advanced volleyball understanding, with practical drills, progress tracking,
+            and personal feedback.
+          </p>
+
+          <a href="serving.html" class="btn">Start With Serving</a>
+        </div>
       </div>
     </section>
 
@@ -402,16 +617,6 @@
   <script>
     function toggleMenu() {
       document.getElementById("menu").classList.toggle("active");
-    }
-
-    function searchSkills() {
-      const input = document.getElementById("skillSearch").value.toLowerCase();
-      const skills = document.querySelectorAll(".skill");
-
-      skills.forEach(function(skill) {
-        const text = skill.innerText.toLowerCase();
-        skill.style.display = text.includes(input) ? "block" : "none";
-      });
     }
   </script>
 
