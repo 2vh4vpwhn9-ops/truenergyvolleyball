@@ -1,50 +1,881 @@
-<section class="panel drills">
-  <div class="eyebrow">Course Access</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <div class="lesson-list">
-    <div class="lesson">
-      <span>🔓 Preview — What Makes a Float Serve</span>
-      <span>Free</span>
-    </div>
+  <title>Serving | True Energy Volleyball</title>
 
-    <div class="lesson">
-      <span>🔒 Crown Position Training Video</span>
-      <span>Locked</span>
-    </div>
+  <style>
+    :root{
+      --bg:#050505;
+      --card:rgba(18,18,18,.88);
+      --soft:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#a8a8a8;
+      --energy:#c8ff00;
+      --blue:#128cff;
+      --red:#ff4d4d;
+    }
 
-    <div class="lesson">
-      <span>🔒 Flat Hand Contact Video</span>
-      <span>Locked</span>
-    </div>
+    *{margin:0;padding:0;box-sizing:border-box}
 
-    <div class="lesson">
-      <span>🔒 Sharp Stop After Contact</span>
-      <span>Locked</span>
-    </div>
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(200,255,0,.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(18,140,255,.16), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
 
-    <div class="lesson">
-      <span>🔒 No Spin Control Drill</span>
-      <span>Locked</span>
-    </div>
+    a{text-decoration:none;color:inherit}
 
-    <div class="lesson">
-      <span>🔒 Upload Video For Review</span>
-      <span>Premium</span>
-    </div>
-  </div>
-</section>
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 7%;
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.72);
+      backdrop-filter:blur(14px);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
 
-<section class="cta">
-  <div>
-    <h2>Unlock Full Serving Course</h2>
-    <p>
-      Get access to all serving lessons, video examples, drills, quizzes,
-      progress tracking, and personal video review.
-    </p>
-  </div>
+    .logo{
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:.5px;
+    }
 
-  <div>
-    <a class="btn outline" href="#">Buy Serving Course</a>
-    <a class="btn" href="#">Unlock Full Academy</a>
-  </div>
-</section>
+    .logo span{color:var(--energy)}
+
+    nav{
+      display:flex;
+      gap:24px;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    nav a:hover,
+    nav a.active{color:var(--energy)}
+
+    .page{
+      max-width:1200px;
+      margin:0 auto;
+      padding:55px 22px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:24px;
+      margin-bottom:28px;
+    }
+
+    .hero-box,
+    .progress-box,
+    .panel{
+      background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 20px 70px rgba(0,0,0,.35);
+    }
+
+    .eyebrow{
+      color:var(--energy);
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:12px;
+    }
+
+    h1{
+      font-size:58px;
+      line-height:.95;
+      margin-bottom:18px;
+    }
+
+    h1 span{color:var(--energy)}
+
+    .hero p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+      max-width:680px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .stat{
+      background:rgba(0,0,0,.35);
+      border:1px solid var(--line);
+      padding:16px;
+      border-radius:18px;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:22px;
+      color:var(--energy);
+      margin-bottom:5px;
+    }
+
+    .stat small{color:var(--muted)}
+
+    .progress-circle{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      margin:10px auto 22px;
+      background:conic-gradient(var(--energy) 65%, rgba(255,255,255,.12) 0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .progress-inner{
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      background:#090909;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+    }
+
+    .progress-inner strong{font-size:32px}
+    .progress-inner small{color:var(--muted)}
+
+    .progress-list{
+      display:grid;
+      gap:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .progress-list div{
+      display:flex;
+      justify-content:space-between;
+      border-bottom:1px solid var(--line);
+      padding-bottom:10px;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:24px;
+      margin-top:24px;
+    }
+
+    .module{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      margin-bottom:12px;
+      background:rgba(0,0,0,.25);
+      transition:.25s;
+    }
+
+    .module:hover,
+    .module.active{
+      border-color:var(--energy);
+      transform:translateY(-2px);
+    }
+
+    .module small{
+      color:var(--energy);
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:11px;
+    }
+
+    .module h3{
+      font-size:18px;
+      margin-top:5px;
+    }
+
+    .check{
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      border:2px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#000;
+      font-weight:900;
+    }
+
+    .done{
+      background:var(--energy);
+      border-color:var(--energy);
+    }
+
+    .lesson-list{
+      margin-top:18px;
+      display:grid;
+      gap:10px;
+    }
+
+    .lesson{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      color:var(--muted);
+      background:rgba(0,0,0,.25);
+    }
+
+    .lesson span:first-child{
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:15px 24px;
+      border-radius:999px;
+      background:var(--energy);
+      color:#000;
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:13px;
+      border:none;
+      cursor:pointer;
+    }
+
+    .btn.outline{
+      background:transparent;
+      color:var(--energy);
+      border:1px solid var(--energy);
+    }
+
+    .coach-note{
+      margin-top:20px;
+      padding:22px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.28);
+    }
+
+    .coach-note h3{
+      margin:8px 0 12px;
+      font-size:22px;
+    }
+
+    .coach-note p{
+      color:var(--muted);
+      line-height:1.7;
+      margin-bottom:12px;
+    }
+
+    .coach-note ul{
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .coach-note li{
+      list-style:none;
+      color:var(--muted);
+      padding-left:24px;
+      position:relative;
+      line-height:1.5;
+    }
+
+    .coach-note li::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      color:var(--energy);
+      font-weight:900;
+    }
+
+    .coach-note.mistake li::before{
+      content:"✕";
+      color:var(--red);
+    }
+
+    .mini-tag{
+      color:var(--energy);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .gold-rule{
+      border-color:rgba(200,255,0,.45);
+      background:linear-gradient(135deg, rgba(200,255,0,.12), rgba(18,140,255,.06));
+    }
+
+    .bottom-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-top:24px;
+    }
+
+    .learn-list,
+    .skill-list{
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+      color:var(--muted);
+    }
+
+    .learn-list li,
+    .skill-list li{
+      list-style:none;
+      padding-left:28px;
+      position:relative;
+      line-height:1.5;
+    }
+
+    .learn-list li::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      color:var(--energy);
+      font-weight:900;
+    }
+
+    .skill-list li::before{
+      content:"○";
+      position:absolute;
+      left:0;
+      color:var(--energy);
+      font-weight:900;
+    }
+
+    .drills{
+      margin-top:24px;
+    }
+
+    .drill-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .drill{
+      background:rgba(0,0,0,.3);
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+    }
+
+    .drill div{
+      padding:16px;
+    }
+
+    .drill h4{
+      margin-bottom:6px;
+    }
+
+    .drill p{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .drill-icon{
+      height:110px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:46px;
+      background:linear-gradient(135deg, rgba(200,255,0,.12), rgba(18,140,255,.08));
+      border-bottom:1px solid var(--line);
+    }
+
+    .cta{
+      margin-top:28px;
+      padding:32px;
+      border-radius:24px;
+      border:1px solid var(--energy);
+      background:linear-gradient(135deg, rgba(200,255,0,.15), rgba(18,140,255,.08));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .cta h2{
+      font-size:30px;
+      margin-bottom:8px;
+    }
+
+    .cta p{color:var(--muted)}
+
+    .cta-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      margin-top:40px;
+      font-size:13px;
+    }
+
+    @media(max-width:900px){
+      header{
+        flex-direction:column;
+        gap:16px;
+      }
+
+      nav{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero,
+      .layout,
+      .bottom-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:44px}
+
+      .stats,
+      .drill-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .cta{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .cta-actions{
+        justify-content:flex-start;
+      }
+    }
+
+    @media(max-width:520px){
+      .stats,
+      .drill-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:38px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo">True<span>Energy</span>Volleyball</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html">Courses</a>
+      <a href="index.html" class="active">Serving</a>
+      <a href="index.html">About</a>
+      <a href="index.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <section class="hero">
+      <div class="hero-box">
+        <div class="eyebrow">Serving Course</div>
+        <h1>Master Your <span>Serve</span></h1>
+        <p>
+          The serve is the only volleyball skill you control completely.
+          Learn how to serve with confidence, accuracy, power, and purpose —
+          step by step.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>10</strong>
+            <small>Modules</small>
+          </div>
+          <div class="stat">
+            <strong>40+</strong>
+            <small>Lessons</small>
+          </div>
+          <div class="stat">
+            <strong>25+</strong>
+            <small>Drills</small>
+          </div>
+          <div class="stat">
+            <strong>6-8h</strong>
+            <small>Training Time</small>
+          </div>
+        </div>
+
+        <a class="btn" href="#modules">Start Course</a>
+      </div>
+
+      <div class="progress-box">
+        <div class="eyebrow">Your Progress</div>
+
+        <div class="progress-circle">
+          <div class="progress-inner">
+            <strong>65%</strong>
+            <small>Completed</small>
+          </div>
+        </div>
+
+        <div class="progress-list">
+          <div><span>Completed</span><strong>26 Lessons</strong></div>
+          <div><span>In Progress</span><strong>4 Lessons</strong></div>
+          <div><span>Remaining</span><strong>10 Lessons</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout" id="modules">
+
+      <div class="panel">
+        <div class="eyebrow">Course Roadmap</div>
+
+        <div class="module">
+          <div>
+            <small>Module 1</small>
+            <h3>Fundamentals</h3>
+          </div>
+          <div class="check done">✓</div>
+        </div>
+
+        <div class="module active">
+          <div>
+            <small>Module 2</small>
+            <h3>Float Serve</h3>
+          </div>
+          <div class="check done">✓</div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 3</small>
+            <h3>Jump Float Serve</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 4</small>
+            <h3>Jump Topspin Serve</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 5</small>
+            <h3>Accuracy & Targets</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 6</small>
+            <h3>Game Strategy</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 7</small>
+            <h3>Common Mistakes</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 8</small>
+            <h3>Pressure Drills</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 9</small>
+            <h3>Weekly Training Plan</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 10</small>
+            <h3>Video Analysis</h3>
+          </div>
+          <div class="check">🔒</div>
+        </div>
+      </div>
+
+      <div class="panel lesson-card">
+        <div class="eyebrow">Current Module</div>
+        <h2>Module 2 — Float Serve</h2>
+
+        <div class="coach-note gold-rule">
+          <span class="mini-tag">Coach's Golden Rule</span>
+          <h3>No Spin = True Float Serve</h3>
+
+          <p>
+            A real float serve must travel through the air with little or no spin.
+            If the ball is spinning after contact, it is not a true float serve.
+          </p>
+
+          <p>
+            This is the main progress indicator for this module:
+            the ball should float, move unpredictably, and rotate as little as possible.
+          </p>
+        </div>
+
+        <div class="coach-note">
+          <span class="mini-tag">Technique</span>
+          <h3>Starting Position & Crown Position</h3>
+
+          <p>
+            Start in a balanced position with one foot in front. The exact position
+            of the arms and legs can change depending on whether the player is
+            right-handed or left-handed.
+          </p>
+
+          <p>
+            The non-hitting hand holds the ball in front of the body with the arm extended.
+            The hitting hand starts behind the head in the “crown position” —
+            like the player is holding a crown behind the head.
+          </p>
+
+          <p>
+            The hitting hand should be flat like a board. The fingers stay together
+            and are pressed firmly against each other.
+          </p>
+
+          <p>
+            At contact, the hitting hand strikes the ball cleanly and then stops sharply.
+            The arm should not continue forward like an attacking swing.
+          </p>
+        </div>
+
+        <div class="lesson-list">
+          <div class="lesson">
+            <span>1. Starting Position</span>
+            <span>✓</span>
+          </div>
+
+          <div class="lesson">
+            <span>2. Crown Position Behind The Head</span>
+            <span>✓</span>
+          </div>
+
+          <div class="lesson">
+            <span>3. Flat Hand Like A Board</span>
+            <span>○</span>
+          </div>
+
+          <div class="lesson">
+            <span>4. Sharp Stop After Contact</span>
+            <span>○</span>
+          </div>
+
+          <div class="lesson">
+            <span>5. No Spin Ball Flight</span>
+            <span>○</span>
+          </div>
+        </div>
+
+        <div class="coach-note">
+          <span class="mini-tag">Success Indicator</span>
+          <h3>How You Know It Works</h3>
+
+          <ul>
+            <li>The ball flies with little or no spin.</li>
+            <li>The player stays balanced from start to finish.</li>
+            <li>The body does not lean left or right.</li>
+            <li>The body does not fall forward or backward.</li>
+            <li>The hitting hand stops immediately after contact.</li>
+            <li>The ball travels with a floating effect instead of regular rotation.</li>
+          </ul>
+        </div>
+
+        <div class="coach-note mistake">
+          <span class="mini-tag">Common Mistakes</span>
+          <h3>What To Avoid</h3>
+
+          <ul>
+            <li>The ball spins after contact.</li>
+            <li>The fingers are open or relaxed.</li>
+            <li>The hand is not flat like a board.</li>
+            <li>The arm continues forward like an attack swing.</li>
+            <li>The player leans to the left or right.</li>
+            <li>The player leans forward or backward during contact.</li>
+            <li>The ball is held too close to the body.</li>
+          </ul>
+        </div>
+
+        <button class="btn">Complete Lesson</button>
+      </div>
+
+    </section>
+
+    <section class="bottom-grid">
+
+      <div class="panel">
+        <div class="eyebrow">Coach's Key Points</div>
+
+        <ul class="learn-list">
+          <li>One foot starts in front for balance.</li>
+          <li>The ball is held in front with the non-hitting arm extended.</li>
+          <li>The hitting hand starts behind the head in the crown position.</li>
+          <li>The hand must be flat like a board.</li>
+          <li>Fingers stay together and firm.</li>
+          <li>After contact, the hitting arm stops sharply.</li>
+          <li>Do not lean forward, backward, left, or right.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <div class="eyebrow">Skill Check</div>
+
+        <ul class="skill-list">
+          <li>Can you serve the ball with little or no spin?</li>
+          <li>Can you keep your body balanced after contact?</li>
+          <li>Can you stop the hitting hand sharply after contact?</li>
+          <li>Can you keep your fingers together and firm?</li>
+          <li>Can you avoid leaning forward, backward, left, or right?</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section class="panel drills">
+      <div class="eyebrow">Drills In This Module</div>
+
+      <div class="drill-grid">
+
+        <div class="drill">
+          <div class="drill-icon">👑</div>
+          <div>
+            <h4>Crown Position Drill</h4>
+            <p>Practice starting with the hitting hand behind the head before contact.</p>
+          </div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-icon">✋</div>
+          <div>
+            <h4>Flat Hand Drill</h4>
+            <p>Train the hand to stay firm, flat, and board-like at contact.</p>
+          </div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-icon">🛑</div>
+          <div>
+            <h4>Sharp Stop Drill</h4>
+            <p>Practice stopping the arm immediately after striking the ball.</p>
+          </div>
+        </div>
+
+        <div class="drill">
+          <div class="drill-icon">🌀</div>
+          <div>
+            <h4>No Spin Challenge</h4>
+            <p>Serve and check if the ball floats with little or no rotation.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="panel drills">
+      <div class="eyebrow">Course Access</div>
+
+      <div class="lesson-list">
+        <div class="lesson">
+          <span>🔓 Preview — What Makes a Float Serve</span>
+          <span>Free</span>
+        </div>
+
+        <div class="lesson">
+          <span>🔒 Crown Position Training Video</span>
+          <span>Locked</span>
+        </div>
+
+        <div class="lesson">
+          <span>🔒 Flat Hand Contact Video</span>
+          <span>Locked</span>
+        </div>
+
+        <div class="lesson">
+          <span>🔒 Sharp Stop After Contact</span>
+          <span>Locked</span>
+        </div>
+
+        <div class="lesson">
+          <span>🔒 No Spin Control Drill</span>
+          <span>Locked</span>
+        </div>
+
+        <div class="lesson">
+          <span>🔒 Upload Video For Review</span>
+          <span>Premium</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div>
+        <h2>Unlock Full Serving Course</h2>
+        <p>
+          Get access to all serving lessons, video examples, drills, quizzes,
+          progress tracking, and personal video review.
+        </p>
+      </div>
+
+      <div class="cta-actions">
+        <a class="btn outline" href="#">Buy Serving Course</a>
+        <a class="btn" href="#">Unlock Full Academy</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 True Energy Volleyball. All rights reserved.
+  </footer>
+
+</body>
+</html>
