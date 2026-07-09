@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serving | True Energy Volleyball</title>
+
+  <style>
+    :root{
+      --bg:#050505;
+      --card:rgba(18,18,18,.88);
+      --soft:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#a8a8a8;
+      --energy:#c8ff00;
+      --blue:#128cff;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(200,255,0,.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(18,140,255,.16), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 7%;
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.72);
+      backdrop-filter:blur(14px);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .logo{
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:.5px;
+    }
+
+    .logo span{color:var(--energy)}
+
+    nav{
+      display:flex;
+      gap:24px;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    nav a:hover,
+    nav a.active{color:var(--energy)}
+
+    .page{
+      max-width:1200px;
+      margin:0 auto;
+      padding:55px 22px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:24px;
+      margin-bottom:28px;
+    }
+
+    .hero-box,
+    .progress-box,
+    .panel{
+      background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 20px 70px rgba(0,0,0,.35);
+    }
+
+    .eyebrow{
+      color:var(--energy);
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:12px;
+    }
+
+    h1{
+      font-size:58px;
+      line-height:.95;
+      margin-bottom:18px;
+    }
+
+    h1 span{color:var(--energy)}
+
+    .hero p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+      max-width:680px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .stat{
+      background:rgba(0,0,0,.35);
+      border:1px solid var(--line);
+      padding:16px;
+      border-radius:18px;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:22px;
+      color:var(--energy);
+      margin-bottom:5px;
+    }
+
+    .stat small{color:var(--muted)}
+
+    .progress-circle{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      margin:10px auto 22px;
+      background:conic-gradient(var(--energy) 65%, rgba(255,255,255,.12) 0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .progress-inner{
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      background:#090909;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+    }
+
+    .progress-inner strong{font-size:32px}
+    .progress-inner small{color:var(--muted)}
+
+    .progress-list{
+      display:grid;
+      gap:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .progress-list div{
+      display:flex;
+      justify-content:space-between;
+      border-bottom:1px solid var(--line);
+      padding-bottom:10px;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:24px;
+      margin-top:24px;
+    }
+
+    .module{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      margin-bottom:12px;
+      background:rgba(0,0,0,.25);
+      transition:.25s;
+    }
+
+    .module:hover,
+    .module.active{
+      border-color:var(--energy);
+      transform:translateY(-2px);
+    }
+
+    .module small{
+      color:var(--energy);
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:11px;
+    }
+
+    .module h3{
+      font-size:18px;
+      margin-top:5px;
+    }
+
+    .check{
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      border:2px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#000;
+      font-weight:900;
+    }
+
+    .done{
+      background:var(--energy);
+      border-color:var(--energy);
+    }
+
+    .lesson-card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+      border-radius:20px;
+      margin:18px 0;
+      filter:brightness(.85);
+    }
+
+    .lesson-list{
+      margin-top:18px;
+      display:grid;
+      gap:10px;
+    }
+
+    .lesson{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      color:var(--muted);
+      background:rgba(0,0,0,.25);
+    }
+
+    .lesson span:first-child{
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:15px 24px;
+      border-radius:999px;
+      background:var(--energy);
+      color:#000;
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:13px;
+      border:none;
+      cursor:pointer;
+    }
+
+    .btn.outline{
+      background:transparent;
+      color:var(--energy);
+      border:1px solid var(--energy);
+    }
+
+    .bottom-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-top:24px;
+    }
+
+    .learn-list,
+    .skill-list{
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+      color:var(--muted);
+    }
+
+    .learn-list li,
+    .skill-list li{
+      list-style:none;
+      padding-left:28px;
+      position:relative;
+      line-height:1.5;
+    }
+
+    .learn-list li::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      color:var(--energy);
+      font-weight:900;
+    }
+
+    .skill-list li::before{
+      content:"○";
+      position:absolute;
+      left:0;
+      color:var(--energy);
+      font-weight:900;
+    }
+
+    .drills{
+      margin-top:24px;
+    }
+
+    .drill-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .drill{
+      background:rgba(0,0,0,.3);
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+    }
+
+    .drill img{
+      width:100%;
+      height:120px;
+      object-fit:cover;
+      filter:brightness(.8);
+    }
+
+    .drill div{
+      padding:14px;
+    }
+
+    .drill h4{
+      margin-bottom:6px;
+    }
+
+    .drill p{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .cta{
+      margin-top:28px;
+      padding:32px;
+      border-radius:24px;
+      border:1px solid var(--energy);
+      background:linear-gradient(135deg, rgba(200,255,0,.15), rgba(18,140,255,.08));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .cta h2{
+      font-size:30px;
+      margin-bottom:8px;
+    }
+
+    .cta p{color:var(--muted)}
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      margin-top:40px;
+      font-size:13px;
+    }
+
+    @media(max-width:900px){
+      header{
+        flex-direction:column;
+        gap:16px;
+      }
+
+      nav{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero,
+      .layout,
+      .bottom-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:44px}
+
+      .stats,
+      .drill-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .cta{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media(max-width:520px){
+      .stats,
+      .drill-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:38px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo">True<span>Energy</span>Volleyball</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html">Academy</a>
+      <a href="index.html" class="active">Online Training</a>
+      <a href="index.html">Skills Library</a>
+      <a href="index.html">Programs</a>
+      <a href="index.html">Video Analysis</a>
+      <a href="index.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <section class="hero">
+      <div class="hero-box">
+        <div class="eyebrow">Serving Course</div>
+        <h1>Master Your <span>Serve</span></h1>
+        <p>
+          The serve is the only volleyball skill you control completely.
+          Learn how to serve with confidence, accuracy, power, and purpose —
+          step by step.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>10</strong>
+            <small>Modules</small>
+          </div>
+          <div class="stat">
+            <strong>40+</strong>
+            <small>Lessons</small>
+          </div>
+          <div class="stat">
+            <strong>25+</strong>
+            <small>Drills</small>
+          </div>
+          <div class="stat">
+            <strong>6-8h</strong>
+            <small>Training Time</small>
+          </div>
+        </div>
+
+        <a class="btn" href="#modules">Start Course</a>
+      </div>
+
+      <div class="progress-box">
+        <div class="eyebrow">Your Progress</div>
+
+        <div class="progress-circle">
+          <div class="progress-inner">
+            <strong>65%</strong>
+            <small>Completed</small>
+          </div>
+        </div>
+
+        <div class="progress-list">
+          <div><span>Completed</span><strong>26 Lessons</strong></div>
+          <div><span>In Progress</span><strong>4 Lessons</strong></div>
+          <div><span>Remaining</span><strong>10 Lessons</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout" id="modules">
+
+      <div class="panel">
+        <div class="eyebrow">Course Roadmap</div>
+
+        <div class="module active">
+          <div>
+            <small>Module 1</small>
+            <h3>Fundamentals</h3>
+          </div>
+          <div class="check done">✓</div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 2</small>
+            <h3>Float Serve</h3>
+          </div>
+          <div class="check done">✓</div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 3</small>
+            <h3>Jump Float Serve</h3>
+          </div>
+          <div class="check done">✓</div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 4</small>
+            <h3>Jump Topspin Serve</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 5</small>
+            <h3>Accuracy & Targets</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 6</small>
+            <h3>Game Strategy</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 7</small>
+            <h3>Common Mistakes</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 8</small>
+            <h3>Pressure Drills</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 9</small>
+            <h3>Weekly Training Plan</h3>
+          </div>
+          <div class="check"> </div>
+        </div>
+
+        <div class="module">
+          <div>
+            <small>Module 10</small>
+            <h3>Video Analysis</h3>
+          </div>
+          <div class="check">🔒</div>
+        </div>
+      </div>
+
+      <div class="panel lesson-card">
+        <div class="eyebrow">Current Module</div>
+        <h2>Module 1 — Fundamentals</h2>
+
+        <img src="https://images.unsplash.com/photo-1592656094267-764a45160876?auto=format&fit=crop&w=1200&q=80" alt="Volleyball serve training">
+
+        <p style="color:var(--muted);line-height:1.7;">
+          Learn the foundation of a strong serve: body position, grip,
+          toss control, contact point, balance, and follow through.
+        </p>
+
+        <div class="lesson-list">
+          <div class="lesson">
+            <span>1. What Makes a Great Serve</span>
+            <span>5:12 ✓</span>
+          </div>
+          <div class="lesson">
+            <span>2. Types of Volleyball Serves</span>
+            <span>6:45 ✓</span>
+          </div>
+          <div class="lesson">
+            <span>3. Rules and Common Faults</span>
+            <span>4:03 ✓</span>
+          </div>
+          <div class="lesson">
+            <span>4. Body Position</span>
+            <span>5:18 ○</span>
+          </div>
+          <div class="lesson">
+            <span>5. Grip and Ball Control</span>
+            <span>6:07 ○</span>
+          </div>
+        </div>
+
+        <button class="btn">Continue Module</button>
+      </div>
+
+    </section>
+
+    <section class="bottom-grid">
+
+      <div class="panel">
+        <div class="eyebrow">What You'll Learn</div>
+        <ul class="learn-list">
+          <li>Understand different types of volleyball serves.</li>
+          <li>Build proper body position and balance.</li>
+          <li>Improve toss consistency and contact point.</li>
+          <li>Serve with more accuracy and confidence.</li>
+          <li>Avoid the most common serving mistakes.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <div class="eyebrow">Skill Check</div>
+        <ul class="skill-list">
+          <li>Can you serve 10 balls in a row over the net?</li>
+          <li>Can you hit Zone 1 five times?</li>
+          <li>Can you perform a consistent float serve?</li>
+          <li>Can you serve under pressure in a game situation?</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section class="panel drills">
+      <div class="eyebrow">Drills In This Module</div>
+
+      <div class="drill-grid">
+
+        <div class="drill">
+          <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80" alt="">
+          <div>
+            <h4>Toss Control Drill</h4>
+            <p>Build a consistent ball toss every time.</p>
+          </div>
+        </div>
+
+        <div class="drill">
+          <img src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=800&q=80" alt="">
+          <div>
+            <h4>Wall Serve Drill</h4>
+            <p>Improve contact point and ball control.</p>
+          </div>
+        </div>
+
+        <div class="drill">
+          <img src="https://images.unsplash.com/photo-1592656094267-764a45160876?auto=format&fit=crop&w=800&q=80" alt="">
+          <div>
+            <h4>Target Zones Drill</h4>
+            <p>Practice serving to all court zones.</p>
+          </div>
+        </div>
+
+        <div class="drill">
+          <img src="https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?auto=format&fit=crop&w=800&q=80" alt="">
+          <div>
+            <h4>Pressure Serve</h4>
+            <p>Train serving confidence under pressure.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta">
+      <div>
+        <h2>Ready for Personal Feedback?</h2>
+        <p>
+          Upload your serve video and receive correction points,
+          technical notes, and a custom training plan.
+        </p>
+      </div>
+
+      <a class="btn outline" href="#">Video Analysis</a>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 True Energy Volleyball. All rights reserved.
+  </footer>
+
+</body>
+</html>
