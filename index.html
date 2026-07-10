@@ -353,27 +353,33 @@
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 28px;
-      background-image:
-        linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.72),
-          rgba(0, 0, 0, 0.05)
-        ),
-        url("images/coach-photo.jpeg");
-      background-size: cover;
-      background-position: center 15%;
-      background-repeat: no-repeat;
+      background: #101010;
       box-shadow:
         0 0 40px rgba(0, 0, 0, 0.45),
         0 0 60px rgba(200, 255, 0, 0.08);
-      transition: 0.35s;
     }
 
-    .coach-photo:hover {
-      transform: scale(1.02);
-      box-shadow:
-        0 0 55px rgba(0, 0, 0, 0.55),
-        0 0 35px rgba(200, 255, 0, 0.18);
+    .coach-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center 15%;
+      z-index: 0;
+    }
+
+    .coach-photo-gradient {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.68),
+        rgba(0, 0, 0, 0.02) 55%
+      );
     }
 
     .coach-photo::before {
@@ -1001,6 +1007,11 @@
       <div class="coach">
 
         <div class="coach-photo">
+          <img
+            src="./images/coach-photo.jpeg"
+            alt="Coach Kostiantyn Kravchuk"
+          >
+          <div class="coach-photo-gradient"></div>
 
           <div class="coach-photo-overlay">
             <span>True Energy Volleyball</span>
