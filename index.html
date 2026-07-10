@@ -353,34 +353,17 @@
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 28px;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.02),
-          rgba(0, 0, 0, 0.72)
-        ),
-        linear-gradient(
-          135deg,
-          rgba(200, 255, 0, 0.24),
-          rgba(18, 140, 255, 0.34)
-        ),
-        #111;
-      background-size: cover;
-      background-position: center;
-    }
-
-    /*
-      Когда загрузишь фотографию coach-photo.jpg,
-      замени background в .coach-photo на:
-
       background-image:
         linear-gradient(
           180deg,
           rgba(0, 0, 0, 0.02),
           rgba(0, 0, 0, 0.72)
         ),
-        url("coach-photo.jpg");
-    */
+        url("images/Kostiantyn.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
 
     .coach-photo::before {
       content: "";
@@ -404,22 +387,6 @@
       border-radius: 50%;
       background: rgba(18, 140, 255, 0.24);
       filter: blur(55px);
-    }
-
-    .coach-placeholder {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      color: rgba(255, 255, 255, 0.65);
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-align: center;
-      text-transform: uppercase;
     }
 
     .coach-photo-overlay {
@@ -1023,10 +990,6 @@
       <div class="coach">
 
         <div class="coach-photo">
-
-          <div class="coach-placeholder">
-            Your coach photo will appear here
-          </div>
 
           <div class="coach-photo-overlay">
             <span>True Energy Volleyball</span>
