@@ -340,6 +340,213 @@
       justify-content:flex-end;
     }
 
+
+    /* Interactive course roadmap */
+    .roadmap-panel{
+      align-self:start;
+    }
+
+    .course-module{
+      margin-bottom:12px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(0,0,0,.25);
+      overflow:hidden;
+      transition:.25s;
+    }
+
+    .course-module[open]{
+      border-color:var(--energy);
+      box-shadow:0 0 28px rgba(200,255,0,.08);
+    }
+
+    .course-module summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px;
+      user-select:none;
+    }
+
+    .course-module summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .module-heading small{
+      display:block;
+      color:var(--energy);
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:11px;
+      margin-bottom:5px;
+    }
+
+    .module-heading h3{
+      font-size:18px;
+    }
+
+    .module-meta{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .module-arrow{
+      width:28px;
+      height:28px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      color:var(--energy);
+      transition:.25s;
+    }
+
+    .course-module[open] .module-arrow{
+      transform:rotate(180deg);
+      border-color:var(--energy);
+    }
+
+    .module-lessons{
+      display:grid;
+      gap:8px;
+      padding:0 18px 18px;
+      border-top:1px solid var(--line);
+    }
+
+    .module-lesson{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 14px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      color:var(--muted);
+      background:rgba(255,255,255,.025);
+      font-size:13px;
+    }
+
+    .module-lesson strong{
+      color:var(--text);
+      font-size:13px;
+    }
+
+    .module-lesson.free{
+      border-color:rgba(200,255,0,.35);
+      background:rgba(200,255,0,.06);
+    }
+
+    .lesson-status{
+      color:var(--energy);
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .access-levels{
+      margin-top:28px;
+    }
+
+    .access-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .access-card{
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(0,0,0,.28);
+    }
+
+    .access-card h3{
+      font-size:23px;
+      margin-bottom:14px;
+    }
+
+    .access-card ul{
+      display:grid;
+      gap:10px;
+      list-style:none;
+    }
+
+    .access-card li{
+      color:var(--muted);
+      padding-left:24px;
+      position:relative;
+      line-height:1.5;
+    }
+
+    .access-card li::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      color:var(--energy);
+      font-weight:900;
+    }
+
+    .access-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:12px;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+    }
+
+    .access-dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:var(--energy);
+      box-shadow:0 0 14px rgba(200,255,0,.55);
+    }
+
+    .student .access-dot{
+      background:#ffc400;
+      box-shadow:0 0 14px rgba(255,196,0,.5);
+    }
+
+    .coach-level .access-dot{
+      background:var(--blue);
+      box-shadow:0 0 14px rgba(18,140,255,.55);
+    }
+
+    @media(max-width:900px){
+      .access-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:520px){
+      .course-module summary{
+        align-items:flex-start;
+      }
+
+      .module-meta{
+        gap:6px;
+      }
+
+      .module-meta span:first-child{
+        display:none;
+      }
+
+      .module-lesson{
+        align-items:flex-start;
+      }
+    }
+
     footer{
       text-align:center;
       padding:30px;
@@ -461,80 +668,340 @@
 
     <section class="layout" id="modules">
 
-      <div class="panel">
+      <div class="panel roadmap-panel">
         <div class="eyebrow">Course Roadmap</div>
 
-        <div class="module">
-          <div>
-            <small>Module 1</small>
-            <h3>Fundamentals</h3>
-          </div>
-          <div class="check">🔒</div>
-        </div>
+        <details class="course-module" open>
+          <summary>
+            <div class="module-heading">
+              <small>Module 1</small>
+              <h3>Fundamentals</h3>
+            </div>
+            <div class="module-meta">
+              <span>8 lessons</span>
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
 
-        <div class="module active">
-          <div>
-            <small>Module 2</small>
-            <h3>Float Serve</h3>
+          <div class="module-lessons">
+            <div class="module-lesson free">
+              <strong>🔓 Course Introduction</strong>
+              <span class="lesson-status">Free</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Types of Volleyball Serves</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Ready Position</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Grip & Ball Control</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Toss Fundamentals</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Weight Transfer</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Basic Body Mechanics</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Fundamentals Quiz</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
           </div>
-          <div class="check">🔒</div>
-        </div>
+        </details>
+        <details class="course-module">
+          <summary>
+            <div class="module-heading">
+              <small>Module 2</small>
+              <h3>Float Serve</h3>
+            </div>
+            <div class="module-meta">
+              <span>6 lessons</span>
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
 
-        <div class="module">
-          <div>
-            <small>Module 3</small>
-            <h3>Jump Float Serve</h3>
+          <div class="module-lessons">
+            <div class="module-lesson">
+              <strong>🔒 Float Serve Technique</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Contact Point</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Ball Trajectory</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Footwork & Balance</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Accuracy Drills</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Module Skill Check</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
           </div>
-          <div class="check locked">🔒</div>
-        </div>
+        </details>
+        <details class="course-module">
+          <summary>
+            <div class="module-heading">
+              <small>Module 3</small>
+              <h3>Jump Float Serve</h3>
+            </div>
+            <div class="module-meta">
+              <span>5 lessons</span>
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
 
-        <div class="module">
-          <div>
-            <small>Module 4</small>
-            <h3>Jump Topspin Serve</h3>
+          <div class="module-lessons">
+            <div class="module-lesson">
+              <strong>🔒 Jump Mechanics</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Toss Timing</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Contact in the Air</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Landing Technique</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Rhythm Development</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
           </div>
-          <div class="check locked">🔒</div>
-        </div>
+        </details>
+        <details class="course-module">
+          <summary>
+            <div class="module-heading">
+              <small>Module 4</small>
+              <h3>Jump Topspin Serve</h3>
+            </div>
+            <div class="module-meta">
+              <span>5 lessons</span>
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
 
-        <div class="module">
-          <div>
-            <small>Module 5</small>
-            <h3>Accuracy & Targets</h3>
+          <div class="module-lessons">
+            <div class="module-lesson">
+              <strong>🔒 Topspin Fundamentals</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Approach & Jump Timing</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Powerful Arm Swing</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Wrist Snap</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Power Control</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
           </div>
-          <div class="check locked">🔒</div>
-        </div>
+        </details>
+        <details class="course-module">
+          <summary>
+            <div class="module-heading">
+              <small>Module 5</small>
+              <h3>Accuracy & Targets</h3>
+            </div>
+            <div class="module-meta">
+              <span>5 lessons</span>
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
 
-        <div class="module">
-          <div>
-            <small>Module 6</small>
-            <h3>Game Strategy</h3>
+          <div class="module-lessons">
+            <div class="module-lesson">
+              <strong>🔒 Zone Serving</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Short & Deep Serves</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Serving Weak Passers</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Target Practice</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Accuracy Challenge</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
           </div>
-          <div class="check locked">🔒</div>
-        </div>
+        </details>
+        <details class="course-module">
+          <summary>
+            <div class="module-heading">
+              <small>Module 6</small>
+              <h3>Game Strategy</h3>
+            </div>
+            <div class="module-meta">
+              <span>5 lessons</span>
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
 
-        <div class="module">
-          <div>
-            <small>Module 7</small>
-            <h3>Common Mistakes</h3>
+          <div class="module-lessons">
+            <div class="module-lesson">
+              <strong>🔒 Reading the Opponent</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Choosing a Target</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Risk vs Reward</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Serving Rotations</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Match Situations</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
           </div>
-          <div class="check locked">🔒</div>
-        </div>
+        </details>
+        <details class="course-module">
+          <summary>
+            <div class="module-heading">
+              <small>Module 7</small>
+              <h3>Common Mistakes</h3>
+            </div>
+            <div class="module-meta">
+              <span>5 lessons</span>
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
 
-        <div class="module">
-          <div>
-            <small>Module 8</small>
-            <h3>Pressure Drills</h3>
+          <div class="module-lessons">
+            <div class="module-lesson">
+              <strong>🔒 Toss Errors</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Foot Faults</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Contact Mistakes</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Timing Problems</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Fixing Inconsistency</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
           </div>
-          <div class="check locked">🔒</div>
-        </div>
+        </details>
+        <details class="course-module">
+          <summary>
+            <div class="module-heading">
+              <small>Module 8</small>
+              <h3>Pressure Drills</h3>
+            </div>
+            <div class="module-meta">
+              <span>5 lessons</span>
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
 
-        <div class="module">
-          <div>
-            <small>Module 9</small>
-            <h3>Weekly Training Plan</h3>
+          <div class="module-lessons">
+            <div class="module-lesson">
+              <strong>🔒 Serving Challenges</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Competition Drills</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Match Simulation</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Mental Focus</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Confidence Building</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
           </div>
-          <div class="check locked">🔒</div>
-        </div>
+        </details>
+        <details class="course-module">
+          <summary>
+            <div class="module-heading">
+              <small>Module 9</small>
+              <h3>Weekly Training Plan</h3>
+            </div>
+            <div class="module-meta">
+              <span>5 lessons</span>
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
+
+          <div class="module-lessons">
+            <div class="module-lesson">
+              <strong>🔒 Four-Week Program</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Daily Practice Schedule</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Serving Tracker</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Self-Evaluation</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+            <div class="module-lesson">
+              <strong>🔒 Next Steps</strong>
+              <span class="lesson-status">Locked</span>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="panel">
@@ -628,6 +1095,52 @@
           <span>🏆 Full Academy Bundle</span>
           <span>Best Value</span>
         </div>
+      </div>
+    </section>
+
+    <section class="panel access-levels" id="access-levels">
+      <div class="eyebrow">Access Levels</div>
+      <h2>Choose How You Learn</h2>
+
+      <div class="access-grid">
+        <article class="access-card guest">
+          <div class="access-badge">
+            <span class="access-dot"></span>
+            Guest
+          </div>
+          <h3>Explore the Course</h3>
+          <ul>
+            <li>View all course modules.</li>
+            <li>View the names of every lesson.</li>
+            <li>Open the free course introduction.</li>
+          </ul>
+        </article>
+
+        <article class="access-card student">
+          <div class="access-badge">
+            <span class="access-dot"></span>
+            Student
+          </div>
+          <h3>Complete the Course</h3>
+          <ul>
+            <li>Open every lesson in the course.</li>
+            <li>Complete quizzes and skill checks.</li>
+            <li>Track course and module progress.</li>
+          </ul>
+        </article>
+
+        <article class="access-card coach-level">
+          <div class="access-badge">
+            <span class="access-dot"></span>
+            Coach
+          </div>
+          <h3>Manage Player Learning</h3>
+          <ul>
+            <li>Everything included with Student access.</li>
+            <li>Review student course progress.</li>
+            <li>Check quiz and skill-check results.</li>
+          </ul>
+        </article>
       </div>
     </section>
 
