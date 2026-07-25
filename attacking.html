@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Attacking | True Energy Volleyball</title>
+
+  <style>
+    :root{
+      --bg:#050505;
+      --card:rgba(18,18,18,.88);
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#a8a8a8;
+      --energy:#c8ff00;
+      --blue:#128cff;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(200,255,0,.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(18,140,255,.16), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 7%;
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.72);
+      backdrop-filter:blur(14px);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .logo{
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:.5px;
+    }
+
+    .logo span{color:var(--energy)}
+
+    nav{
+      display:flex;
+      gap:24px;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    nav a:hover,
+    nav a.active{color:var(--energy)}
+
+    .page{
+      max-width:1200px;
+      margin:0 auto;
+      padding:55px 22px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:24px;
+      margin-bottom:28px;
+    }
+
+    .hero-box,
+    .progress-box,
+    .panel{
+      background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 20px 70px rgba(0,0,0,.35);
+    }
+
+    .eyebrow{
+      color:var(--energy);
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:12px;
+    }
+
+    h1{
+      font-size:58px;
+      line-height:.95;
+      margin-bottom:18px;
+    }
+
+    h1 span{color:var(--energy)}
+
+    .hero p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+      max-width:680px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .stat{
+      background:rgba(0,0,0,.35);
+      border:1px solid var(--line);
+      padding:16px;
+      border-radius:18px;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:22px;
+      color:var(--energy);
+      margin-bottom:5px;
+    }
+
+    .stat small{color:var(--muted)}
+
+    .progress-circle{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      margin:10px auto 22px;
+      background:conic-gradient(var(--energy) 0%, rgba(255,255,255,.12) 0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .progress-inner{
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      background:#090909;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+    }
+
+    .progress-inner strong{font-size:32px}
+    .progress-inner small{color:var(--muted)}
+
+    .progress-list{
+      display:grid;
+      gap:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .progress-list div{
+      display:flex;
+      justify-content:space-between;
+      border-bottom:1px solid var(--line);
+      padding-bottom:10px;
+    }
+
+    .layout{
+      display:block;
+      margin-top:24px;
+    }
+
+    .attacking-overview{
+      margin-bottom:28px;
+      overflow:hidden;
+      padding:0;
+    }
+
+    .attacking-overview img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:24px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:15px 24px;
+      border-radius:999px;
+      background:var(--energy);
+      color:#000;
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:13px;
+      border:none;
+      cursor:pointer;
+    }
+
+    .video-wrapper{
+      width:min(100%, 430px);
+      aspect-ratio:9 / 16;
+      margin:22px auto;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(200,255,0,.45);
+      background:#000;
+      box-shadow:0 16px 45px rgba(0,0,0,.45);
+    }
+
+    .video-wrapper iframe{
+      display:block;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .mistakes-video{
+      border-color:rgba(255,196,0,.55);
+      box-shadow:0 16px 45px rgba(0,0,0,.45), 0 0 24px rgba(255,196,0,.08);
+    }
+
+    .roadmap-panel{
+      align-self:start;
+    }
+
+    .course-module{
+      margin-bottom:12px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(0,0,0,.25);
+      overflow:hidden;
+      transition:.25s;
+    }
+
+    .course-module[open]{
+      border-color:var(--energy);
+      box-shadow:0 0 28px rgba(200,255,0,.08);
+    }
+
+    .course-module summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px;
+      user-select:none;
+    }
+
+    .course-module summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .module-heading small{
+      display:block;
+      color:var(--energy);
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:11px;
+      margin-bottom:5px;
+    }
+
+    .module-heading h3{
+      font-size:18px;
+    }
+
+    .module-meta{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .module-arrow{
+      width:28px;
+      height:28px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      color:var(--energy);
+      transition:.25s;
+    }
+
+    .course-module[open] .module-arrow{
+      transform:rotate(180deg);
+      border-color:var(--energy);
+    }
+
+    .module-lessons{
+      display:grid;
+      gap:14px;
+      padding:18px;
+      border-top:1px solid var(--line);
+    }
+
+    .lesson-description{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .video-lesson-button{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px;
+      border:1px solid rgba(200,255,0,.35);
+      border-radius:14px;
+      background:rgba(200,255,0,.06);
+      transition:.25s;
+    }
+
+    .video-lesson-button:hover{
+      border-color:var(--energy);
+      background:rgba(200,255,0,.1);
+      transform:translateY(-1px);
+    }
+
+    .video-lesson-button strong{
+      color:var(--text);
+      font-size:14px;
+    }
+
+    .lesson-status{
+      color:var(--energy);
+      font-weight:900;
+      white-space:nowrap;
+      font-size:13px;
+    }
+
+    #attackingFinalQuiz{
+      display:grid;
+      gap:18px;
+      padding-top:18px;
+    }
+
+    #attackingFinalQuiz h2{
+      font-size:34px;
+    }
+
+    .final-quiz-intro{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .quiz-question{
+      display:grid;
+      gap:10px;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(0,0,0,.27);
+    }
+
+    .quiz-question h3{
+      font-size:17px;
+      line-height:1.45;
+    }
+
+    .quiz-question label{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:12px;
+      color:var(--muted);
+      cursor:pointer;
+    }
+
+    .quiz-question label:hover{
+      border-color:rgba(200,255,0,.5);
+      background:rgba(200,255,0,.05);
+    }
+
+    .quiz-question input{
+      margin-top:3px;
+      accent-color:var(--energy);
+    }
+
+    .quiz-result{
+      display:none;
+      padding:16px;
+      border-radius:14px;
+      font-weight:800;
+      line-height:1.5;
+    }
+
+    .quiz-result.show{display:block}
+
+    .quiz-result.success{
+      color:var(--energy);
+      border:1px solid rgba(200,255,0,.45);
+      background:rgba(200,255,0,.08);
+    }
+
+    .quiz-result.error{
+      color:#ff8d8d;
+      border:1px solid rgba(255,92,92,.45);
+      background:rgba(255,92,92,.08);
+    }
+
+    .video-modal{
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(0,0,0,.88);
+      backdrop-filter:blur(10px);
+    }
+
+    .video-modal.open{
+      display:flex;
+    }
+
+    .video-modal-card{
+      position:relative;
+      width:min(100%, 520px);
+      max-height:92vh;
+      overflow:auto;
+      padding:24px;
+      border:1px solid rgba(200,255,0,.48);
+      border-radius:24px;
+      background:
+        linear-gradient(145deg, rgba(28,38,31,.98), rgba(10,17,24,.98));
+      box-shadow:0 30px 100px rgba(0,0,0,.65);
+    }
+
+    .video-modal-card h2{
+      padding-right:52px;
+      margin-bottom:18px;
+      font-size:28px;
+    }
+
+    .video-modal-close{
+      position:absolute;
+      top:16px;
+      right:16px;
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:#111;
+      color:var(--energy);
+      font-size:24px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .video-modal-close:hover{
+      border-color:var(--energy);
+      transform:scale(1.05);
+    }
+
+    .video-modal .video-wrapper{
+      margin:0 auto;
+    }
+
+    body.modal-open{
+      overflow:hidden;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      margin-top:40px;
+      font-size:13px;
+    }
+
+    @media(max-width:900px){
+      header{
+        flex-direction:column;
+        gap:16px;
+      }
+
+      nav{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero,
+      .layout{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:44px}
+
+      .stats{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media(max-width:520px){
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:38px}
+
+      .course-module summary{
+        align-items:flex-start;
+      }
+
+      .video-modal{
+        padding:12px;
+      }
+
+      .video-modal-card{
+        padding:18px;
+        border-radius:18px;
+      }
+
+      .video-modal-card h2{
+        font-size:22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo">True<span>Energy</span>Volleyball</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html">Courses</a>
+      <a href="attacking.html" class="active">Attacking</a>
+      <a href="index.html">About</a>
+      <a href="index.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <section class="hero">
+      <div class="hero-box">
+        <div class="eyebrow">Attacking Course</div>
+        <h1>Master Your <span>Attacking</span></h1>
+
+        <p>
+          Learn the essential attacking technique through real video demonstrations,
+          clear explanations, and a final knowledge check.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>2</strong>
+            <small>Course Modules</small>
+          </div>
+
+          <div class="stat">
+            <strong>2</strong>
+            <small>Video Lessons</small>
+          </div>
+
+          <div class="stat">
+            <strong>10</strong>
+            <small>Final Quiz Questions</small>
+          </div>
+
+          <div class="stat">
+            <strong>80%</strong>
+            <small>Passing Score</small>
+          </div>
+        </div>
+
+        <a class="btn" href="#modules">View Course</a>
+      </div>
+
+      <div class="progress-box">
+        <div class="eyebrow">Your Progress</div>
+
+        <div class="progress-circle" id="attackingCourseProgressCircle">
+          <div class="progress-inner">
+            <strong id="attackingCourseProgressValue">0%</strong>
+            <small id="attackingCourseProgressStatus">In Progress</small>
+          </div>
+        </div>
+
+        <div class="progress-list">
+          <div><span>Video Lessons</span><strong>2</strong></div>
+          <div><span>Passing Score</span><strong>80%</strong></div>
+        </div>
+
+        <a
+          class="btn"
+          id="attackingNextCourseButton"
+          href="blocking.html"
+          style="display:none; width:100%; text-align:center;">
+          Next Course
+        </a>
+      </div>
+    </section>
+
+    <section class="panel attacking-overview" aria-label="Attacking technique overview">
+      <img
+        src="images/attacking-technique-overview.png"
+        alt="Attacking technique overview showing approach, arm swing, contact point, and key focus points"
+      />
+    </section>
+
+    <section class="layout" id="modules">
+      <div class="panel roadmap-panel">
+        <div class="eyebrow">Course Lessons</div>
+
+        <details class="course-module" id="attackingModule1" open>
+          <summary>
+            <div class="module-heading">
+              <small>Module 1</small>
+              <h3>Attacking Technique — Part 1</h3>
+            </div>
+
+            <div class="module-meta">
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
+
+          <div class="module-lessons">
+            <p class="lesson-description">
+              Study the basic attacking movement, body position, approach rhythm,
+              and coordination required to prepare for a controlled attack.
+            </p>
+
+            <a class="video-lesson-button" href="#attacking-technique-1-video">
+              <strong>▶ Watch Attacking Technique — Part 1</strong>
+              <span class="lesson-status">Watch</span>
+            </a>
+
+            <button
+              class="btn"
+              type="button"
+              data-next-module="attackingModule2">
+              Next Module →
+            </button>
+          </div>
+        </details>
+
+        <details class="course-module" id="attackingModule2">
+          <summary>
+            <div class="module-heading">
+              <small>Module 2</small>
+              <h3>Attacking Technique — Part 2</h3>
+            </div>
+
+            <div class="module-meta">
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
+
+          <div class="module-lessons">
+            <p class="lesson-description">
+              Continue the technique breakdown by focusing on the arm swing,
+              contact position, full reach, balance, and controlled landing.
+            </p>
+
+            <a class="video-lesson-button" href="#attacking-technique-2-video">
+              <strong>▶ Watch Attacking Technique — Part 2</strong>
+              <span class="lesson-status">Watch</span>
+            </a>
+
+            <button
+              class="btn"
+              type="button"
+              data-next-module="attackingFinalQuizModule">
+              Final Quiz →
+            </button>
+          </div>
+        </details>
+
+        <details class="course-module" id="attackingFinalQuizModule">
+          <summary>
+            <div class="module-heading">
+              <small>Final Quiz</small>
+              <h3>Attacking Knowledge Check</h3>
+            </div>
+
+            <div class="module-meta">
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
+
+          <div class="module-lessons">
+            <form id="attackingFinalQuiz">
+              <div class="eyebrow">Final Course Assessment</div>
+              <h2>Attacking Mastery Quiz</h2>
+
+              <p class="final-quiz-intro">
+                Answer all 10 questions. You need at least 8 correct answers to pass.
+              </p>
+
+              <div class="quiz-question">
+                <h3>1. What is the main purpose of the attacking approach?</h3>
+                <label><input type="radio" name="aq1" value="a"> To create rhythm, speed, and power before takeoff</label>
+                <label><input type="radio" name="aq1" value="b"> To slow the attacker down completely</label>
+                <label><input type="radio" name="aq1" value="c"> To contact the ball from the floor</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>2. Where should the attacker contact the ball?</h3>
+                <label><input type="radio" name="aq2" value="a"> Behind the head</label>
+                <label><input type="radio" name="aq2" value="b"> At full reach in front of the hitting shoulder</label>
+                <label><input type="radio" name="aq2" value="c"> Close to the chest</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>3. What should the non-hitting arm do during the attacking motion?</h3>
+                <label><input type="radio" name="aq3" value="a"> Help with balance and body rotation</label>
+                <label><input type="radio" name="aq3" value="b"> Stay behind the back</label>
+                <label><input type="radio" name="aq3" value="c"> Remain completely relaxed at the side</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>4. Why is a high elbow important during the arm swing?</h3>
+                <label><input type="radio" name="aq4" value="a"> It supports a stronger and more efficient hitting action</label>
+                <label><input type="radio" name="aq4" value="b"> It prevents the player from jumping</label>
+                <label><input type="radio" name="aq4" value="c"> It makes the contact point lower</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>5. What helps generate power during an attack?</h3>
+                <label><input type="radio" name="aq5" value="a"> Coordinated approach, jump, body rotation, and arm swing</label>
+                <label><input type="radio" name="aq5" value="b"> Using only the wrist</label>
+                <label><input type="radio" name="aq5" value="c"> Standing still before contact</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>6. What should happen immediately before takeoff?</h3>
+                <label><input type="radio" name="aq6" value="a"> The final steps should convert horizontal speed into upward movement</label>
+                <label><input type="radio" name="aq6" value="b"> The attacker should stop for several seconds</label>
+                <label><input type="radio" name="aq6" value="c"> The attacker should turn away from the net</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>7. What is the best body position at ball contact?</h3>
+                <label><input type="radio" name="aq7" value="a"> Balanced, extended, and facing the intended attack direction</label>
+                <label><input type="radio" name="aq7" value="b"> Leaning backward with the elbow low</label>
+                <label><input type="radio" name="aq7" value="c"> Bent forward with the ball behind the body</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>8. What is important during landing?</h3>
+                <label><input type="radio" name="aq8" value="a"> Land under control with balanced body position</label>
+                <label><input type="radio" name="aq8" value="b"> Land on one locked leg whenever possible</label>
+                <label><input type="radio" name="aq8" value="c"> Turn away before touching the floor</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>9. Why should the attacker keep the ball in front of the hitting shoulder?</h3>
+                <label><input type="radio" name="aq9" value="a"> It improves control, reach, and attacking options</label>
+                <label><input type="radio" name="aq9" value="b"> It makes the arm swing shorter and weaker</label>
+                <label><input type="radio" name="aq9" value="c"> It removes the need for timing</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>10. What is the best way to improve attacking technique?</h3>
+                <label><input type="radio" name="aq10" value="a"> Practice the movement in controlled steps and repeat correct technique</label>
+                <label><input type="radio" name="aq10" value="b"> Focus only on hitting as hard as possible</label>
+                <label><input type="radio" name="aq10" value="c"> Avoid reviewing body position</label>
+              </div>
+
+              <button class="btn" type="submit">Submit Final Quiz</button>
+
+              <div class="quiz-result" id="attackingFinalQuizResult"></div>
+
+              <a
+                class="btn"
+                id="attackingFinalNextButton"
+                href="blocking.html"
+                style="display:none;">
+                Next Course →
+              </a>
+            </form>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="video-modal" id="attacking-technique-1-modal" aria-hidden="true">
+    <div class="video-modal-card" role="dialog" aria-modal="true" aria-labelledby="attacking-technique-1-title">
+      <button class="video-modal-close" type="button" aria-label="Close video">×</button>
+      <div class="eyebrow">Video Lesson</div>
+      <h2 id="attacking-technique-1-title">Attacking Technique — Part 1</h2>
+
+      <div class="video-wrapper">
+        <iframe
+          data-src="https://www.youtube.com/embed/a-4VsyDE4L0?rel=0&modestbranding=1"
+          title="Attacking Technique Part 1 | True Energy Volleyball"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-modal" id="attacking-technique-2-modal" aria-hidden="true">
+    <div class="video-modal-card" role="dialog" aria-modal="true" aria-labelledby="attacking-technique-2-title">
+      <button class="video-modal-close" type="button" aria-label="Close video">×</button>
+      <div class="eyebrow">Technique Breakdown</div>
+      <h2 id="attacking-technique-2-title">Attacking Technique — Part 2</h2>
+
+      <div class="video-wrapper mistakes-video">
+        <iframe
+          data-src="https://www.youtube.com/embed/0E3Iqxc7u6k?rel=0&modestbranding=1"
+          title="Attacking Technique Part 2 | True Energy Volleyball"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 True Energy Volleyball. All rights reserved.
+  </footer>
+
+  <script>
+    const courseModules = document.querySelectorAll(".course-module");
+
+    const attackingTechnique1Modal = document.getElementById("attacking-technique-1-modal");
+    const attackingTechnique2Modal = document.getElementById("attacking-technique-2-modal");
+
+    const attackingTechnique1Links = document.querySelectorAll(
+      'a[href="#attacking-technique-1-video"]'
+    );
+
+    const attackingTechnique2Links = document.querySelectorAll(
+      'a[href="#attacking-technique-2-video"]'
+    );
+
+    function loadModalVideo(modal) {
+      if (!modal) return;
+
+      const iframe = modal.querySelector("iframe[data-src]");
+
+      if (iframe && !iframe.getAttribute("src")) {
+        iframe.setAttribute("src", iframe.dataset.src);
+      }
+    }
+
+    function unloadModalVideo(modal) {
+      if (!modal) return;
+
+      const iframe = modal.querySelector("iframe[data-src]");
+
+      if (iframe) {
+        iframe.removeAttribute("src");
+      }
+    }
+
+    function closeModal(modal) {
+      if (!modal) return;
+
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      unloadModalVideo(modal);
+
+      if (!document.querySelector(".video-modal.open")) {
+        document.body.classList.remove("modal-open");
+      }
+    }
+
+    function closeAllModals() {
+      document.querySelectorAll(".video-modal.open").forEach(closeModal);
+    }
+
+    function openModal(modal) {
+      if (!modal) return;
+
+      closeAllModals();
+      loadModalVideo(modal);
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    }
+
+    attackingTechnique1Links.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        openModal(attackingTechnique1Modal);
+      });
+    });
+
+    attackingTechnique2Links.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        openModal(attackingTechnique2Modal);
+      });
+    });
+
+    document.querySelectorAll(".video-modal-close").forEach((button) => {
+      button.addEventListener("click", () => {
+        closeModal(button.closest(".video-modal"));
+      });
+    });
+
+    document.querySelectorAll(".video-modal").forEach((modal) => {
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal(modal);
+        }
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeAllModals();
+      }
+    });
+
+    courseModules.forEach((module) => {
+      module.addEventListener("toggle", () => {
+        if (module.open) {
+          courseModules.forEach((otherModule) => {
+            if (otherModule !== module) {
+              otherModule.open = false;
+            }
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-next-module]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = document.getElementById(button.dataset.nextModule);
+        if (!target) return;
+
+        courseModules.forEach((module) => {
+          module.open = module === target;
+        });
+
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+    });
+
+    const attackingFinalQuiz = document.getElementById("attackingFinalQuiz");
+    const attackingFinalQuizResult = document.getElementById("attackingFinalQuizResult");
+    const attackingFinalNextButton = document.getElementById("attackingFinalNextButton");
+    const attackingNextCourseButton = document.getElementById("attackingNextCourseButton");
+    const attackingProgressCircle = document.getElementById("attackingCourseProgressCircle");
+    const attackingProgressValue = document.getElementById("attackingCourseProgressValue");
+    const attackingProgressStatus = document.getElementById("attackingCourseProgressStatus");
+
+    function updateAttackingProgress() {
+      const passed = localStorage.getItem("attackingFinalQuizPassed") === "true";
+
+      if (passed) {
+        attackingProgressCircle.style.background =
+          "conic-gradient(var(--energy) 100%, rgba(255,255,255,.12) 0)";
+        attackingProgressValue.textContent = "100%";
+        attackingProgressStatus.textContent = "Completed";
+        attackingNextCourseButton.style.display = "inline-block";
+        attackingFinalNextButton.style.display = "inline-block";
+      } else {
+        attackingProgressCircle.style.background =
+          "conic-gradient(var(--energy) 0%, rgba(255,255,255,.12) 0)";
+        attackingProgressValue.textContent = "0%";
+        attackingProgressStatus.textContent = "In Progress";
+        attackingNextCourseButton.style.display = "none";
+        attackingFinalNextButton.style.display = "none";
+      }
+    }
+
+    if (attackingFinalQuiz) {
+      attackingFinalQuiz.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const correctAnswers = {
+          aq1: "a",
+          aq2: "b",
+          aq3: "a",
+          aq4: "a",
+          aq5: "a",
+          aq6: "a",
+          aq7: "a",
+          aq8: "a",
+          aq9: "a",
+          aq10: "a"
+        };
+
+        let score = 0;
+        let answered = 0;
+
+        Object.entries(correctAnswers).forEach(([question, answer]) => {
+          const selected = attackingFinalQuiz.querySelector(
+            `input[name="${question}"]:checked`
+          );
+
+          if (selected) {
+            answered += 1;
+
+            if (selected.value === answer) {
+              score += 1;
+            }
+          }
+        });
+
+        attackingFinalQuizResult.classList.remove("show", "success", "error");
+        attackingFinalNextButton.style.display = "none";
+
+        if (answered < 10) {
+          attackingFinalQuizResult.textContent =
+            `Please answer all 10 questions. You have answered ${answered}.`;
+          attackingFinalQuizResult.classList.add("show", "error");
+          return;
+        }
+
+        const percentage = score * 10;
+
+        if (score >= 8) {
+          localStorage.setItem("attackingFinalQuizPassed", "true");
+
+          attackingFinalQuizResult.innerHTML =
+            `🎉 Congratulations!<br><br>` +
+            `Score: ${score}/10 (${percentage}%)<br>` +
+            `You passed the Attacking course.<br>` +
+            `Course Complete ✓`;
+
+          attackingFinalQuizResult.classList.add("show", "success");
+          attackingFinalNextButton.style.display = "inline-block";
+          updateAttackingProgress();
+        } else {
+          localStorage.setItem("attackingFinalQuizPassed", "false");
+
+          attackingFinalQuizResult.innerHTML =
+            `Score: ${score}/10 (${percentage}%)<br><br>` +
+            `Passing score is 80%. Please review the video lessons and try again.`;
+
+          attackingFinalQuizResult.classList.add("show", "error");
+          updateAttackingProgress();
+        }
+      });
+    }
+
+    updateAttackingProgress();
+  </script>
+
+</body>
+</html>

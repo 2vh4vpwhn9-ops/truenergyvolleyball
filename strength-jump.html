@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Strength &amp; Jump | True Energy Volleyball</title>
+
+  <style>
+    :root{
+      --bg:#050505;
+      --card:rgba(18,18,18,.88);
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#a8a8a8;
+      --energy:#c8ff00;
+      --blue:#128cff;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(200,255,0,.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(18,140,255,.16), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 7%;
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.72);
+      backdrop-filter:blur(14px);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .logo{
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:.5px;
+    }
+
+    .logo span{color:var(--energy)}
+
+    nav{
+      display:flex;
+      gap:24px;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    nav a:hover,
+    nav a.active{color:var(--energy)}
+
+    .page{
+      max-width:1200px;
+      margin:0 auto;
+      padding:55px 22px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:24px;
+      margin-bottom:28px;
+    }
+
+    .hero-box,
+    .progress-box,
+    .panel{
+      background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 20px 70px rgba(0,0,0,.35);
+    }
+
+    .eyebrow{
+      color:var(--energy);
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:12px;
+    }
+
+    h1{
+      font-size:58px;
+      line-height:.95;
+      margin-bottom:18px;
+    }
+
+    h1 span{color:var(--energy)}
+
+    .hero p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+      max-width:680px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .stat{
+      background:rgba(0,0,0,.35);
+      border:1px solid var(--line);
+      padding:16px;
+      border-radius:18px;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:22px;
+      color:var(--energy);
+      margin-bottom:5px;
+    }
+
+    .stat small{color:var(--muted)}
+
+    .progress-circle{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      margin:10px auto 22px;
+      background:conic-gradient(var(--energy) 0%, rgba(255,255,255,.12) 0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .progress-inner{
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      background:#090909;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+    }
+
+    .progress-inner strong{font-size:32px}
+    .progress-inner small{color:var(--muted)}
+
+    .progress-list{
+      display:grid;
+      gap:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .progress-list div{
+      display:flex;
+      justify-content:space-between;
+      border-bottom:1px solid var(--line);
+      padding-bottom:10px;
+    }
+
+    .layout{
+      display:block;
+      margin-top:24px;
+    }
+
+    .strength-overview{
+      margin-bottom:28px;
+      overflow:hidden;
+      padding:0;
+    }
+
+    .strength-overview img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:24px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:15px 24px;
+      border-radius:999px;
+      background:var(--energy);
+      color:#000;
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:13px;
+      border:none;
+      cursor:pointer;
+    }
+
+    .video-wrapper{
+      width:min(100%, 430px);
+      aspect-ratio:9 / 16;
+      margin:22px auto;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(200,255,0,.45);
+      background:#000;
+      box-shadow:0 16px 45px rgba(0,0,0,.45);
+    }
+
+    .video-wrapper iframe{
+      display:block;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .course-module{
+      margin-bottom:12px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(0,0,0,.25);
+      overflow:hidden;
+      transition:.25s;
+    }
+
+    .course-module[open]{
+      border-color:var(--energy);
+      box-shadow:0 0 28px rgba(200,255,0,.08);
+    }
+
+    .course-module summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px;
+      user-select:none;
+    }
+
+    .course-module summary::-webkit-details-marker{display:none}
+
+    .module-heading small{
+      display:block;
+      color:var(--energy);
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:11px;
+      margin-bottom:5px;
+    }
+
+    .module-heading h3{font-size:18px}
+
+    .module-arrow{
+      width:28px;
+      height:28px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      color:var(--energy);
+      transition:.25s;
+    }
+
+    .course-module[open] .module-arrow{
+      transform:rotate(180deg);
+      border-color:var(--energy);
+    }
+
+    .module-lessons{
+      display:grid;
+      gap:14px;
+      padding:18px;
+      border-top:1px solid var(--line);
+    }
+
+    .lesson-description{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .video-lesson-button{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px;
+      border:1px solid rgba(200,255,0,.35);
+      border-radius:14px;
+      background:rgba(200,255,0,.06);
+      transition:.25s;
+    }
+
+    .video-lesson-button:hover{
+      border-color:var(--energy);
+      background:rgba(200,255,0,.1);
+      transform:translateY(-1px);
+    }
+
+    .video-lesson-button strong{
+      color:var(--text);
+      font-size:14px;
+    }
+
+    .lesson-status{
+      color:var(--energy);
+      font-weight:900;
+      white-space:nowrap;
+      font-size:13px;
+    }
+
+    #strengthFinalQuiz{
+      display:grid;
+      gap:18px;
+      padding-top:18px;
+    }
+
+    #strengthFinalQuiz h2{font-size:34px}
+
+    .final-quiz-intro{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .quiz-question{
+      display:grid;
+      gap:10px;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(0,0,0,.27);
+    }
+
+    .quiz-question h3{
+      font-size:17px;
+      line-height:1.45;
+    }
+
+    .quiz-question label{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:12px;
+      color:var(--muted);
+      cursor:pointer;
+    }
+
+    .quiz-question label:hover{
+      border-color:rgba(200,255,0,.5);
+      background:rgba(200,255,0,.05);
+    }
+
+    .quiz-question input{
+      margin-top:3px;
+      accent-color:var(--energy);
+    }
+
+    .quiz-result{
+      display:none;
+      padding:16px;
+      border-radius:14px;
+      font-weight:800;
+      line-height:1.5;
+    }
+
+    .quiz-result.show{display:block}
+
+    .quiz-result.success{
+      color:var(--energy);
+      border:1px solid rgba(200,255,0,.45);
+      background:rgba(200,255,0,.08);
+    }
+
+    .quiz-result.error{
+      color:#ff8d8d;
+      border:1px solid rgba(255,92,92,.45);
+      background:rgba(255,92,92,.08);
+    }
+
+    .video-modal{
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(0,0,0,.88);
+      backdrop-filter:blur(10px);
+    }
+
+    .video-modal.open{display:flex}
+
+    .video-modal-card{
+      position:relative;
+      width:min(100%, 520px);
+      max-height:92vh;
+      overflow:auto;
+      padding:24px;
+      border:1px solid rgba(200,255,0,.48);
+      border-radius:24px;
+      background:linear-gradient(145deg, rgba(28,38,31,.98), rgba(10,17,24,.98));
+      box-shadow:0 30px 100px rgba(0,0,0,.65);
+    }
+
+    .video-modal-card h2{
+      padding-right:52px;
+      margin-bottom:18px;
+      font-size:28px;
+    }
+
+    .video-modal-close{
+      position:absolute;
+      top:16px;
+      right:16px;
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:#111;
+      color:var(--energy);
+      font-size:24px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    body.modal-open{overflow:hidden}
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      margin-top:40px;
+      font-size:13px;
+    }
+
+    @media(max-width:900px){
+      header{
+        flex-direction:column;
+        gap:16px;
+      }
+
+      nav{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero{grid-template-columns:1fr}
+      h1{font-size:44px}
+      .stats{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:520px){
+      .stats{grid-template-columns:1fr}
+      h1{font-size:38px}
+      .course-module summary{align-items:flex-start}
+
+      .video-modal{padding:12px}
+      .video-modal-card{
+        padding:18px;
+        border-radius:18px;
+      }
+
+      .video-modal-card h2{font-size:22px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo">True<span>Energy</span>Volleyball</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html">Courses</a>
+      <a href="strength-jump.html" class="active">Strength &amp; Jump</a>
+      <a href="index.html">About</a>
+      <a href="index.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <section class="hero">
+      <div class="hero-box">
+        <div class="eyebrow">Strength &amp; Jump Course</div>
+        <h1>Build Your <span>Strength &amp; Jump</span></h1>
+
+        <p>
+          Learn the essential jump technique through real video demonstrations,
+          clear explanations, and a final knowledge check.
+        </p>
+
+        <div class="stats">
+          <div class="stat"><strong>4</strong><small>Technique Lessons</small></div>
+          <div class="stat"><strong>4</strong><small>Video Lessons</small></div>
+          <div class="stat"><strong>10</strong><small>Final Quiz Questions</small></div>
+          <div class="stat"><strong>80%</strong><small>Passing Score</small></div>
+        </div>
+
+        <a class="btn" href="#modules">View Course</a>
+      </div>
+
+      <div class="progress-box">
+        <div class="eyebrow">Your Progress</div>
+
+        <div class="progress-circle" id="strengthCourseProgressCircle">
+          <div class="progress-inner">
+            <strong id="strengthCourseProgressValue">0%</strong>
+            <small id="strengthCourseProgressStatus">In Progress</small>
+          </div>
+        </div>
+
+        <div class="progress-list">
+          <div><span>Video Lessons</span><strong>4</strong></div>
+          <div><span>Passing Score</span><strong>80%</strong></div>
+        </div>
+
+        <a
+          class="btn"
+          id="strengthCourseCompleteButton"
+          href="index.html"
+          style="display:none; width:100%; text-align:center;">
+          Back to Courses
+        </a>
+      </div>
+    </section>
+
+    <section class="panel strength-overview" aria-label="Strength and jump fundamentals overview">
+      <img
+        src="images/strength-jump-fundamentals.png"
+        alt="Strength and jump fundamentals showing approach, heel-to-toe footwork, arm swing, and explosive takeoff"
+      />
+    </section>
+
+    <section class="layout" id="modules">
+      <div class="panel">
+        <div class="eyebrow">Course Lessons</div>
+
+        <details class="course-module" id="strengthModule1" open>
+          <summary>
+            <div class="module-heading">
+              <small>Module 1</small>
+              <h3>Jump Technique</h3>
+            </div>
+            <span class="module-arrow">⌄</span>
+          </summary>
+
+          <div class="module-lessons">
+            <p class="lesson-description">
+              Learn the approach rhythm, heel-to-toe footwork, body loading,
+              and arm coordination needed for an explosive volleyball jump.
+            </p>
+
+            <a class="video-lesson-button" href="#jump-technique-1-video">
+              <strong>▶ Watch Jump Technique — Lesson 1</strong>
+              <span class="lesson-status">Watch</span>
+            </a>
+
+            <a class="video-lesson-button" href="#jump-technique-2-video">
+              <strong>▶ Watch Jump Technique — Lesson 2</strong>
+              <span class="lesson-status">Watch</span>
+            </a>
+
+            <button class="btn" type="button" data-next-module="strengthModule2">
+              Next Module →
+            </button>
+          </div>
+        </details>
+
+        <details class="course-module" id="strengthModule2">
+          <summary>
+            <div class="module-heading">
+              <small>Module 2</small>
+              <h3>Common Jumping Mistakes</h3>
+            </div>
+            <span class="module-arrow">⌄</span>
+          </summary>
+
+          <div class="module-lessons">
+            <p class="lesson-description">
+              Identify common jumping errors involving approach rhythm, arm swing,
+              takeoff direction, balance, and landing control.
+            </p>
+
+            <a class="video-lesson-button" href="#jump-mistakes-1-video">
+              <strong>▶ Watch Jumping Mistakes — Lesson 1</strong>
+              <span class="lesson-status">Watch</span>
+            </a>
+
+            <a class="video-lesson-button" href="#jump-mistakes-2-video">
+              <strong>▶ Watch Jumping Mistakes — Lesson 2</strong>
+              <span class="lesson-status">Watch</span>
+            </a>
+
+            <button class="btn" type="button" data-next-module="strengthFinalQuizModule">
+              Final Quiz →
+            </button>
+          </div>
+        </details>
+
+        <details class="course-module" id="strengthFinalQuizModule">
+          <summary>
+            <div class="module-heading">
+              <small>Final Quiz</small>
+              <h3>Strength &amp; Jump Knowledge Check</h3>
+            </div>
+            <span class="module-arrow">⌄</span>
+          </summary>
+
+          <div class="module-lessons">
+            <form id="strengthFinalQuiz">
+              <div class="eyebrow">Final Course Assessment</div>
+              <h2>Strength &amp; Jump Mastery Quiz</h2>
+
+              <p class="final-quiz-intro">
+                Answer all 10 questions. You need at least 8 correct answers to pass.
+              </p>
+
+              <div class="quiz-question">
+                <h3>1. What should happen during the approach?</h3>
+                <label><input type="radio" name="sq1" value="a"> Accelerate while staying balanced and controlled</label>
+                <label><input type="radio" name="sq1" value="b"> Stop completely before the final steps</label>
+                <label><input type="radio" name="sq1" value="c"> Lean backward on the heels</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>2. How should the foot roll during the step?</h3>
+                <label><input type="radio" name="sq2" value="a"> From heel to toe</label>
+                <label><input type="radio" name="sq2" value="b"> From toe to heel</label>
+                <label><input type="radio" name="sq2" value="c"> Only on the outside edge</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>3. Why is the final long step important?</h3>
+                <label><input type="radio" name="sq3" value="a"> It helps load the body before takeoff</label>
+                <label><input type="radio" name="sq3" value="b"> It removes the need for arm movement</label>
+                <label><input type="radio" name="sq3" value="c"> It makes the jump slower</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>4. What should both arms do before takeoff?</h3>
+                <label><input type="radio" name="sq4" value="a"> Swing back to load energy</label>
+                <label><input type="radio" name="sq4" value="b"> Stay fixed at the sides</label>
+                <label><input type="radio" name="sq4" value="c"> Cross in front of the body</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>5. What creates explosive upward force?</h3>
+                <label><input type="radio" name="sq5" value="a"> Fast arm drive and full-body extension</label>
+                <label><input type="radio" name="sq5" value="b"> Arm movement without leg drive</label>
+                <label><input type="radio" name="sq5" value="c"> Jumping from a tall, relaxed position</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>6. Which joints should extend during takeoff?</h3>
+                <label><input type="radio" name="sq6" value="a"> Hips, knees, and ankles</label>
+                <label><input type="radio" name="sq6" value="b"> Elbows only</label>
+                <label><input type="radio" name="sq6" value="c"> Wrists only</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>7. What should the athlete do at the peak of the jump?</h3>
+                <label><input type="radio" name="sq7" value="a"> Reach high with full extension</label>
+                <label><input type="radio" name="sq7" value="b"> Pull the arms down early</label>
+                <label><input type="radio" name="sq7" value="c"> Bend forward sharply</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>8. What is a common mistake during takeoff?</h3>
+                <label><input type="radio" name="sq8" value="a"> Weak arm swing and poor timing</label>
+                <label><input type="radio" name="sq8" value="b"> Full-body extension</label>
+                <label><input type="radio" name="sq8" value="c"> Balanced foot placement</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>9. Why should the athlete stay balanced before takeoff?</h3>
+                <label><input type="radio" name="sq9" value="a"> To transfer force efficiently upward</label>
+                <label><input type="radio" name="sq9" value="b"> To reduce leg involvement</label>
+                <label><input type="radio" name="sq9" value="c"> To slow the arm swing</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>10. What is the foundation of an effective volleyball jump?</h3>
+                <label><input type="radio" name="sq10" value="a"> Approach, heel-to-toe footwork, arm swing, and full extension</label>
+                <label><input type="radio" name="sq10" value="b"> Jumping only with the arms</label>
+                <label><input type="radio" name="sq10" value="c"> Standing still before takeoff</label>
+              </div>
+
+              <button class="btn" type="submit">Submit Final Quiz</button>
+
+              <div class="quiz-result" id="strengthFinalQuizResult"></div>
+
+              <a
+                class="btn"
+                id="strengthFinalCompleteButton"
+                href="index.html"
+                style="display:none;">
+                Back to Courses →
+              </a>
+            </form>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="video-modal" id="jump-technique-1-modal" aria-hidden="true">
+    <div class="video-modal-card" role="dialog" aria-modal="true">
+      <button class="video-modal-close" type="button" aria-label="Close video">×</button>
+      <div class="eyebrow">Video Lesson</div>
+      <h2>Jump Technique — Lesson 1</h2>
+
+      <div class="video-wrapper">
+        <iframe
+          data-src="https://www.youtube.com/embed/lDSXc4csRGY?rel=0&modestbranding=1"
+          title="Jump Technique Lesson 1 | True Energy Volleyball"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-modal" id="jump-technique-2-modal" aria-hidden="true">
+    <div class="video-modal-card" role="dialog" aria-modal="true">
+      <button class="video-modal-close" type="button" aria-label="Close video">×</button>
+      <div class="eyebrow">Video Lesson</div>
+      <h2>Jump Technique — Lesson 2</h2>
+
+      <div class="video-wrapper">
+        <iframe
+          data-src="https://www.youtube.com/embed/g29QN575UuM?rel=0&modestbranding=1"
+          title="Jump Technique Lesson 2 | True Energy Volleyball"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-modal" id="jump-mistakes-1-modal" aria-hidden="true">
+    <div class="video-modal-card" role="dialog" aria-modal="true">
+      <button class="video-modal-close" type="button" aria-label="Close video">×</button>
+      <div class="eyebrow">Technique Breakdown</div>
+      <h2>Jumping Mistakes — Lesson 1</h2>
+
+      <div class="video-wrapper">
+        <iframe
+          data-src="https://www.youtube.com/embed/4MfL5fsidQc?rel=0&modestbranding=1"
+          title="Jumping Mistakes Lesson 1 | True Energy Volleyball"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-modal" id="jump-mistakes-2-modal" aria-hidden="true">
+    <div class="video-modal-card" role="dialog" aria-modal="true">
+      <button class="video-modal-close" type="button" aria-label="Close video">×</button>
+      <div class="eyebrow">Technique Breakdown</div>
+      <h2>Jumping Mistakes — Lesson 2</h2>
+
+      <div class="video-wrapper">
+        <iframe
+          data-src="https://www.youtube.com/embed/FF6kJh3LOco?rel=0&modestbranding=1"
+          title="Jumping Mistakes Lesson 2 | True Energy Volleyball"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 True Energy Volleyball. All rights reserved.
+  </footer>
+
+  <script>
+    const courseModules = document.querySelectorAll(".course-module");
+
+    const modalMap = {
+      "#jump-technique-1-video":"jump-technique-1-modal",
+      "#jump-technique-2-video":"jump-technique-2-modal",
+      "#jump-mistakes-1-video":"jump-mistakes-1-modal",
+      "#jump-mistakes-2-video":"jump-mistakes-2-modal"
+    };
+
+    function loadModalVideo(modal){
+      if(!modal) return;
+
+      const iframe = modal.querySelector("iframe[data-src]");
+
+      if(iframe && !iframe.getAttribute("src")){
+        iframe.setAttribute("src", iframe.dataset.src);
+      }
+    }
+
+    function unloadModalVideo(modal){
+      if(!modal) return;
+
+      const iframe = modal.querySelector("iframe[data-src]");
+
+      if(iframe){
+        iframe.removeAttribute("src");
+      }
+    }
+
+    function closeModal(modal){
+      if(!modal) return;
+
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      unloadModalVideo(modal);
+
+      if(!document.querySelector(".video-modal.open")){
+        document.body.classList.remove("modal-open");
+      }
+    }
+
+    function closeAllModals(){
+      document.querySelectorAll(".video-modal.open").forEach(closeModal);
+    }
+
+    function openModal(modal){
+      if(!modal) return;
+
+      closeAllModals();
+      loadModalVideo(modal);
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    }
+
+    Object.entries(modalMap).forEach(([href, modalId]) => {
+      document.querySelectorAll(`a[href="${href}"]`).forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          openModal(document.getElementById(modalId));
+        });
+      });
+    });
+
+    document.querySelectorAll(".video-modal-close").forEach((button) => {
+      button.addEventListener("click", () => {
+        closeModal(button.closest(".video-modal"));
+      });
+    });
+
+    document.querySelectorAll(".video-modal").forEach((modal) => {
+      modal.addEventListener("click", (event) => {
+        if(event.target === modal){
+          closeModal(modal);
+        }
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if(event.key === "Escape"){
+        closeAllModals();
+      }
+    });
+
+    courseModules.forEach((module) => {
+      module.addEventListener("toggle", () => {
+        if(module.open){
+          courseModules.forEach((otherModule) => {
+            if(otherModule !== module){
+              otherModule.open = false;
+            }
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-next-module]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = document.getElementById(button.dataset.nextModule);
+        if(!target) return;
+
+        courseModules.forEach((module) => {
+          module.open = module === target;
+        });
+
+        target.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+      });
+    });
+
+    const strengthFinalQuiz = document.getElementById("strengthFinalQuiz");
+    const strengthFinalQuizResult = document.getElementById("strengthFinalQuizResult");
+    const strengthFinalCompleteButton = document.getElementById("strengthFinalCompleteButton");
+    const strengthCourseCompleteButton = document.getElementById("strengthCourseCompleteButton");
+    const strengthProgressCircle = document.getElementById("strengthCourseProgressCircle");
+    const strengthProgressValue = document.getElementById("strengthCourseProgressValue");
+    const strengthProgressStatus = document.getElementById("strengthCourseProgressStatus");
+
+    function updateStrengthProgress(){
+      const passed = localStorage.getItem("strengthFinalQuizPassed") === "true";
+
+      if(passed){
+        strengthProgressCircle.style.background =
+          "conic-gradient(var(--energy) 100%, rgba(255,255,255,.12) 0)";
+        strengthProgressValue.textContent = "100%";
+        strengthProgressStatus.textContent = "Completed";
+        strengthCourseCompleteButton.style.display = "inline-block";
+        strengthFinalCompleteButton.style.display = "inline-block";
+      } else {
+        strengthProgressCircle.style.background =
+          "conic-gradient(var(--energy) 0%, rgba(255,255,255,.12) 0)";
+        strengthProgressValue.textContent = "0%";
+        strengthProgressStatus.textContent = "In Progress";
+        strengthCourseCompleteButton.style.display = "none";
+        strengthFinalCompleteButton.style.display = "none";
+      }
+    }
+
+    if(strengthFinalQuiz){
+      strengthFinalQuiz.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const correctAnswers = {
+          sq1:"a",
+          sq2:"a",
+          sq3:"a",
+          sq4:"a",
+          sq5:"a",
+          sq6:"a",
+          sq7:"a",
+          sq8:"a",
+          sq9:"a",
+          sq10:"a"
+        };
+
+        let score = 0;
+        let answered = 0;
+
+        Object.entries(correctAnswers).forEach(([question, answer]) => {
+          const selected = strengthFinalQuiz.querySelector(
+            `input[name="${question}"]:checked`
+          );
+
+          if(selected){
+            answered += 1;
+
+            if(selected.value === answer){
+              score += 1;
+            }
+          }
+        });
+
+        strengthFinalQuizResult.classList.remove("show", "success", "error");
+        strengthFinalCompleteButton.style.display = "none";
+
+        if(answered < 10){
+          strengthFinalQuizResult.textContent =
+            `Please answer all 10 questions. You have answered ${answered}.`;
+          strengthFinalQuizResult.classList.add("show", "error");
+          return;
+        }
+
+        const percentage = score * 10;
+
+        if(score >= 8){
+          localStorage.setItem("strengthFinalQuizPassed", "true");
+
+          strengthFinalQuizResult.innerHTML =
+            `🎉 Congratulations!<br><br>` +
+            `Score: ${score}/10 (${percentage}%)<br>` +
+            `You passed the Strength & Jump course.<br>` +
+            `Academy Complete ✓`;
+
+          strengthFinalQuizResult.classList.add("show", "success");
+          strengthFinalCompleteButton.style.display = "inline-block";
+          updateStrengthProgress();
+        } else {
+          localStorage.setItem("strengthFinalQuizPassed", "false");
+
+          strengthFinalQuizResult.innerHTML =
+            `Score: ${score}/10 (${percentage}%)<br><br>` +
+            `Passing score is 80%. Please review the video lessons and try again.`;
+
+          strengthFinalQuizResult.classList.add("show", "error");
+          updateStrengthProgress();
+        }
+      });
+    }
+
+    updateStrengthProgress();
+  </script>
+
+</body>
+</html>

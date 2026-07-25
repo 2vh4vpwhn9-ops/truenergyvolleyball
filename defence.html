@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Defence | True Energy Volleyball</title>
+
+  <style>
+    :root{
+      --bg:#050505;
+      --card:rgba(18,18,18,.88);
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#a8a8a8;
+      --energy:#c8ff00;
+      --blue:#128cff;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(200,255,0,.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(18,140,255,.16), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 7%;
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.72);
+      backdrop-filter:blur(14px);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .logo{
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:.5px;
+    }
+
+    .logo span{color:var(--energy)}
+
+    nav{
+      display:flex;
+      gap:24px;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    nav a:hover,
+    nav a.active{color:var(--energy)}
+
+    .page{
+      max-width:1200px;
+      margin:0 auto;
+      padding:55px 22px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:24px;
+      margin-bottom:28px;
+    }
+
+    .hero-box,
+    .progress-box,
+    .panel{
+      background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 20px 70px rgba(0,0,0,.35);
+    }
+
+    .eyebrow{
+      color:var(--energy);
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:12px;
+    }
+
+    h1{
+      font-size:58px;
+      line-height:.95;
+      margin-bottom:18px;
+    }
+
+    h1 span{color:var(--energy)}
+
+    .hero p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+      max-width:680px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .stat{
+      background:rgba(0,0,0,.35);
+      border:1px solid var(--line);
+      padding:16px;
+      border-radius:18px;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:22px;
+      color:var(--energy);
+      margin-bottom:5px;
+    }
+
+    .stat small{color:var(--muted)}
+
+    .progress-circle{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      margin:10px auto 22px;
+      background:conic-gradient(var(--energy) 0%, rgba(255,255,255,.12) 0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .progress-inner{
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      background:#090909;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+    }
+
+    .progress-inner strong{font-size:32px}
+    .progress-inner small{color:var(--muted)}
+
+    .progress-list{
+      display:grid;
+      gap:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .progress-list div{
+      display:flex;
+      justify-content:space-between;
+      border-bottom:1px solid var(--line);
+      padding-bottom:10px;
+    }
+
+    .layout{
+      display:block;
+      margin-top:24px;
+    }
+
+    .defence-overview{
+      margin-bottom:28px;
+      overflow:hidden;
+      padding:0;
+    }
+
+    .defence-overview img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:24px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:15px 24px;
+      border-radius:999px;
+      background:var(--energy);
+      color:#000;
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:13px;
+      border:none;
+      cursor:pointer;
+    }
+
+    .video-wrapper{
+      width:min(100%, 430px);
+      aspect-ratio:9 / 16;
+      margin:22px auto;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(200,255,0,.45);
+      background:#000;
+      box-shadow:0 16px 45px rgba(0,0,0,.45);
+    }
+
+    .video-wrapper iframe{
+      display:block;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .course-module{
+      margin-bottom:12px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(0,0,0,.25);
+      overflow:hidden;
+      transition:.25s;
+    }
+
+    .course-module[open]{
+      border-color:var(--energy);
+      box-shadow:0 0 28px rgba(200,255,0,.08);
+    }
+
+    .course-module summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px;
+      user-select:none;
+    }
+
+    .course-module summary::-webkit-details-marker{display:none}
+
+    .module-heading small{
+      display:block;
+      color:var(--energy);
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:11px;
+      margin-bottom:5px;
+    }
+
+    .module-heading h3{font-size:18px}
+
+    .module-arrow{
+      width:28px;
+      height:28px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      color:var(--energy);
+      transition:.25s;
+    }
+
+    .course-module[open] .module-arrow{
+      transform:rotate(180deg);
+      border-color:var(--energy);
+    }
+
+    .module-lessons{
+      display:grid;
+      gap:14px;
+      padding:18px;
+      border-top:1px solid var(--line);
+    }
+
+    .lesson-description{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .video-lesson-button{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px;
+      border:1px solid rgba(200,255,0,.35);
+      border-radius:14px;
+      background:rgba(200,255,0,.06);
+      transition:.25s;
+    }
+
+    .video-lesson-button:hover{
+      border-color:var(--energy);
+      background:rgba(200,255,0,.1);
+      transform:translateY(-1px);
+    }
+
+    .video-lesson-button strong{
+      color:var(--text);
+      font-size:14px;
+    }
+
+    .lesson-status{
+      color:var(--energy);
+      font-weight:900;
+      white-space:nowrap;
+      font-size:13px;
+    }
+
+    #defenceFinalQuiz{
+      display:grid;
+      gap:18px;
+      padding-top:18px;
+    }
+
+    #defenceFinalQuiz h2{font-size:34px}
+
+    .final-quiz-intro{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .quiz-question{
+      display:grid;
+      gap:10px;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(0,0,0,.27);
+    }
+
+    .quiz-question h3{
+      font-size:17px;
+      line-height:1.45;
+    }
+
+    .quiz-question label{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:12px;
+      color:var(--muted);
+      cursor:pointer;
+    }
+
+    .quiz-question label:hover{
+      border-color:rgba(200,255,0,.5);
+      background:rgba(200,255,0,.05);
+    }
+
+    .quiz-question input{
+      margin-top:3px;
+      accent-color:var(--energy);
+    }
+
+    .quiz-result{
+      display:none;
+      padding:16px;
+      border-radius:14px;
+      font-weight:800;
+      line-height:1.5;
+    }
+
+    .quiz-result.show{display:block}
+
+    .quiz-result.success{
+      color:var(--energy);
+      border:1px solid rgba(200,255,0,.45);
+      background:rgba(200,255,0,.08);
+    }
+
+    .quiz-result.error{
+      color:#ff8d8d;
+      border:1px solid rgba(255,92,92,.45);
+      background:rgba(255,92,92,.08);
+    }
+
+    .video-modal{
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(0,0,0,.88);
+      backdrop-filter:blur(10px);
+    }
+
+    .video-modal.open{display:flex}
+
+    .video-modal-card{
+      position:relative;
+      width:min(100%, 520px);
+      max-height:92vh;
+      overflow:auto;
+      padding:24px;
+      border:1px solid rgba(200,255,0,.48);
+      border-radius:24px;
+      background:linear-gradient(145deg, rgba(28,38,31,.98), rgba(10,17,24,.98));
+      box-shadow:0 30px 100px rgba(0,0,0,.65);
+    }
+
+    .video-modal-card h2{
+      padding-right:52px;
+      margin-bottom:18px;
+      font-size:28px;
+    }
+
+    .video-modal-close{
+      position:absolute;
+      top:16px;
+      right:16px;
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:#111;
+      color:var(--energy);
+      font-size:24px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    body.modal-open{overflow:hidden}
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      margin-top:40px;
+      font-size:13px;
+    }
+
+    @media(max-width:900px){
+      header{
+        flex-direction:column;
+        gap:16px;
+      }
+
+      nav{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero{grid-template-columns:1fr}
+      h1{font-size:44px}
+      .stats{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:520px){
+      .stats{grid-template-columns:1fr}
+      h1{font-size:38px}
+      .course-module summary{align-items:flex-start}
+
+      .video-modal{
+        padding:12px;
+      }
+
+      .video-modal-card{
+        padding:18px;
+        border-radius:18px;
+      }
+
+      .video-modal-card h2{font-size:22px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo">True<span>Energy</span>Volleyball</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html">Courses</a>
+      <a href="defence.html" class="active">Defence</a>
+      <a href="index.html">About</a>
+      <a href="index.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <section class="hero">
+      <div class="hero-box">
+        <div class="eyebrow">Defence Course</div>
+        <h1>Master Your <span>Defence</span></h1>
+
+        <p>
+          Learn the essential defensive technique through real video demonstrations,
+          clear explanations, and a final knowledge check.
+        </p>
+
+        <div class="stats">
+          <div class="stat"><strong>2</strong><small>Technique Lessons</small></div>
+          <div class="stat"><strong>2</strong><small>Video Lessons</small></div>
+          <div class="stat"><strong>10</strong><small>Final Quiz Questions</small></div>
+          <div class="stat"><strong>80%</strong><small>Passing Score</small></div>
+        </div>
+
+        <a class="btn" href="#modules">View Course</a>
+      </div>
+
+      <div class="progress-box">
+        <div class="eyebrow">Your Progress</div>
+
+        <div class="progress-circle" id="defenceCourseProgressCircle">
+          <div class="progress-inner">
+            <strong id="defenceCourseProgressValue">0%</strong>
+            <small id="defenceCourseProgressStatus">In Progress</small>
+          </div>
+        </div>
+
+        <div class="progress-list">
+          <div><span>Video Lessons</span><strong>2</strong></div>
+          <div><span>Passing Score</span><strong>80%</strong></div>
+        </div>
+
+        <a
+          class="btn"
+          id="defenceNextCourseButton"
+          href="strength-jump.html"
+          style="display:none; width:100%; text-align:center;">
+          Next Course
+        </a>
+      </div>
+    </section>
+
+    <section class="panel defence-overview" aria-label="Defensive fundamentals overview">
+      <img
+        src="images/defensive-fundamentals.png"
+        alt="Defensive fundamentals showing ready position and ball control"
+      />
+    </section>
+
+    <section class="layout" id="modules">
+      <div class="panel">
+        <div class="eyebrow">Course Lessons</div>
+
+        <details class="course-module" id="defenceModule1" open>
+          <summary>
+            <div class="module-heading">
+              <small>Module 1</small>
+              <h3>Defensive Technique</h3>
+            </div>
+            <span class="module-arrow">⌄</span>
+          </summary>
+
+          <div class="module-lessons">
+            <p class="lesson-description">
+              Learn the correct defensive stance, body position, movement, and platform angle
+              needed to control hard-driven balls.
+            </p>
+
+            <a class="video-lesson-button" href="#defence-technique-video">
+              <strong>▶ Watch Defensive Technique</strong>
+              <span class="lesson-status">Watch</span>
+            </a>
+
+            <button class="btn" type="button" data-next-module="defenceModule2">
+              Next Module →
+            </button>
+          </div>
+        </details>
+
+        <details class="course-module" id="defenceModule2">
+          <summary>
+            <div class="module-heading">
+              <small>Module 2</small>
+              <h3>Common Defensive Mistakes</h3>
+            </div>
+            <span class="module-arrow">⌄</span>
+          </summary>
+
+          <div class="module-lessons">
+            <p class="lesson-description">
+              Identify the most common defensive errors and learn how to improve balance,
+              platform control, timing, and movement behind the ball.
+            </p>
+
+            <a class="video-lesson-button" href="#defence-mistakes-video">
+              <strong>▶ Watch Common Defensive Mistakes</strong>
+              <span class="lesson-status">Watch</span>
+            </a>
+
+            <button class="btn" type="button" data-next-module="defenceFinalQuizModule">
+              Final Quiz →
+            </button>
+          </div>
+        </details>
+
+        <details class="course-module" id="defenceFinalQuizModule">
+          <summary>
+            <div class="module-heading">
+              <small>Final Quiz</small>
+              <h3>Defence Knowledge Check</h3>
+            </div>
+            <span class="module-arrow">⌄</span>
+          </summary>
+
+          <div class="module-lessons">
+            <form id="defenceFinalQuiz">
+              <div class="eyebrow">Final Course Assessment</div>
+              <h2>Defence Mastery Quiz</h2>
+
+              <p class="final-quiz-intro">
+                Answer all 10 questions. You need at least 8 correct answers to pass.
+              </p>
+
+              <div class="quiz-question">
+                <h3>1. What is the best defensive ready position?</h3>
+                <label><input type="radio" name="dq1" value="a"> Low athletic stance with weight forward</label>
+                <label><input type="radio" name="dq1" value="b"> Standing tall with locked knees</label>
+                <label><input type="radio" name="dq1" value="c"> Leaning backward on the heels</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>2. Where should the defender's eyes focus?</h3>
+                <label><input type="radio" name="dq2" value="a"> On the floor</label>
+                <label><input type="radio" name="dq2" value="b"> On the attacker and the developing play</label>
+                <label><input type="radio" name="dq2" value="c"> Away from the ball</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>3. Why should the defender move behind the ball?</h3>
+                <label><input type="radio" name="dq3" value="a"> To contact it with balance and control</label>
+                <label><input type="radio" name="dq3" value="b"> To make the platform unstable</label>
+                <label><input type="radio" name="dq3" value="c"> To avoid using the legs</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>4. What creates a stable defensive platform?</h3>
+                <label><input type="radio" name="dq4" value="a"> Bent elbows moving separately</label>
+                <label><input type="radio" name="dq4" value="b"> Straight, connected arms with controlled angle</label>
+                <label><input type="radio" name="dq4" value="c"> Contacting the ball with the hands</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>5. How should a defender handle a hard-driven ball?</h3>
+                <label><input type="radio" name="dq5" value="a"> Absorb the force and control the rebound</label>
+                <label><input type="radio" name="dq5" value="b"> Swing aggressively at the ball</label>
+                <label><input type="radio" name="dq5" value="c"> Turn away before contact</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>6. What controls the direction of the defensive pass?</h3>
+                <label><input type="radio" name="dq6" value="a"> Platform angle and body position</label>
+                <label><input type="radio" name="dq6" value="b"> Head movement only</label>
+                <label><input type="radio" name="dq6" value="c"> A large arm swing</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>7. What should happen before ball contact?</h3>
+                <label><input type="radio" name="dq7" value="a"> Establish balance and control</label>
+                <label><input type="radio" name="dq7" value="b"> Continue running through the ball</label>
+                <label><input type="radio" name="dq7" value="c"> Jump backward</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>8. Why is weight forward important?</h3>
+                <label><input type="radio" name="dq8" value="a"> It improves reaction speed and movement</label>
+                <label><input type="radio" name="dq8" value="b"> It prevents movement</label>
+                <label><input type="radio" name="dq8" value="c"> It places the defender on the heels</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>9. Where should a controlled defensive ball be directed?</h3>
+                <label><input type="radio" name="dq9" value="a"> Toward the setter target area</label>
+                <label><input type="radio" name="dq9" value="b"> Outside the court</label>
+                <label><input type="radio" name="dq9" value="c"> Directly into the net</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>10. What is the foundation of effective defence?</h3>
+                <label><input type="radio" name="dq10" value="a"> Positioning, movement, and controlled ball contact</label>
+                <label><input type="radio" name="dq10" value="b"> Using only arm strength</label>
+                <label><input type="radio" name="dq10" value="c"> Waiting until the ball arrives before moving</label>
+              </div>
+
+              <button class="btn" type="submit">Submit Final Quiz</button>
+
+              <div class="quiz-result" id="defenceFinalQuizResult"></div>
+
+              <a
+                class="btn"
+                id="defenceFinalNextButton"
+                href="strength-jump.html"
+                style="display:none;">
+                Next Course →
+              </a>
+            </form>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="video-modal" id="defence-technique-modal" aria-hidden="true">
+    <div class="video-modal-card" role="dialog" aria-modal="true" aria-labelledby="defence-technique-title">
+      <button class="video-modal-close" type="button" aria-label="Close video">×</button>
+      <div class="eyebrow">Video Lesson</div>
+      <h2 id="defence-technique-title">Defensive Technique</h2>
+
+      <div class="video-wrapper">
+        <iframe
+          data-src="https://www.youtube.com/embed/hldNsW-33M0?rel=0&modestbranding=1"
+          title="Defensive Technique | True Energy Volleyball"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-modal" id="defence-mistakes-modal" aria-hidden="true">
+    <div class="video-modal-card" role="dialog" aria-modal="true" aria-labelledby="defence-mistakes-title">
+      <button class="video-modal-close" type="button" aria-label="Close video">×</button>
+      <div class="eyebrow">Technique Breakdown</div>
+      <h2 id="defence-mistakes-title">Common Defensive Mistakes</h2>
+
+      <div class="video-wrapper">
+        <iframe
+          data-src="https://www.youtube.com/embed/YaRChKNKobw?rel=0&modestbranding=1"
+          title="Common Defensive Mistakes | True Energy Volleyball"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 True Energy Volleyball. All rights reserved.
+  </footer>
+
+  <script>
+    const courseModules = document.querySelectorAll(".course-module");
+
+    const defenceTechniqueModal = document.getElementById("defence-technique-modal");
+    const defenceMistakesModal = document.getElementById("defence-mistakes-modal");
+
+    const defenceTechniqueLinks = document.querySelectorAll(
+      'a[href="#defence-technique-video"]'
+    );
+
+    const defenceMistakesLinks = document.querySelectorAll(
+      'a[href="#defence-mistakes-video"]'
+    );
+
+    function loadModalVideo(modal){
+      if(!modal) return;
+      const iframe = modal.querySelector("iframe[data-src]");
+
+      if(iframe && !iframe.getAttribute("src")){
+        iframe.setAttribute("src", iframe.dataset.src);
+      }
+    }
+
+    function unloadModalVideo(modal){
+      if(!modal) return;
+      const iframe = modal.querySelector("iframe[data-src]");
+
+      if(iframe){
+        iframe.removeAttribute("src");
+      }
+    }
+
+    function closeModal(modal){
+      if(!modal) return;
+
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      unloadModalVideo(modal);
+
+      if(!document.querySelector(".video-modal.open")){
+        document.body.classList.remove("modal-open");
+      }
+    }
+
+    function closeAllModals(){
+      document.querySelectorAll(".video-modal.open").forEach(closeModal);
+    }
+
+    function openModal(modal){
+      if(!modal) return;
+
+      closeAllModals();
+      loadModalVideo(modal);
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    }
+
+    defenceTechniqueLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        openModal(defenceTechniqueModal);
+      });
+    });
+
+    defenceMistakesLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        openModal(defenceMistakesModal);
+      });
+    });
+
+    document.querySelectorAll(".video-modal-close").forEach((button) => {
+      button.addEventListener("click", () => {
+        closeModal(button.closest(".video-modal"));
+      });
+    });
+
+    document.querySelectorAll(".video-modal").forEach((modal) => {
+      modal.addEventListener("click", (event) => {
+        if(event.target === modal){
+          closeModal(modal);
+        }
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if(event.key === "Escape"){
+        closeAllModals();
+      }
+    });
+
+    courseModules.forEach((module) => {
+      module.addEventListener("toggle", () => {
+        if(module.open){
+          courseModules.forEach((otherModule) => {
+            if(otherModule !== module){
+              otherModule.open = false;
+            }
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-next-module]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = document.getElementById(button.dataset.nextModule);
+        if(!target) return;
+
+        courseModules.forEach((module) => {
+          module.open = module === target;
+        });
+
+        target.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+      });
+    });
+
+    const defenceFinalQuiz = document.getElementById("defenceFinalQuiz");
+    const defenceFinalQuizResult = document.getElementById("defenceFinalQuizResult");
+    const defenceFinalNextButton = document.getElementById("defenceFinalNextButton");
+    const defenceNextCourseButton = document.getElementById("defenceNextCourseButton");
+    const defenceProgressCircle = document.getElementById("defenceCourseProgressCircle");
+    const defenceProgressValue = document.getElementById("defenceCourseProgressValue");
+    const defenceProgressStatus = document.getElementById("defenceCourseProgressStatus");
+
+    function updateDefenceProgress(){
+      const passed = localStorage.getItem("defenceFinalQuizPassed") === "true";
+
+      if(passed){
+        defenceProgressCircle.style.background =
+          "conic-gradient(var(--energy) 100%, rgba(255,255,255,.12) 0)";
+        defenceProgressValue.textContent = "100%";
+        defenceProgressStatus.textContent = "Completed";
+        defenceNextCourseButton.style.display = "inline-block";
+        defenceFinalNextButton.style.display = "inline-block";
+      } else {
+        defenceProgressCircle.style.background =
+          "conic-gradient(var(--energy) 0%, rgba(255,255,255,.12) 0)";
+        defenceProgressValue.textContent = "0%";
+        defenceProgressStatus.textContent = "In Progress";
+        defenceNextCourseButton.style.display = "none";
+        defenceFinalNextButton.style.display = "none";
+      }
+    }
+
+    if(defenceFinalQuiz){
+      defenceFinalQuiz.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const correctAnswers = {
+          dq1:"a",
+          dq2:"b",
+          dq3:"a",
+          dq4:"b",
+          dq5:"a",
+          dq6:"a",
+          dq7:"a",
+          dq8:"a",
+          dq9:"a",
+          dq10:"a"
+        };
+
+        let score = 0;
+        let answered = 0;
+
+        Object.entries(correctAnswers).forEach(([question, answer]) => {
+          const selected = defenceFinalQuiz.querySelector(
+            `input[name="${question}"]:checked`
+          );
+
+          if(selected){
+            answered += 1;
+
+            if(selected.value === answer){
+              score += 1;
+            }
+          }
+        });
+
+        defenceFinalQuizResult.classList.remove("show", "success", "error");
+        defenceFinalNextButton.style.display = "none";
+
+        if(answered < 10){
+          defenceFinalQuizResult.textContent =
+            `Please answer all 10 questions. You have answered ${answered}.`;
+          defenceFinalQuizResult.classList.add("show", "error");
+          return;
+        }
+
+        const percentage = score * 10;
+
+        if(score >= 8){
+          localStorage.setItem("defenceFinalQuizPassed", "true");
+
+          defenceFinalQuizResult.innerHTML =
+            `🎉 Congratulations!<br><br>` +
+            `Score: ${score}/10 (${percentage}%)<br>` +
+            `You passed the Defence course.<br>` +
+            `Course Complete ✓`;
+
+          defenceFinalQuizResult.classList.add("show", "success");
+          defenceFinalNextButton.style.display = "inline-block";
+          updateDefenceProgress();
+        } else {
+          localStorage.setItem("defenceFinalQuizPassed", "false");
+
+          defenceFinalQuizResult.innerHTML =
+            `Score: ${score}/10 (${percentage}%)<br><br>` +
+            `Passing score is 80%. Please review the video lessons and try again.`;
+
+          defenceFinalQuizResult.classList.add("show", "error");
+          updateDefenceProgress();
+        }
+      });
+    }
+
+    updateDefenceProgress();
+  </script>
+
+</body>
+</html>

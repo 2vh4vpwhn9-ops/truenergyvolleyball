@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Passing | True Energy Volleyball</title>
+
+  <style>
+    :root{
+      --bg:#050505;
+      --card:rgba(18,18,18,.88);
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#a8a8a8;
+      --energy:#c8ff00;
+      --blue:#128cff;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(200,255,0,.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(18,140,255,.16), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 7%;
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.72);
+      backdrop-filter:blur(14px);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .logo{
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:.5px;
+    }
+
+    .logo span{color:var(--energy)}
+
+    nav{
+      display:flex;
+      gap:24px;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    nav a:hover,
+    nav a.active{color:var(--energy)}
+
+    .page{
+      max-width:1200px;
+      margin:0 auto;
+      padding:55px 22px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:24px;
+      margin-bottom:28px;
+    }
+
+    .hero-box,
+    .progress-box,
+    .panel{
+      background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 20px 70px rgba(0,0,0,.35);
+    }
+
+    .eyebrow{
+      color:var(--energy);
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:12px;
+    }
+
+    h1{
+      font-size:58px;
+      line-height:.95;
+      margin-bottom:18px;
+    }
+
+    h1 span{color:var(--energy)}
+
+    .hero p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+      max-width:680px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .stat{
+      background:rgba(0,0,0,.35);
+      border:1px solid var(--line);
+      padding:16px;
+      border-radius:18px;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:22px;
+      color:var(--energy);
+      margin-bottom:5px;
+    }
+
+    .stat small{color:var(--muted)}
+
+    .progress-circle{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      margin:10px auto 22px;
+      background:conic-gradient(var(--energy) 0%, rgba(255,255,255,.12) 0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .progress-inner{
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      background:#090909;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+    }
+
+    .progress-inner strong{font-size:32px}
+    .progress-inner small{color:var(--muted)}
+
+    .progress-list{
+      display:grid;
+      gap:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .progress-list div{
+      display:flex;
+      justify-content:space-between;
+      border-bottom:1px solid var(--line);
+      padding-bottom:10px;
+    }
+
+    .layout{
+      display:block;
+      margin-top:24px;
+    }
+
+    .module{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      margin-bottom:12px;
+      background:rgba(0,0,0,.25);
+      transition:.25s;
+    }
+
+    .module:hover,
+    .module.active{
+      border-color:var(--energy);
+      transform:translateY(-2px);
+    }
+
+    .module small{
+      color:var(--energy);
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:11px;
+    }
+
+    .module h3{
+      font-size:18px;
+      margin-top:5px;
+    }
+
+    .check{
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      border:2px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--energy);
+      font-weight:900;
+      font-size:13px;
+    }
+
+    .locked{
+      color:var(--muted);
+    }
+
+    .lesson-list{
+      margin-top:18px;
+      display:grid;
+      gap:10px;
+    }
+
+    .lesson{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      color:var(--muted);
+      background:rgba(0,0,0,.25);
+    }
+
+    .lesson span:first-child{
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:15px 24px;
+      border-radius:999px;
+      background:var(--energy);
+      color:#000;
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:13px;
+      border:none;
+      cursor:pointer;
+    }
+
+    .btn.outline{
+      background:transparent;
+      color:var(--energy);
+      border:1px solid var(--energy);
+    }
+
+    .video-wrapper{
+      width:min(100%, 430px);
+      aspect-ratio:9 / 16;
+      margin:22px auto;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(200,255,0,.45);
+      background:#000;
+      box-shadow:0 16px 45px rgba(0,0,0,.45);
+    }
+
+    .video-wrapper iframe{
+      display:block;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .mistakes-title{
+      margin-top:34px;
+      padding-top:26px;
+      border-top:1px solid var(--line);
+    }
+
+    .mistakes-video{
+      border-color:rgba(255,196,0,.55);
+      box-shadow:0 16px 45px rgba(0,0,0,.45), 0 0 24px rgba(255,196,0,.08);
+    }
+
+    .premium-box{
+      margin-top:20px;
+      padding:24px;
+      border-radius:22px;
+      border:1px solid rgba(200,255,0,.45);
+      background:linear-gradient(135deg, rgba(200,255,0,.12), rgba(18,140,255,.08));
+    }
+
+    .premium-box h3{
+      font-size:26px;
+      margin-bottom:12px;
+    }
+
+    .premium-box p{
+      color:var(--muted);
+      line-height:1.7;
+      margin-bottom:14px;
+    }
+
+    .premium-list{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .premium-list li{
+      list-style:none;
+      color:var(--muted);
+      padding-left:28px;
+      position:relative;
+      line-height:1.5;
+    }
+
+    .premium-list li::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      color:var(--energy);
+      font-weight:900;
+    }
+
+    .course-access{
+      margin-top:24px;
+    }
+
+    .cta{
+      margin-top:28px;
+      padding:32px;
+      border-radius:24px;
+      border:1px solid var(--energy);
+      background:linear-gradient(135deg, rgba(200,255,0,.15), rgba(18,140,255,.08));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .cta h2{
+      font-size:30px;
+      margin-bottom:8px;
+    }
+
+    .cta p{color:var(--muted)}
+
+    .cta-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+
+    /* Interactive course roadmap */
+    .roadmap-panel{
+      align-self:start;
+    }
+
+
+
+
+
+
+    .course-module{
+      margin-bottom:12px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(0,0,0,.25);
+      overflow:hidden;
+      transition:.25s;
+    }
+
+    .course-module[open]{
+      border-color:var(--energy);
+      box-shadow:0 0 28px rgba(200,255,0,.08);
+    }
+
+    .course-module summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px;
+      user-select:none;
+    }
+
+    .course-module summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .module-heading small{
+      display:block;
+      color:var(--energy);
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:11px;
+      margin-bottom:5px;
+    }
+
+    .module-heading h3{
+      font-size:18px;
+    }
+
+    .module-meta{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .module-arrow{
+      width:28px;
+      height:28px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      color:var(--energy);
+      transition:.25s;
+    }
+
+    .course-module[open] .module-arrow{
+      transform:rotate(180deg);
+      border-color:var(--energy);
+    }
+
+    .module-lessons{
+      display:grid;
+      gap:8px;
+      padding:0 18px 18px;
+      border-top:1px solid var(--line);
+    }
+
+    .module-lesson{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 14px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      color:var(--muted);
+      background:rgba(255,255,255,.025);
+      font-size:13px;
+    }
+
+    .module-lesson strong{
+      color:var(--text);
+      font-size:13px;
+    }
+
+    .passing-technique-images{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      margin-top:10px;
+    }
+
+    .passing-technique-card{
+      padding:14px;
+      border:1px solid rgba(200,255,0,.35);
+      border-radius:18px;
+      background:rgba(0,0,0,.28);
+    }
+
+    .passing-technique-card h4{
+      margin-bottom:12px;
+      color:var(--energy);
+      font-size:16px;
+    }
+
+    .passing-technique-card img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background:#050505;
+    }
+
+    .passing-technique-images-only{
+      grid-template-columns:1fr;
+      gap:24px;
+    }
+
+    .passing-technique-images-only > img{
+      display:block;
+      width:100%;
+      height:auto;
+      border:0;
+      border-radius:18px;
+      background:#050505;
+    }
+
+    .passing-images-next{
+      justify-self:end;
+      margin-top:0;
+    }
+
+    @media(max-width:900px){
+      .passing-technique-images{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .module-lesson.free{
+      border-color:rgba(200,255,0,.35);
+      background:rgba(200,255,0,.06);
+    }
+
+    .lesson-status{
+      color:var(--energy);
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .access-levels{
+      margin-top:28px;
+    }
+
+    .access-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .access-card{
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(0,0,0,.28);
+    }
+
+    .access-card h3{
+      font-size:23px;
+      margin-bottom:14px;
+    }
+
+    .access-card ul{
+      display:grid;
+      gap:10px;
+      list-style:none;
+    }
+
+    .access-card li{
+      color:var(--muted);
+      padding-left:24px;
+      position:relative;
+      line-height:1.5;
+    }
+
+    .access-card li::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      color:var(--energy);
+      font-weight:900;
+    }
+
+    .access-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:12px;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+    }
+
+    .access-dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:var(--energy);
+      box-shadow:0 0 14px rgba(200,255,0,.55);
+    }
+
+    .student .access-dot{
+      background:#ffc400;
+      box-shadow:0 0 14px rgba(255,196,0,.5);
+    }
+
+    .coach-level .access-dot{
+      background:var(--blue);
+      box-shadow:0 0 14px rgba(18,140,255,.55);
+    }
+
+    @media(max-width:900px){
+      .access-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:520px){
+      .course-module summary{
+        align-items:flex-start;
+      }
+
+      .module-meta{
+        gap:6px;
+      }
+
+      .module-meta span:first-child{
+        display:none;
+      }
+
+      .module-lesson{
+        align-items:flex-start;
+      }
+    }
+
+    .video-modal{
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(0,0,0,.88);
+      backdrop-filter:blur(10px);
+    }
+
+    .video-modal.open{
+      display:flex;
+    }
+
+    .video-modal-card{
+      position:relative;
+      width:min(100%, 520px);
+      max-height:92vh;
+      overflow:auto;
+      padding:24px;
+      border:1px solid rgba(200,255,0,.48);
+      border-radius:24px;
+      background:
+        linear-gradient(145deg, rgba(28,38,31,.98), rgba(10,17,24,.98));
+      box-shadow:0 30px 100px rgba(0,0,0,.65);
+    }
+
+    .video-modal-card h2{
+      padding-right:52px;
+      margin-bottom:18px;
+      font-size:28px;
+    }
+
+    .video-modal-close{
+      position:absolute;
+      top:16px;
+      right:16px;
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:#111;
+      color:var(--energy);
+      font-size:24px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .video-modal-close:hover{
+      border-color:var(--energy);
+      transform:scale(1.05);
+    }
+
+    .video-modal .video-wrapper{
+      margin:0 auto;
+    }
+
+    body.modal-open{
+      overflow:hidden;
+    }
+
+    .module-lesson.free{
+      cursor:pointer;
+    }
+
+    .module-lesson.free:hover{
+      border-color:var(--energy);
+      background:rgba(200,255,0,.1);
+      transform:translateY(-1px);
+    }
+
+    .module-next-button{
+      justify-self:end;
+      margin-top:8px;
+    }
+
+    #passingFinalQuiz{
+      display:grid;
+      gap:18px;
+      padding-top:18px;
+    }
+
+    #passingFinalQuiz h2{
+      font-size:34px;
+    }
+
+    .final-quiz-intro{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .quiz-question{
+      display:grid;
+      gap:10px;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(0,0,0,.27);
+    }
+
+    .quiz-question h3{
+      font-size:17px;
+      line-height:1.45;
+    }
+
+    .quiz-question label{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:12px;
+      color:var(--muted);
+      cursor:pointer;
+    }
+
+    .quiz-question label:hover{
+      border-color:rgba(200,255,0,.5);
+      background:rgba(200,255,0,.05);
+    }
+
+    .quiz-question input{
+      margin-top:3px;
+      accent-color:var(--energy);
+    }
+
+    .quiz-result{
+      display:none;
+      padding:16px;
+      border-radius:14px;
+      font-weight:800;
+      line-height:1.5;
+    }
+
+    .quiz-result.show{display:block}
+
+    .quiz-result.success{
+      color:var(--energy);
+      border:1px solid rgba(200,255,0,.45);
+      background:rgba(200,255,0,.08);
+    }
+
+    .quiz-result.error{
+      color:#ff8d8d;
+      border:1px solid rgba(255,92,92,.45);
+      background:rgba(255,92,92,.08);
+    }
+
+    @media(max-width:520px){
+      .video-modal{
+        padding:12px;
+      }
+
+      .video-modal-card{
+        padding:18px;
+        border-radius:18px;
+      }
+
+      .video-modal-card h2{
+        font-size:22px;
+      }
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      margin-top:40px;
+      font-size:13px;
+    }
+
+    @media(max-width:900px){
+      header{
+        flex-direction:column;
+        gap:16px;
+      }
+
+      nav{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero,
+      .layout{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:44px}
+
+      .stats{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .cta{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .cta-actions{
+        justify-content:flex-start;
+      }
+    }
+
+    @media(max-width:520px){
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:38px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo">True<span>Energy</span>Volleyball</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html">Courses</a>
+      <a href="passing.html" class="active">Passing</a>
+      <a href="index.html">About</a>
+      <a href="index.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <section class="hero">
+      <div class="hero-box">
+        <div class="eyebrow">Passing Course</div>
+        <h1>Master Your <span>Passing</span></h1>
+
+        <p>
+          Learn the key principles of volleyball passing through visual instruction,
+          technique demonstrations, and a final knowledge check.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>10</strong>
+            <small>Final Quiz Questions</small>
+          </div>
+
+          <div class="stat">
+            <strong>80%</strong>
+            <small>Passing Score</small>
+          </div>
+        </div>
+
+        <a class="btn" href="#passing-content">Start Learning</a>
+      </div>
+
+      <div class="progress-box">
+        <div class="eyebrow">Your Progress</div>
+
+        <div class="progress-circle" id="passingCourseProgressCircle">
+          <div class="progress-inner">
+            <strong id="passingCourseProgressValue">0%</strong>
+            <small id="passingCourseProgressStatus">In Progress</small>
+          </div>
+        </div>
+
+        <div class="progress-list">
+          <div><span>Final Quiz</span><strong>10 Questions</strong></div>
+          <div><span>Passing Score</span><strong>80%</strong></div>
+        </div>
+
+        <a
+          class="btn"
+          id="passingNextModuleButton"
+          href="attacking.html"
+          style="display:none; width:100%; text-align:center;">
+          Next Course →
+        </a>
+      </div>
+    </section>
+
+    <section class="layout" id="passing-content">
+
+      <div class="panel roadmap-panel">
+        <div class="eyebrow">Passing Technique</div>
+
+        <div class="passing-technique-images passing-technique-images-only" aria-label="Types of volleyball passes">
+          <img
+            src="images/forearm-pass-technique.png"
+            alt="Forearm pass technique infographic"
+          />
+
+          <img
+            src="images/overhead-pass-technique.png"
+            alt="Overhead pass technique infographic"
+          />
+        </div>
+
+        <div style="margin-top:28px; text-align:center;">
+          <a class="btn" href="#forearm-pass-video">Watch Forearm Pass Video</a>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:24px;">
+        <form id="passingFinalQuiz">
+          <div class="eyebrow">Final Course Assessment</div>
+          <h2>Passing Mastery Quiz</h2>
+
+          <p class="final-quiz-intro">
+            Answer all 10 questions. You need at least 8 correct answers to pass.
+          </p>
+
+          <div class="quiz-question">
+            <h3>1. What is the main purpose of the forearm platform?</h3>
+            <label><input type="radio" name="pq1" value="a"> To create a stable surface that directs the ball</label>
+            <label><input type="radio" name="pq1" value="b"> To swing aggressively at the ball</label>
+            <label><input type="radio" name="pq1" value="c"> To contact the ball with the wrists</label>
+          </div>
+
+          <div class="quiz-question">
+            <h3>2. Where should the ball contact the arms during a forearm pass?</h3>
+            <label><input type="radio" name="pq2" value="a"> On the hands</label>
+            <label><input type="radio" name="pq2" value="b"> On the flat forearm platform above the wrists</label>
+            <label><input type="radio" name="pq2" value="c"> Near the elbows</label>
+          </div>
+
+          <div class="quiz-question">
+            <h3>3. What should the elbows do during platform contact?</h3>
+            <label><input type="radio" name="pq3" value="a"> Stay straight and stable</label>
+            <label><input type="radio" name="pq3" value="b"> Bend sharply</label>
+            <label><input type="radio" name="pq3" value="c"> Move independently</label>
+          </div>
+
+          <div class="quiz-question">
+            <h3>4. What is the best ready position before receiving serve?</h3>
+            <label><input type="radio" name="pq4" value="a"> Tall with locked knees</label>
+            <label><input type="radio" name="pq4" value="b"> Athletic stance with bent knees and weight forward</label>
+            <label><input type="radio" name="pq4" value="c"> Leaning backward on the heels</label>
+          </div>
+
+          <div class="quiz-question">
+            <h3>5. Why should a passer move behind the ball?</h3>
+            <label><input type="radio" name="pq5" value="a"> To contact the ball in front of the body with balance</label>
+            <label><input type="radio" name="pq5" value="b"> To avoid using the legs</label>
+            <label><input type="radio" name="pq5" value="c"> To make the platform less stable</label>
+          </div>
+
+          <div class="quiz-question">
+            <h3>6. What controls the direction of a forearm pass?</h3>
+            <label><input type="radio" name="pq6" value="a"> Platform angle and body position</label>
+            <label><input type="radio" name="pq6" value="b"> Wrist snap</label>
+            <label><input type="radio" name="pq6" value="c"> Head movement</label>
+          </div>
+
+          <div class="quiz-question">
+            <h3>7. What should a passer do before ball contact?</h3>
+            <label><input type="radio" name="pq7" value="a"> Continue running through the ball</label>
+            <label><input type="radio" name="pq7" value="b"> Stop under control and establish balance</label>
+            <label><input type="radio" name="pq7" value="c"> Jump sideways</label>
+          </div>
+
+          <div class="quiz-question">
+            <h3>8. What is important when reading the server?</h3>
+            <label><input type="radio" name="pq8" value="a"> Watch the toss, approach, and contact</label>
+            <label><input type="radio" name="pq8" value="b"> Look only at the floor</label>
+            <label><input type="radio" name="pq8" value="c"> Turn away before contact</label>
+          </div>
+
+          <div class="quiz-question">
+            <h3>9. How should a float serve normally be received?</h3>
+            <label><input type="radio" name="pq9" value="a"> With a stable platform and controlled body movement</label>
+            <label><input type="radio" name="pq9" value="b"> With a large arm swing</label>
+            <label><input type="radio" name="pq9" value="c"> With the hands separated</label>
+          </div>
+
+          <div class="quiz-question">
+            <h3>10. Where should a controlled reception usually be directed?</h3>
+            <label><input type="radio" name="pq10" value="a"> Toward the setter target area</label>
+            <label><input type="radio" name="pq10" value="b"> Directly back over the net</label>
+            <label><input type="radio" name="pq10" value="c"> Outside the court</label>
+          </div>
+
+          <button class="btn" type="submit">Submit Final Quiz</button>
+
+          <div class="quiz-result" id="passingFinalQuizResult"></div>
+
+          <a
+            class="btn"
+            id="passingFinalNextButton"
+            href="attacking.html"
+            style="display:none;">
+            Next Course →
+          </a>
+        </form>
+      </div>
+
+    </section>
+
+  </main>
+
+  <div class="video-modal" id="technique-video-modal" aria-hidden="true">
+    <div class="video-modal-card" role="dialog" aria-modal="true" aria-labelledby="technique-video-title">
+      <button class="video-modal-close" type="button" aria-label="Close video">×</button>
+      <div class="eyebrow">Video Lesson</div>
+      <h2 id="technique-video-title">Forearm Pass Technique</h2>
+
+      <div class="video-wrapper">
+        <iframe
+          data-src="https://www.youtube.com/embed/ezz6410eahA?rel=0&modestbranding=1"
+          title="Forearm Pass Technique | True Energy Volleyball"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 True Energy Volleyball. All rights reserved.
+  </footer>
+
+
+
+
+  <script>
+    const courseModules = document.querySelectorAll(".course-module");
+
+    const techniqueModal = document.getElementById("technique-video-modal");
+    const techniqueLinks = document.querySelectorAll('a[href="#forearm-pass-video"]');
+
+    function loadModalVideo(modal) {
+      if (!modal) return;
+      const iframe = modal.querySelector("iframe[data-src]");
+
+      if (iframe && !iframe.getAttribute("src")) {
+        iframe.setAttribute("src", iframe.dataset.src);
+      }
+    }
+
+    function unloadModalVideo(modal) {
+      if (!modal) return;
+      const iframe = modal.querySelector("iframe[data-src]");
+
+      if (iframe) {
+        iframe.removeAttribute("src");
+      }
+    }
+
+    function closeModal(modal) {
+      if (!modal) return;
+
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      unloadModalVideo(modal);
+
+      if (!document.querySelector(".video-modal.open")) {
+        document.body.classList.remove("modal-open");
+      }
+    }
+
+    function closeAllModals() {
+      document.querySelectorAll(".video-modal.open").forEach(closeModal);
+    }
+
+    function openModal(modal) {
+      if (!modal) return;
+
+      closeAllModals();
+      loadModalVideo(modal);
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    }
+
+    techniqueLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        openModal(techniqueModal);
+      });
+    });
+
+    document.querySelectorAll(".video-modal-close").forEach((button) => {
+      button.addEventListener("click", () => {
+        closeModal(button.closest(".video-modal"));
+      });
+    });
+
+    document.querySelectorAll(".video-modal").forEach((modal) => {
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal(modal);
+        }
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeAllModals();
+      }
+    });
+
+    courseModules.forEach((module) => {
+      module.addEventListener("toggle", () => {
+        if (module.open) {
+          courseModules.forEach((otherModule) => {
+            if (otherModule !== module) {
+              otherModule.open = false;
+            }
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-next-module]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = document.getElementById(button.dataset.nextModule);
+        if (!target) return;
+
+        courseModules.forEach((module) => {
+          module.open = module === target;
+        });
+
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-next-lesson]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = document.getElementById(button.dataset.nextLesson);
+        if (!target) return;
+
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      });
+    });
+
+    const passingFinalQuiz = document.getElementById("passingFinalQuiz");
+    const passingFinalQuizResult = document.getElementById("passingFinalQuizResult");
+    const passingFinalNextButton = document.getElementById("passingFinalNextButton");
+    const passingNextModuleButton = document.getElementById("passingNextModuleButton");
+    const passingProgressCircle = document.getElementById("passingCourseProgressCircle");
+    const passingProgressValue = document.getElementById("passingCourseProgressValue");
+    const passingProgressStatus = document.getElementById("passingCourseProgressStatus");
+
+    function updatePassingProgress() {
+      const passed = localStorage.getItem("passingFinalQuizPassed") === "true";
+
+      if (passed) {
+        passingProgressCircle.style.background =
+          "conic-gradient(var(--energy) 100%, rgba(255,255,255,.12) 0)";
+        passingProgressValue.textContent = "100%";
+        passingProgressStatus.textContent = "Completed";
+        passingNextModuleButton.style.display = "inline-block";
+      } else {
+        passingProgressCircle.style.background =
+          "conic-gradient(var(--energy) 0%, rgba(255,255,255,.12) 0)";
+        passingProgressValue.textContent = "0%";
+        passingProgressStatus.textContent = "In Progress";
+        passingNextModuleButton.style.display = "none";
+      }
+    }
+
+    if (passingFinalQuiz) {
+      passingFinalQuiz.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const correctAnswers = {
+          pq1: "a",
+          pq2: "b",
+          pq3: "a",
+          pq4: "b",
+          pq5: "a",
+          pq6: "a",
+          pq7: "b",
+          pq8: "a",
+          pq9: "a",
+          pq10: "a"
+        };
+
+        let score = 0;
+        let answered = 0;
+
+        Object.entries(correctAnswers).forEach(([question, answer]) => {
+          const selected = passingFinalQuiz.querySelector(
+            `input[name="${question}"]:checked`
+          );
+
+          if (selected) {
+            answered += 1;
+
+            if (selected.value === answer) {
+              score += 1;
+            }
+          }
+        });
+
+        passingFinalQuizResult.classList.remove("show", "success", "error");
+        passingFinalNextButton.style.display = "none";
+
+        if (answered < 10) {
+          passingFinalQuizResult.textContent =
+            `Please answer all 10 questions. You have answered ${answered}.`;
+          passingFinalQuizResult.classList.add("show", "error");
+          return;
+        }
+
+        const percentage = score * 10;
+
+        if (score >= 8) {
+          localStorage.setItem("passingFinalQuizPassed", "true");
+
+          passingFinalQuizResult.innerHTML =
+            `🎉 Congratulations!<br><br>` +
+            `Score: ${score}/10 (${percentage}%)<br>` +
+            `You passed the Passing course.<br>` +
+            `Course Complete ✓`;
+
+          passingFinalQuizResult.classList.add("show", "success");
+          passingFinalNextButton.style.display = "inline-block";
+          updatePassingProgress();
+        } else {
+          localStorage.setItem("passingFinalQuizPassed", "false");
+
+          passingFinalQuizResult.innerHTML =
+            `Score: ${score}/10 (${percentage}%)<br><br>` +
+            `Passing score is 80%. Please review the lesson materials and try again.`;
+
+          passingFinalQuizResult.classList.add("show", "error");
+          updatePassingProgress();
+        }
+      });
+    }
+
+    updatePassingProgress();
+  </script>
+
+
+
+</body>
+</html>

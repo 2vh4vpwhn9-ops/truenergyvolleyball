@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -18,6 +18,8 @@
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
 
     body{
       font-family:Arial, Helvetica, sans-serif;
@@ -133,6 +135,26 @@
 
     .stat small{color:var(--muted)}
 
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:15px 24px;
+      border-radius:999px;
+      background:var(--energy);
+      color:#000;
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:13px;
+      border:none;
+      cursor:pointer;
+    }
+
+    .btn.outline{
+      background:transparent;
+      color:var(--energy);
+      border:1px solid var(--energy);
+    }
+
     .progress-circle{
       width:150px;
       height:150px;
@@ -173,177 +195,8 @@
     }
 
     .layout{
-      display:grid;
-      grid-template-columns:.9fr 1.1fr;
-      gap:24px;
+      display:block;
       margin-top:24px;
-    }
-
-    .module{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:18px;
-      border:1px solid var(--line);
-      border-radius:18px;
-      margin-bottom:12px;
-      background:rgba(0,0,0,.25);
-      transition:.25s;
-    }
-
-    .module:hover,
-    .module.active{
-      border-color:var(--energy);
-      transform:translateY(-2px);
-    }
-
-    .module small{
-      color:var(--energy);
-      font-weight:900;
-      text-transform:uppercase;
-      font-size:11px;
-    }
-
-    .module h3{
-      font-size:18px;
-      margin-top:5px;
-    }
-
-    .check{
-      width:24px;
-      height:24px;
-      border-radius:50%;
-      border:2px solid var(--line);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--energy);
-      font-weight:900;
-      font-size:13px;
-    }
-
-    .locked{
-      color:var(--muted);
-    }
-
-    .lesson-list{
-      margin-top:18px;
-      display:grid;
-      gap:10px;
-    }
-
-    .lesson{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:14px 16px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      color:var(--muted);
-      background:rgba(0,0,0,.25);
-    }
-
-    .lesson span:first-child{
-      color:var(--text);
-      font-weight:700;
-    }
-
-    .btn{
-      display:inline-block;
-      margin-top:20px;
-      padding:15px 24px;
-      border-radius:999px;
-      background:var(--energy);
-      color:#000;
-      font-weight:900;
-      text-transform:uppercase;
-      font-size:13px;
-      border:none;
-      cursor:pointer;
-    }
-
-    .btn.outline{
-      background:transparent;
-      color:var(--energy);
-      border:1px solid var(--energy);
-    }
-
-    .premium-box{
-      margin-top:20px;
-      padding:24px;
-      border-radius:22px;
-      border:1px solid rgba(200,255,0,.45);
-      background:linear-gradient(135deg, rgba(200,255,0,.12), rgba(18,140,255,.08));
-    }
-
-    .premium-box h3{
-      font-size:26px;
-      margin-bottom:12px;
-    }
-
-    .premium-box p{
-      color:var(--muted);
-      line-height:1.7;
-      margin-bottom:14px;
-    }
-
-    .premium-list{
-      display:grid;
-      gap:12px;
-      margin-top:18px;
-    }
-
-    .premium-list li{
-      list-style:none;
-      color:var(--muted);
-      padding-left:28px;
-      position:relative;
-      line-height:1.5;
-    }
-
-    .premium-list li::before{
-      content:"✓";
-      position:absolute;
-      left:0;
-      color:var(--energy);
-      font-weight:900;
-    }
-
-    .course-access{
-      margin-top:24px;
-    }
-
-    .cta{
-      margin-top:28px;
-      padding:32px;
-      border-radius:24px;
-      border:1px solid var(--energy);
-      background:linear-gradient(135deg, rgba(200,255,0,.15), rgba(18,140,255,.08));
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .cta h2{
-      font-size:30px;
-      margin-bottom:8px;
-    }
-
-    .cta p{color:var(--muted)}
-
-    .cta-actions{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-
-    /* Interactive course roadmap */
-    .roadmap-panel{
-      align-self:start;
     }
 
     .course-module{
@@ -371,9 +224,7 @@
       user-select:none;
     }
 
-    .course-module summary::-webkit-details-marker{
-      display:none;
-    }
+    .course-module summary::-webkit-details-marker{display:none}
 
     .module-heading small{
       display:block;
@@ -384,9 +235,7 @@
       margin-bottom:5px;
     }
 
-    .module-heading h3{
-      font-size:18px;
-    }
+    .module-heading h3{font-size:18px}
 
     .module-meta{
       display:flex;
@@ -417,7 +266,7 @@
     .module-lessons{
       display:grid;
       gap:8px;
-      padding:0 18px 18px;
+      padding:18px;
       border-top:1px solid var(--line);
     }
 
@@ -426,22 +275,80 @@
       align-items:center;
       justify-content:space-between;
       gap:16px;
+      width:100%;
       padding:12px 14px;
       border:1px solid rgba(255,255,255,.08);
       border-radius:12px;
       color:var(--muted);
       background:rgba(255,255,255,.025);
       font-size:13px;
+      text-align:left;
+      font-family:inherit;
+    }
+
+    button.module-lesson{
+      cursor:pointer;
     }
 
     .module-lesson strong{
       color:var(--text);
       font-size:13px;
+      display:flex;
+      align-items:center;
+      gap:11px;
+    }
+
+    .lesson-icon-badge{
+      width:32px;
+      height:32px;
+      flex:0 0 32px;
+      display:inline-grid;
+      place-items:center;
+      border-radius:10px;
+      font-size:18px;
+      line-height:1;
+      border:1px solid currentColor;
+      background:rgba(0,0,0,.42);
+      box-shadow:0 0 16px currentColor;
+    }
+
+    .icon-player,
+    .icon-play,
+    .icon-complete{
+      color:var(--energy);
+      text-shadow:0 0 10px rgba(200,255,0,.85);
+    }
+
+    .icon-ball{
+      color:#ffd43b;
+      text-shadow:0 0 10px rgba(255,212,59,.75);
+    }
+
+    .icon-warning{
+      color:#ff5151;
+      text-shadow:0 0 10px rgba(255,81,81,.8);
+    }
+
+    .icon-target,
+    .icon-lock{
+      color:#25a7ff;
+      text-shadow:0 0 10px rgba(37,167,255,.85);
+    }
+
+    .icon-quiz{
+      color:#c46cff;
+      text-shadow:0 0 10px rgba(196,108,255,.85);
     }
 
     .module-lesson.free{
       border-color:rgba(200,255,0,.35);
       background:rgba(200,255,0,.06);
+    }
+
+    .module-lesson.free:hover{
+      border-color:var(--energy);
+      background:rgba(200,255,0,.1);
+      transform:translateY(-1px);
     }
 
     .lesson-status{
@@ -450,9 +357,178 @@
       white-space:nowrap;
     }
 
-    .access-levels{
-      margin-top:28px;
+    .fundamentals-intro{
+      display:grid;
+      gap:22px;
+      padding:24px;
+      border:1px solid rgba(200,255,0,.24);
+      border-radius:18px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(200,255,0,.12), transparent 36%),
+        linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
     }
+
+    .fundamentals-kicker{
+      color:var(--energy);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:1px;
+      text-transform:uppercase;
+    }
+
+    .fundamentals-intro h2{
+      font-size:34px;
+      line-height:1.05;
+    }
+
+    .fundamentals-intro h3{
+      font-size:21px;
+      margin-bottom:9px;
+    }
+
+    .fundamentals-intro p{
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .fundamentals-highlight{
+      padding:18px;
+      border-left:4px solid var(--energy);
+      border-radius:14px;
+      background:rgba(200,255,0,.07);
+    }
+
+    .fundamentals-highlight strong{
+      color:var(--text);
+    }
+
+    .serve-types{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .serve-type{
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(0,0,0,.3);
+    }
+
+    .serve-type h3{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      margin-bottom:10px;
+      font-size:18px;
+    }
+
+    .serve-type-icon{
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      color:#000;
+      background:var(--energy);
+      font-size:16px;
+      flex:0 0 auto;
+    }
+
+    .serve-type.jump-float .serve-type-icon{
+      background:#ffc400;
+    }
+
+    .serve-type.topspin .serve-type-icon{
+      background:var(--blue);
+      color:#fff;
+    }
+
+    .serve-speed{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:20px;
+      border:1px solid rgba(18,140,255,.36);
+      border-radius:16px;
+      background:rgba(18,140,255,.08);
+    }
+
+    .serve-speed strong{
+      display:block;
+      color:var(--text);
+      font-size:28px;
+      margin-bottom:5px;
+    }
+
+    .serve-speed span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .course-outcomes{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+      list-style:none;
+    }
+
+    .course-outcomes li{
+      position:relative;
+      padding:12px 14px 12px 40px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--muted);
+      background:rgba(0,0,0,.24);
+      line-height:1.5;
+    }
+
+    .course-outcomes li::before{
+      content:"✓";
+      position:absolute;
+      left:15px;
+      color:var(--energy);
+      font-weight:900;
+    }
+
+    .fundamentals-quote{
+      padding:20px;
+      text-align:center;
+      border:1px solid var(--energy);
+      border-radius:16px;
+      color:var(--text);
+      font-size:18px;
+      font-weight:800;
+      line-height:1.5;
+      background:linear-gradient(135deg, rgba(200,255,0,.11), rgba(18,140,255,.06));
+    }
+
+    .lesson-list{
+      margin-top:18px;
+      display:grid;
+      gap:10px;
+    }
+
+    .lesson{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      color:var(--muted);
+      background:rgba(0,0,0,.25);
+    }
+
+    .lesson span:first-child{
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .course-access,
+    .access-levels{margin-top:28px}
 
     .access-grid{
       display:grid;
@@ -523,69 +599,484 @@
       box-shadow:0 0 14px rgba(18,140,255,.55);
     }
 
-    @media(max-width:900px){
-      .access-grid{
-        grid-template-columns:1fr;
-      }
+    .cta{
+      margin-top:28px;
+      padding:32px;
+      border-radius:24px;
+      border:1px solid var(--energy);
+      background:linear-gradient(135deg, rgba(200,255,0,.15), rgba(18,140,255,.08));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
     }
 
-    @media(max-width:520px){
-      .course-module summary{
-        align-items:flex-start;
-      }
-
-      .module-meta{
-        gap:6px;
-      }
-
-      .module-meta span:first-child{
-        display:none;
-      }
-
-      .module-lesson{
-        align-items:flex-start;
-      }
-    }
-
-
-    /* Free course introduction video */
-    .video-preview{
-      margin-top:18px;
-      padding:20px;
-      border:1px solid rgba(200,255,0,.4);
-      border-radius:20px;
-      background:linear-gradient(135deg, rgba(200,255,0,.08), rgba(18,140,255,.06));
-    }
-
-    .video-preview h3{
-      font-size:24px;
+    .cta h2{
+      font-size:30px;
       margin-bottom:8px;
     }
 
-    .video-preview p{
-      color:var(--muted);
-      line-height:1.6;
-      margin-bottom:16px;
+    .cta p{color:var(--muted)}
+
+    .cta-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
-    .video-frame{
-      width:100%;
-      max-width:420px;
-      margin:0 auto;
-      aspect-ratio:9 / 16;
-      border-radius:18px;
-      overflow:hidden;
+
+    .content-modal{
+      position:fixed;
+      inset:0;
+      z-index:1100;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(0,0,0,.9);
+      backdrop-filter:blur(10px);
+    }
+
+    .content-modal.open{display:flex}
+
+    #contentModalBody{
+      opacity:1;
+      transform:translateX(0);
+      transition:opacity .22s ease, transform .22s ease;
+    }
+
+    #contentModalBody.lesson-exit{
+      opacity:0;
+      transform:translateX(-28px);
+    }
+
+    #contentModalBody.lesson-enter{
+      opacity:0;
+      transform:translateX(28px);
+    }
+
+    .content-modal-card{
+      position:relative;
+      width:min(96vw, 1380px);
+      max-height:95vh;
+      overflow:auto;
+      padding:40px;
+      border:1px solid rgba(200,255,0,.48);
+      border-radius:24px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(200,255,0,.12), transparent 34%),
+        linear-gradient(145deg, rgba(25,31,23,.99), rgba(8,13,18,.99));
+      box-shadow:0 30px 100px rgba(0,0,0,.7);
+    }
+
+    .content-modal-close{
+      position:absolute;
+      top:16px;
+      right:16px;
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
       border:1px solid var(--line);
-      background:#000;
-      box-shadow:0 20px 50px rgba(0,0,0,.4);
+      border-radius:50%;
+      background:#111;
+      color:var(--energy);
+      font-size:24px;
+      font-weight:900;
+      cursor:pointer;
     }
 
-    .video-frame iframe{
+    .content-modal-close:hover{border-color:var(--energy)}
+
+    .lesson-article{
+      display:grid;
+      gap:20px;
+      padding-top:8px;
+    }
+
+    .lesson-article .lesson-kicker{
+      color:var(--energy);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      padding-right:55px;
+    }
+
+    .lesson-article h2{
+      font-size:clamp(34px, 4vw, 54px);
+      line-height:1.05;
+      padding-right:55px;
+    }
+
+    .lesson-article h3{
+      font-size:20px;
+      margin-bottom:8px;
+    }
+
+    .lesson-article p{
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .lesson-note{
+      padding:18px;
+      border-left:4px solid var(--energy);
+      border-radius:14px;
+      background:rgba(200,255,0,.07);
+    }
+
+    .lesson-warning{
+      padding:18px;
+      border-left:4px solid #ff5c5c;
+      border-radius:14px;
+      background:rgba(255,92,92,.08);
+    }
+
+    .lesson-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+
+    .lesson-with-visual{
+      display:block;
+    }
+
+    .lesson-main{
+      display:grid;
+      gap:20px;
+    }
+
+    .lesson-visuals{
+      position:static;
+      display:block;
+      width:100%;
+      margin:28px 0 30px;
+    }
+
+    .visual-card{
+      padding:14px;
+      border:1px solid rgba(200,255,0,.24);
+      border-radius:18px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(200,255,0,.12), transparent 48%),
+        rgba(0,0,0,.28);
+    }
+
+    .visual-card svg{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .visual-card strong{
+      display:block;
+      margin-top:10px;
+      color:var(--text);
+      font-size:14px;
+    }
+
+    .visual-card span{
+      display:block;
+      margin-top:5px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    .lesson-infographic{
+      width:100%;
+      max-width:1250px;
+      height:auto;
+      display:block;
+      margin:0 auto;
+      border-radius:22px;
+      border:2px solid rgba(200,255,0,.45);
+      box-shadow:0 30px 80px rgba(0,0,0,.58);
+      background:#050505;
+    }
+
+    .lesson-card{
+      padding:17px;
+      border:1px solid var(--line);
+      border-radius:15px;
+      background:rgba(0,0,0,.27);
+    }
+
+    .lesson-card strong{
+      display:block;
+      color:var(--text);
+      margin-bottom:7px;
+    }
+
+    .lesson-steps{
+      display:grid;
+      gap:10px;
+      list-style:none;
+      counter-reset:lessonStep;
+    }
+
+    .lesson-steps li{
+      counter-increment:lessonStep;
+      position:relative;
+      padding:14px 14px 14px 52px;
+      border:1px solid var(--line);
+      border-radius:13px;
+      color:var(--muted);
+      line-height:1.55;
+      background:rgba(0,0,0,.26);
+    }
+
+    .lesson-steps li::before{
+      content:counter(lessonStep);
+      position:absolute;
+      left:14px;
+      top:12px;
+      width:26px;
+      height:26px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:var(--energy);
+      color:#000;
+      font-size:12px;
+      font-weight:900;
+    }
+
+    .quiz-question{
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(0,0,0,.27);
+    }
+
+    .quiz-question h3{
+      font-size:17px;
+      line-height:1.45;
+      margin-bottom:13px;
+    }
+
+    .quiz-options{
+      display:grid;
+      gap:9px;
+    }
+
+    .quiz-option{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:12px;
+      color:var(--muted);
+      cursor:pointer;
+    }
+
+    .quiz-option:hover{
+      border-color:rgba(200,255,0,.5);
+      background:rgba(200,255,0,.05);
+    }
+
+    .quiz-option input{
+      margin-top:3px;
+      accent-color:var(--energy);
+    }
+
+    .quiz-result{
+      display:none;
+      padding:16px;
+      border-radius:14px;
+      font-weight:800;
+      line-height:1.5;
+    }
+
+    .quiz-result.show{display:block}
+    .quiz-result.success{
+      color:var(--energy);
+      border:1px solid rgba(200,255,0,.45);
+      background:rgba(200,255,0,.08);
+    }
+    .quiz-result.error{
+      color:#ff8d8d;
+      border:1px solid rgba(255,92,92,.45);
+      background:rgba(255,92,92,.08);
+    }
+
+    .content-action{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 21px;
+      border:0;
+      border-radius:999px;
+      background:var(--energy);
+      color:#000;
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:12px;
+      cursor:pointer;
+    }
+
+    .content-action.secondary{
+      background:transparent;
+      color:var(--energy);
+      border:1px solid var(--energy);
+    }
+
+    .quiz-next-action{
+      margin-top:14px;
+    }
+
+    .lesson-navigation{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:14px;
+      margin-top:26px;
+      padding-top:22px;
+      border-top:1px solid var(--line);
+    }
+
+    .lesson-nav-button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      padding:13px 18px;
+      border:1px solid rgba(200,255,0,.45);
+      border-radius:14px;
+      background:rgba(200,255,0,.06);
+      color:var(--energy);
+      font-family:inherit;
+      font-size:13px;
+      font-weight:900;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .lesson-nav-button:hover{
+      border-color:var(--energy);
+      background:rgba(200,255,0,.13);
+      transform:translateY(-1px);
+      box-shadow:0 0 22px rgba(200,255,0,.1);
+    }
+
+    .lesson-nav-button.next{
+      justify-self:end;
+      background:var(--energy);
+      color:#000;
+      border-color:var(--energy);
+    }
+
+    .lesson-nav-button.previous{
+      justify-self:start;
+    }
+
+    .lesson-nav-progress{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.7px;
+      white-space:nowrap;
+    }
+
+    .lesson-nav-spacer{min-width:1px}
+
+    .module-lesson.completed{
+      border-color:rgba(200,255,0,.65);
+      background:rgba(200,255,0,.08);
+    }
+
+    .module-lesson.unlocked{
+      border-color:var(--blue);
+      background:rgba(18,140,255,.09);
+    }
+
+    .module-lesson.interactive{
+      cursor:pointer;
+    }
+
+    .module-lesson.interactive:hover{
+      border-color:var(--energy);
+      transform:translateY(-1px);
+    }
+
+    .video-modal{
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(0,0,0,.88);
+      backdrop-filter:blur(10px);
+    }
+
+    .video-modal.open{display:flex}
+
+    .video-modal-card{
+      position:relative;
+      width:min(100%, 520px);
+      max-height:92vh;
+      overflow:auto;
+      padding:24px;
+      border:1px solid rgba(200,255,0,.48);
+      border-radius:24px;
+      background:linear-gradient(145deg, rgba(28,38,31,.98), rgba(10,17,24,.98));
+      box-shadow:0 30px 100px rgba(0,0,0,.65);
+    }
+
+    .video-modal-card h2{
+      padding-right:52px;
+      margin-bottom:18px;
+      font-size:28px;
+    }
+
+    .video-modal-close{
+      position:absolute;
+      top:16px;
+      right:16px;
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:#111;
+      color:var(--energy);
+      font-size:24px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .video-modal-close:hover{
+      border-color:var(--energy);
+      transform:scale(1.05);
+    }
+
+    .video-wrapper{
+      width:min(100%, 430px);
+      aspect-ratio:9 / 16;
+      margin:0 auto;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(200,255,0,.45);
+      background:#000;
+      box-shadow:0 16px 45px rgba(0,0,0,.45);
+    }
+
+    .video-wrapper iframe{
+      display:block;
       width:100%;
       height:100%;
       border:0;
-      display:block;
     }
+
+    body.modal-open{overflow:hidden}
 
     footer{
       text-align:center;
@@ -607,15 +1098,16 @@
         justify-content:center;
       }
 
-      .hero,
-      .layout{
-        grid-template-columns:1fr;
-      }
-
-      h1{font-size:44px}
-
-      .stats{
-        grid-template-columns:1fr 1fr;
+      .hero{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr}
+      .access-grid{grid-template-columns:1fr}
+      .serve-types{grid-template-columns:1fr}
+      .course-outcomes{grid-template-columns:1fr}
+      .lesson-grid{grid-template-columns:1fr}
+      .lesson-with-visual{display:block}
+      .lesson-visuals{
+        position:static;
+        display:block;
       }
 
       .cta{
@@ -623,17 +1115,58 @@
         align-items:flex-start;
       }
 
-      .cta-actions{
-        justify-content:flex-start;
-      }
+      .cta-actions{justify-content:flex-start}
     }
 
     @media(max-width:520px){
-      .stats{
+      .stats{grid-template-columns:1fr}
+      h1{font-size:38px}
+
+      .course-module summary{align-items:flex-start}
+      .module-meta span:first-child{display:none}
+      .module-lesson{align-items:flex-start}
+      .fundamentals-intro{padding:18px}
+      .fundamentals-intro h2{font-size:28px}
+      .lesson-visuals{grid-template-columns:1fr}
+      .serve-speed{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .content-modal{padding:8px}
+      .content-modal-card{
+        width:98vw;
+        max-height:97vh;
+        padding:20px;
+        border-radius:18px;
+      }
+      .lesson-infographic{
+        border-radius:14px;
+      }
+
+      .video-modal{padding:12px}
+      .video-modal-card{
+        padding:18px;
+        border-radius:18px;
+      }
+      .video-modal-card h2{font-size:22px}
+
+      .lesson-navigation{
         grid-template-columns:1fr;
       }
 
-      h1{font-size:38px}
+      .lesson-nav-button.previous,
+      .lesson-nav-button.next{
+        width:100%;
+        justify-self:stretch;
+      }
+
+      .lesson-nav-progress{
+        grid-row:1;
+        text-align:center;
+      }
+
+      .lesson-nav-spacer{display:none}
     }
   </style>
 </head>
@@ -646,7 +1179,7 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="index.html">Courses</a>
-      <a href="index.html" class="active">Serving</a>
+      <a href="serving.html" class="active">Serving</a>
       <a href="index.html">About</a>
       <a href="index.html">Contact</a>
     </nav>
@@ -660,109 +1193,231 @@
         <h1>Master Your <span>Serve</span></h1>
 
         <p>
-          Build a complete serving foundation through structured lessons, video examples,
-          drills, quizzes, and structured practice plans after purchase.
+          Build a complete serving foundation through structured lessons covering
+          float serve, jump float serve, jump topspin serve, technique correction,
+          safe landing, and a final knowledge check.
         </p>
 
         <div class="stats">
-          <div class="stat">
-            <strong>9</strong>
-            <small>Modules</small>
-          </div>
-
-          <div class="stat">
-            <strong>25+</strong>
-            <small>Video Lessons</small>
-          </div>
-
-          <div class="stat">
-            <strong>15+</strong>
-            <small>Training Drills</small>
-          </div>
-
-          <div class="stat">
-            <strong>2–3h</strong>
-            <small>Course Duration</small>
-          </div>
+          <div class="stat"><strong>4</strong><small>Course Modules</small></div>
+          <div class="stat"><strong>3</strong><small>Serve Types</small></div>
+          <div class="stat"><strong>10</strong><small>Final Quiz Questions</small></div>
+          <div class="stat"><strong>80%</strong><small>Passing Score</small></div>
         </div>
 
-        <a class="btn" href="#access">View Course Access</a>
+        <a class="btn" href="#modules">View Course Modules</a>
       </div>
 
       <div class="progress-box">
-        <div class="eyebrow">Course Access</div>
+        <div class="eyebrow">Your Progress</div>
 
-        <div class="progress-circle">
+        <div class="progress-circle" id="servingCourseProgressCircle">
           <div class="progress-inner">
-            <strong>🔒</strong>
-            <small>Locked</small>
+            <strong id="servingCourseProgressValue">0%</strong>
+            <small id="servingCourseProgressStatus">In Progress</small>
           </div>
         </div>
 
         <div class="progress-list">
-          <div><span>Preview</span><strong>Free</strong></div>
-          <div><span>Full Course</span><strong>Paid</strong></div>
+          <div><span>Final Quiz</span><strong>10 Questions</strong></div>
+          <div><span>Passing Score</span><strong>80%</strong></div>
         </div>
+
+        <a
+          class="btn"
+          id="heroNextModuleButton"
+          href="passing.html"
+          style="display:none; width:100%; text-align:center;">
+          Next Module
+        </a>
       </div>
     </section>
 
     <section class="layout" id="modules">
+      <div class="panel">
 
-      <div class="panel roadmap-panel">
         <div class="eyebrow">Course Roadmap</div>
 
-        <details class="course-module" open>
+        <details class="course-module">
           <summary>
             <div class="module-heading">
               <small>Module 1</small>
-              <h3>Fundamentals</h3>
+              <h3>Serving Fundamentals</h3>
             </div>
             <div class="module-meta">
-              <span>8 lessons</span>
+              <span>Introduction</span>
               <span class="module-arrow">⌄</span>
             </div>
           </summary>
 
           <div class="module-lessons">
-            <div class="module-lesson free">
-              <strong>🔓 Course Introduction</strong>
-              <span class="lesson-status">Free</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Types of Volleyball Serves</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Ready Position</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Grip & Ball Control</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Toss Fundamentals</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Weight Transfer</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Basic Body Mechanics</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Fundamentals Quiz</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
+            <article class="fundamentals-intro">
+              <div>
+                <div class="fundamentals-kicker">Welcome to the Serving Course</div>
+                <h2>Serving Is the First Attack</h2>
+              </div>
+
+              <p>
+                Serving is much more than simply putting the ball into play. It is the first attack
+                of every rally and one of the most important skills in modern volleyball.
+              </p>
+
+              <p>
+                Unlike every other volleyball skill, the serve begins with complete control of the ball.
+                There is no blocker, no setter, and no opponent touching the ball before you.
+                Every serve is an opportunity to score directly, force a poor reception, or immediately
+                put the opposing team under pressure.
+              </p>
+
+              <div class="fundamentals-highlight">
+                <p>
+                  <strong>A strong serve can change the entire rally.</strong>
+                  It can score an ace, disrupt the opponent's offensive system, create an easier defensive
+                  situation, and build confidence in important moments of the match.
+                </p>
+              </div>
+
+              <aside class="lesson-visuals" aria-label="Serving fundamentals">
+                <img
+                  class="lesson-infographic"
+                  src="images/serving-fundamentals.png"
+                  alt="Professional volleyball player preparing to serve on an indoor court"
+                />
+              </aside>
+
+              <div>
+                <div class="fundamentals-kicker">Types of Volleyball Serves</div>
+                <h2>Three Techniques. Three Different Weapons.</h2>
+              </div>
+
+              <div class="serve-types">
+                <section class="serve-type float">
+                  <h3><span class="serve-type-icon">1</span>Float Serve</h3>
+                  <p>
+                    The float serve is one of the most consistent and accurate serving techniques.
+                    Because the ball has little or no spin, it can move unpredictably through the air,
+                    making reception more difficult.
+                  </p>
+                </section>
+
+                <section class="serve-type jump-float">
+                  <h3><span class="serve-type-icon">2</span>Jump Float Serve</h3>
+                  <p>
+                    The jump float serve combines the unpredictable flight of a float serve with
+                    additional speed and a higher contact point. It creates more pressure while
+                    preserving accuracy and control.
+                  </p>
+                </section>
+
+                <section class="serve-type topspin">
+                  <h3><span class="serve-type-icon">3</span>Jump Topspin Serve</h3>
+                  <p>
+                    The jump topspin serve is the fastest and most aggressive serving technique.
+                    Strong topspin allows the ball to travel at high speed and still drop sharply
+                    into the court.
+                  </p>
+                </section>
+              </div>
+
+              <div class="serve-speed">
+                <div>
+                  <strong>100+ km/h</strong>
+                  <span>Powerful jump serves at elite levels can exceed this speed.</span>
+                </div>
+                <div>
+                  <strong>≈ 120 km/h</strong>
+                  <span>Exceptional serves can reach speeds near 75 mph.</span>
+                </div>
+              </div>
+
+              <div>
+                <div class="fundamentals-kicker">What You Will Learn</div>
+                <h2>Build a Complete Serving Game</h2>
+              </div>
+
+              <ul class="course-outcomes">
+                <li>Float Serve Technique</li>
+                <li>Jump Float Serve Technique</li>
+                <li>Jump Topspin Serve Technique</li>
+                <li>Common Serving Mistakes</li>
+                <li>Serving Accuracy and Targets</li>
+                <li>Game Strategy and Pressure Control</li>
+                <li>Practice Drills and Challenges</li>
+                <li>Quizzes and Progress Tracking</li>
+              </ul>
+
+              <p>
+                Each module builds on the previous one. You will progress from control and consistency
+                to greater speed, power, accuracy, and tactical decision-making.
+              </p>
+
+              <blockquote class="fundamentals-quote">
+                “Every great rally begins with a great serve. Master your serve, and you will control the game.”
+              </blockquote>
+            </article>
           </div>
         </details>
-        <details class="course-module">
+
+        <details class="course-module" id="module2">
           <summary>
             <div class="module-heading">
               <small>Module 2</small>
               <h3>Float Serve</h3>
+            </div>
+            <div class="module-meta">
+              <span>2 lessons</span>
+              <span class="module-arrow">⌄</span>
+            </div>
+          </summary>
+
+          <div class="module-lessons">
+            <button class="module-lesson free" type="button"
+              data-video-id="QyB979bCw9k"
+              data-video-title="Starting Position and Contact Point">
+              <strong><span class="lesson-icon-badge icon-player">🏃</span>Starting Position &amp; Contact Point</strong>
+              <span class="lesson-status">Lesson 1</span>
+            </button>
+
+            <button class="module-lesson free" type="button"
+              data-video-id="9_1fXhVJTGU"
+              data-video-title="Float Serve Example">
+              <strong><span class="lesson-icon-badge icon-play">▶</span>Float Serve Example</strong>
+              <span class="lesson-status">Lesson 2</span>
+            </button>
+
+            <button class="module-lesson interactive" type="button" data-content-lesson="ball-flight">
+              <strong><span class="lesson-icon-badge icon-ball">🏐</span>Ball Flight and Accuracy</strong>
+              <span class="lesson-status">Lesson 3</span>
+            </button>
+
+            <button class="module-lesson interactive" type="button" data-content-lesson="common-mistakes">
+              <strong><span class="lesson-icon-badge icon-warning">⚠</span>Common Mistakes</strong>
+              <span class="lesson-status">Lesson 4</span>
+            </button>
+
+            <button class="module-lesson interactive" type="button" data-content-lesson="practice-drill">
+              <strong><span class="lesson-icon-badge icon-target">🎯</span>Practice Drill</strong>
+              <span class="lesson-status">Lesson 5</span>
+            </button>
+
+            <button class="module-lesson interactive" id="practiceCompleteButton" type="button" disabled>
+              <strong><span class="lesson-icon-badge icon-complete">✓</span>Mark Practice Complete</strong>
+              <span class="lesson-status" id="practiceStatus">Locked</span>
+            </button>
+
+            <button class="module-lesson interactive" type="button" data-content-lesson="quiz">
+              <strong><span class="lesson-icon-badge icon-quiz">📋</span>Quiz</strong>
+              <span class="lesson-status">Lesson 6</span>
+            </button>
+
+          </div>
+        </details>
+
+        <details class="course-module" id="module3">
+          <summary>
+            <div class="module-heading">
+              <small>Module 3</small>
+              <h3>Jump Float Serve</h3>
             </div>
             <div class="module-meta">
               <span>6 lessons</span>
@@ -771,454 +1426,1805 @@
           </summary>
 
           <div class="module-lessons">
-            <div class="module-lesson free" style="display:block;">
-              <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;">
-                <strong>🔓 Lesson 1 — Float Serve Technique</strong>
-                <span class="lesson-status">Free</span>
-              </div>
+            <button class="module-lesson free" type="button"
+              data-video-id="QyB979bCw9k"
+              data-video-title="Jump Float Serve Technique">
+              <strong><span class="lesson-icon-badge icon-play">▶</span>Jump Float Serve Technique</strong>
+              <span class="lesson-status">Video</span>
+            </button>
 
-              <div style="width:100%;max-width:340px;aspect-ratio:9/16;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.15);background:#000;">
-                <iframe
-                  src="https://www.youtube.com/embed/QyB979bCw9k"
-                  title="Float Serve Technique — True Energy Volleyball"
-                  loading="lazy"
-                  style="width:100%;height:100%;border:0;display:block;"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen>
-                </iframe>
-              </div>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Contact Point</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Ball Trajectory</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Footwork & Balance</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Accuracy Drills</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Module Skill Check</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
+            <button class="module-lesson free" type="button"
+              data-video-id="EWARA9Jg1Lc"
+              data-video-title="Approach Rhythm">
+              <strong><span class="lesson-icon-badge icon-play">▶</span>Approach Rhythm</strong>
+              <span class="lesson-status">Video</span>
+            </button>
+
+            <button class="module-lesson free" type="button"
+              data-video-id="ggfjgtwV92Y"
+              data-video-title="Jump Float Serve Common Mistakes">
+              <strong><span class="lesson-icon-badge icon-warning">⚠</span>Common Mistakes</strong>
+              <span class="lesson-status">Video</span>
+            </button>
+
+            <button class="module-lesson interactive" type="button" data-content-lesson="jump-float-takeoff">
+              <strong><span class="lesson-icon-badge icon-player">🚀</span>Take-Off Mechanics</strong>
+              <span class="lesson-status">Lesson 4</span>
+            </button>
+
+            <button class="module-lesson interactive" type="button" data-content-lesson="jump-float-contact">
+              <strong><span class="lesson-icon-badge icon-player">✋</span>Contact in the Air</strong>
+              <span class="lesson-status">Lesson 5</span>
+            </button>
+
+            <button class="module-lesson interactive" type="button" data-content-lesson="jump-float-landing">
+              <strong><span class="lesson-icon-badge icon-player">🛬</span>Safe Landing</strong>
+              <span class="lesson-status">Lesson 6</span>
+            </button>
           </div>
         </details>
-        <details class="course-module">
-          <summary>
-            <div class="module-heading">
-              <small>Module 3</small>
-              <h3>Jump Float Serve</h3>
-            </div>
-            <div class="module-meta">
-              <span>5 lessons</span>
-              <span class="module-arrow">⌄</span>
-            </div>
-          </summary>
 
-          <div class="module-lessons">
-            <div class="module-lesson">
-              <strong>🔒 Jump Mechanics</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Toss Timing</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Contact in the Air</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Landing Technique</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Rhythm Development</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-          </div>
-        </details>
-        <details class="course-module">
+        <details class="course-module" id="module4">
           <summary>
             <div class="module-heading">
               <small>Module 4</small>
               <h3>Jump Topspin Serve</h3>
             </div>
             <div class="module-meta">
-              <span>5 lessons</span>
+              <span>9 lessons</span>
               <span class="module-arrow">⌄</span>
             </div>
           </summary>
 
           <div class="module-lessons">
-            <div class="module-lesson">
-              <strong>🔒 Topspin Fundamentals</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Approach & Jump Timing</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Powerful Arm Swing</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Wrist Snap</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Power Control</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
+
+            <button class="module-lesson free" type="button"
+              data-video-id="eym4dgByw_Q"
+              data-video-title="Jump Serve Toss Technique">
+              <strong><span class="lesson-icon-badge icon-play">▶</span>Jump Serve Toss Technique</strong>
+              <span class="lesson-status">Video</span>
+            </button>
+
+            <button class="module-lesson free" type="button"
+              data-video-id="WxsobS7zn2A"
+              data-video-title="Jump Serve Technique and Mistakes — Part 1">
+              <strong><span class="lesson-icon-badge icon-warning">⚠</span>Technique and Mistakes — Part 1</strong>
+              <span class="lesson-status">Video</span>
+            </button>
+
+            <button class="module-lesson free" type="button"
+              data-video-id="KvH4CNRFego"
+              data-video-title="Jump Serve Technique and Mistakes — Part 2">
+              <strong><span class="lesson-icon-badge icon-warning">⚠</span>Technique and Mistakes — Part 2</strong>
+              <span class="lesson-status">Video</span>
+            </button>
+
+            <button class="module-lesson interactive" type="button" data-content-lesson="topspin-fundamentals">
+              <strong><span class="lesson-icon-badge icon-ball">🌀</span>Topspin Fundamentals</strong>
+              <span class="lesson-status">Lesson 5</span>
+            </button>
+            <button class="module-lesson interactive" type="button" data-content-lesson="approach-jump">
+              <strong><span class="lesson-icon-badge icon-player">👣</span>Approach and Jump Timing</strong>
+              <span class="lesson-status">Lesson 6</span>
+            </button>
+            <button class="module-lesson interactive" type="button" data-content-lesson="powerful-arm-swing">
+              <strong><span class="lesson-icon-badge icon-player">💪</span>Powerful Arm Swing</strong>
+              <span class="lesson-status">Lesson 7</span>
+            </button>
+            <button class="module-lesson interactive" type="button" data-content-lesson="wrist-snap-rotation">
+              <strong><span class="lesson-icon-badge icon-player">✋</span>Wrist Snap and Ball Rotation</strong>
+              <span class="lesson-status">Lesson 8</span>
+            </button>
+            <button
+              class="module-lesson interactive"
+              type="button"
+              data-content-lesson="jump-serve-skill-check">
+              <strong>
+                <span class="lesson-icon-badge icon-quiz">📋</span>
+                Jump Serve Skill Check
+              </strong>
+              <span class="lesson-status">Lesson 9</span>
+            </button>
           </div>
         </details>
-        <details class="course-module">
+
+        <details class="course-module" id="servingFinalQuizModule">
           <summary>
             <div class="module-heading">
-              <small>Module 5</small>
-              <h3>Accuracy & Targets</h3>
+              <small>Final Quiz</small>
+              <h3>Serving Knowledge Check</h3>
             </div>
             <div class="module-meta">
-              <span>5 lessons</span>
+              <span>10 questions · 80% to pass</span>
               <span class="module-arrow">⌄</span>
             </div>
           </summary>
 
           <div class="module-lessons">
-            <div class="module-lesson">
-              <strong>🔒 Zone Serving</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Short & Deep Serves</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Serving Weak Passers</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Target Practice</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Accuracy Challenge</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
+            <form class="lesson-article" id="servingFinalQuiz">
+              <div class="lesson-kicker">Final Course Assessment</div>
+              <h2>Serving Mastery Quiz</h2>
+
+              <p>
+                Answer all 10 questions. You need at least 8 correct answers to unlock the next module.
+              </p>
+
+              <div class="quiz-question">
+                <h3>1. Why is the serve considered the first attack in volleyball?</h3>
+                <div class="quiz-options">
+                  <label class="quiz-option"><input type="radio" name="fq1" value="a"> Because it always scores an ace</label>
+                  <label class="quiz-option"><input type="radio" name="fq1" value="b"> Because it can immediately pressure the opponent and control the rally</label>
+                  <label class="quiz-option"><input type="radio" name="fq1" value="c"> Because it is performed close to the net</label>
+                </div>
+              </div>
+
+              <div class="quiz-question">
+                <h3>2. What creates the unpredictable movement of a float serve?</h3>
+                <div class="quiz-options">
+                  <label class="quiz-option"><input type="radio" name="fq2" value="a"> Heavy topspin</label>
+                  <label class="quiz-option"><input type="radio" name="fq2" value="b"> Little or no ball rotation</label>
+                  <label class="quiz-option"><input type="radio" name="fq2" value="c"> A very high toss</label>
+                </div>
+              </div>
+
+              <div class="quiz-question">
+                <h3>3. Where should the ball be contacted during a float serve?</h3>
+                <div class="quiz-options">
+                  <label class="quiz-option"><input type="radio" name="fq3" value="a"> Through the centre with a firm, open hand</label>
+                  <label class="quiz-option"><input type="radio" name="fq3" value="b"> Under the ball with a loose wrist</label>
+                  <label class="quiz-option"><input type="radio" name="fq3" value="c"> On the side of the ball with wrist snap</label>
+                </div>
+              </div>
+
+              <div class="quiz-question">
+                <h3>4. What should the wrist do at float serve contact?</h3>
+                <div class="quiz-options">
+                  <label class="quiz-option"><input type="radio" name="fq4" value="a"> Snap strongly</label>
+                  <label class="quiz-option"><input type="radio" name="fq4" value="b"> Stay firm and quiet</label>
+                  <label class="quiz-option"><input type="radio" name="fq4" value="c"> Move around the side of the ball</label>
+                </div>
+              </div>
+
+              <div class="quiz-question">
+                <h3>5. What is the main purpose of a controlled toss?</h3>
+                <div class="quiz-options">
+                  <label class="quiz-option"><input type="radio" name="fq5" value="a"> To make every serve look different</label>
+                  <label class="quiz-option"><input type="radio" name="fq5" value="b"> To create a repeatable contact point and timing</label>
+                  <label class="quiz-option"><input type="radio" name="fq5" value="c"> To send the ball as high as possible</label>
+                </div>
+              </div>
+
+              <div class="quiz-question">
+                <h3>6. What is the goal of the jump float take-off?</h3>
+                <div class="quiz-options">
+                  <label class="quiz-option"><input type="radio" name="fq6" value="a"> Jump as high as possible without control</label>
+                  <label class="quiz-option"><input type="radio" name="fq6" value="b"> Arrive behind the ball with balance and controlled forward movement</label>
+                  <label class="quiz-option"><input type="radio" name="fq6" value="c"> Jump sideways toward the target</label>
+                </div>
+              </div>
+
+              <div class="quiz-question">
+                <h3>7. When should jump float contact normally occur?</h3>
+                <div class="quiz-options">
+                  <label class="quiz-option"><input type="radio" name="fq7" value="a"> Near the top of the jump and slightly in front of the hitting shoulder</label>
+                  <label class="quiz-option"><input type="radio" name="fq7" value="b"> After the player begins landing</label>
+                  <label class="quiz-option"><input type="radio" name="fq7" value="c"> Directly above and behind the head</label>
+                </div>
+              </div>
+
+              <div class="quiz-question">
+                <h3>8. What is the safest landing after a jump serve?</h3>
+                <div class="quiz-options">
+                  <label class="quiz-option"><input type="radio" name="fq8" value="a"> Stiff legs on one foot</label>
+                  <label class="quiz-option"><input type="radio" name="fq8" value="b"> Soft, balanced landing on both feet</label>
+                  <label class="quiz-option"><input type="radio" name="fq8" value="c"> Crossing the feet while turning</label>
+                </div>
+              </div>
+
+              <div class="quiz-question">
+                <h3>9. What makes a jump topspin serve different from a jump float serve?</h3>
+                <div class="quiz-options">
+                  <label class="quiz-option"><input type="radio" name="fq9" value="a"> It uses strong topspin, speed, and a wrist snap</label>
+                  <label class="quiz-option"><input type="radio" name="fq9" value="b"> It must have no ball rotation</label>
+                  <label class="quiz-option"><input type="radio" name="fq9" value="c"> It is always performed without an approach</label>
+                </div>
+              </div>
+
+              <div class="quiz-question">
+                <h3>10. What should a server choose before beginning an accuracy serve?</h3>
+                <div class="quiz-options">
+                  <label class="quiz-option"><input type="radio" name="fq10" value="a"> A specific target or court zone</label>
+                  <label class="quiz-option"><input type="radio" name="fq10" value="b"> A different toss every time</label>
+                  <label class="quiz-option"><input type="radio" name="fq10" value="c"> Maximum power without direction</label>
+                </div>
+              </div>
+
+              <button class="content-action" type="submit">Submit Final Quiz</button>
+
+              <div class="quiz-result" id="servingFinalQuizResult"></div>
+
+              <a
+                class="content-action quiz-next-action"
+                id="servingNextModuleButton"
+                href="passing.html"
+                style="display:none;">
+                Unlock Next Module →
+              </a>
+            </form>
           </div>
         </details>
-        <details class="course-module">
-          <summary>
-            <div class="module-heading">
-              <small>Module 6</small>
-              <h3>Game Strategy</h3>
-            </div>
-            <div class="module-meta">
-              <span>5 lessons</span>
-              <span class="module-arrow">⌄</span>
-            </div>
-          </summary>
 
-          <div class="module-lessons">
-            <div class="module-lesson">
-              <strong>🔒 Reading the Opponent</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Choosing a Target</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Risk vs Reward</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Serving Rotations</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Match Situations</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-          </div>
-        </details>
-        <details class="course-module">
-          <summary>
-            <div class="module-heading">
-              <small>Module 7</small>
-              <h3>Common Mistakes</h3>
-            </div>
-            <div class="module-meta">
-              <span>5 lessons</span>
-              <span class="module-arrow">⌄</span>
-            </div>
-          </summary>
-
-          <div class="module-lessons">
-            <div class="module-lesson">
-              <strong>🔒 Toss Errors</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Foot Faults</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Contact Mistakes</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Timing Problems</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Fixing Inconsistency</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-          </div>
-        </details>
-        <details class="course-module">
-          <summary>
-            <div class="module-heading">
-              <small>Module 8</small>
-              <h3>Pressure Drills</h3>
-            </div>
-            <div class="module-meta">
-              <span>5 lessons</span>
-              <span class="module-arrow">⌄</span>
-            </div>
-          </summary>
-
-          <div class="module-lessons">
-            <div class="module-lesson">
-              <strong>🔒 Serving Challenges</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Competition Drills</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Match Simulation</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Mental Focus</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Confidence Building</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-          </div>
-        </details>
-        <details class="course-module">
-          <summary>
-            <div class="module-heading">
-              <small>Module 9</small>
-              <h3>Weekly Training Plan</h3>
-            </div>
-            <div class="module-meta">
-              <span>5 lessons</span>
-              <span class="module-arrow">⌄</span>
-            </div>
-          </summary>
-
-          <div class="module-lessons">
-            <div class="module-lesson">
-              <strong>🔒 Four-Week Program</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Daily Practice Schedule</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Serving Tracker</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Self-Evaluation</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-            <div class="module-lesson">
-              <strong>🔒 Next Steps</strong>
-              <span class="lesson-status">Locked</span>
-            </div>
-          </div>
-        </details>
-      </div>
-
-      <div class="panel">
-        <div class="eyebrow" style="margin-top:28px;">Premium Lesson</div>
-        <h2>Module 2 — Float Serve</h2>
-
-        <div class="premium-box">
-          <h3>🔒 This lesson is available after purchase</h3>
-
-          <p>
-            This module includes detailed serving technique, step-by-step video examples,
-            common mistakes, correction drills, skill checks, quizzes, and progress tracking.
-          </p>
-
-          <p>
-            To protect the full training method, technical details are available only
-            inside the paid course.
-          </p>
-
-          <ul class="premium-list">
-            <li>HD coaching videos for each technical element.</li>
-            <li>Step-by-step breakdown of the float serve.</li>
-            <li>Common mistakes and correction points.</li>
-            <li>Drills for body position, contact, balance, and ball control.</li>
-            <li>Quiz and skill check after the module.</li>
-          </ul>
-
-          <a class="btn" href="#access">Unlock This Course</a>
-        </div>
-
-        <div class="lesson-list">
-          <div class="lesson">
-            <span>🔓 Preview — Course Introduction</span>
-            <span>Free</span>
-          </div>
-
-          <div class="lesson">
-            <span>🔒 Float Serve Technique</span>
-            <span>Locked</span>
-          </div>
-
-          <div class="lesson">
-            <span>🔒 Body Position</span>
-            <span>Locked</span>
-          </div>
-
-          <div class="lesson">
-            <span>🔒 Contact & Ball Flight</span>
-            <span>Locked</span>
-          </div>
-
-          <div class="lesson">
-            <span>🔒 Drills & Skill Check</span>
-            <span>Locked</span>
-          </div>
-        </div>
-      </div>
-
-    </section>
-
-    <section class="panel course-access" id="access">
-      <div class="eyebrow">Course Access</div>
-
-      <div class="lesson-list">
-        <div class="lesson">
-          <span>🔓 Free Preview — Course Introduction</span>
-          <span>Free</span>
-        </div>
-
-        <div class="lesson">
-          <span>🔒 Full Serving Technique Library</span>
-          <span>Paid</span>
-        </div>
-
-        <div class="lesson">
-          <span>🔒 All Serving Video Lessons</span>
-          <span>Paid</span>
-        </div>
-
-        <div class="lesson">
-          <span>🔒 All Drills & Practice Plans</span>
-          <span>Paid</span>
-        </div>
-
-        <div class="lesson">
-          <span>🔒 Quizzes & Progress Tracking</span>
-          <span>Paid</span>
-        </div>
-
-        <div class="lesson">
-          <span>🏆 Full Academy Bundle</span>
-          <span>Best Value</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel access-levels" id="access-levels">
-      <div class="eyebrow">Access Levels</div>
-      <h2>Choose How You Learn</h2>
-
-      <div class="access-grid">
-        <article class="access-card guest">
-          <div class="access-badge">
-            <span class="access-dot"></span>
-            Guest
-          </div>
-          <h3>Explore the Course</h3>
-          <ul>
-            <li>View all course modules.</li>
-            <li>View the names of every lesson.</li>
-            <li>Open the free course introduction.</li>
-          </ul>
-        </article>
-
-        <article class="access-card student">
-          <div class="access-badge">
-            <span class="access-dot"></span>
-            Student
-          </div>
-          <h3>Complete the Course</h3>
-          <ul>
-            <li>Open every lesson in the course.</li>
-            <li>Complete quizzes and skill checks.</li>
-            <li>Track course and module progress.</li>
-          </ul>
-        </article>
-
-        <article class="access-card coach-level">
-          <div class="access-badge">
-            <span class="access-dot"></span>
-            Coach
-          </div>
-          <h3>Manage Player Learning</h3>
-          <ul>
-            <li>Everything included with Student access.</li>
-            <li>Review student course progress.</li>
-            <li>Check quiz and skill-check results.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div>
-        <h2>Unlock Full Serving Course</h2>
-
-        <p>
-          Get access to all serving lessons, video examples, drills, quizzes,
-          progress tracking, and structured practice plans.
-        </p>
-      </div>
-
-      <div class="cta-actions">
-        <a class="btn outline" href="#">Buy Serving Course</a>
-        <a class="btn" href="#">Unlock Full Academy</a>
-      </div>
+</div>
     </section>
 
   </main>
 
-  <footer>
-    © 2026 True Energy Volleyball. All rights reserved.
-  </footer>
+
+  <div class="content-modal" id="contentModal" aria-hidden="true">
+    <div class="content-modal-card" role="dialog" aria-modal="true" aria-labelledby="contentModalTitle">
+      <div id="contentModalBody"></div>
+    </div>
+  </div>
+
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-card" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+      <button class="video-modal-close" id="videoModalClose" type="button" aria-label="Close video">×</button>
+      <h2 id="videoModalTitle">Serving Video</h2>
+
+      <div class="video-wrapper">
+        <iframe
+          id="videoFrame"
+          src=""
+          title="Serving lesson | True Energy Volleyball"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+<script>
+
+    const contentModal = document.getElementById("contentModal");
+    const contentModalBody = document.getElementById("contentModalBody");
+    const contentLessonButtons = document.querySelectorAll("[data-content-lesson]");
+    const practiceCompleteButton = document.getElementById("practiceCompleteButton");
+    const practiceStatus = document.getElementById("practiceStatus");
+
+    const floatServeProgress = {
+      drillOpened: localStorage.getItem("floatServeDrillOpened") === "true",
+      quizPassed: localStorage.getItem("floatServeQuizPassed") === "true",
+      practiceComplete: localStorage.getItem("floatServePracticeComplete") === "true"
+    };
+
+    const lessonContent = {
+      "ball-flight": `
+        <article class="lesson-article">
+          <div class="lesson-kicker">Lesson 3 · Float Serve</div>
+          <h2 id="contentModalTitle">Ball Flight and Accuracy</h2>
+
+          <div class="lesson-with-visual">
+            <div class="lesson-main">
+              <p>
+                A successful float serve should travel with little or no spin. When the ball does not rotate,
+                the airflow around it becomes unstable and can make the ball move unexpectedly before it reaches
+                the receiver.
+              </p>
+
+              <div class="lesson-note">
+                <p><strong>The goal is not only power.</strong> A complete server controls the height, direction,
+                depth, and target of the ball.</p>
+              </div>
+
+              <aside class="lesson-visuals" aria-label="Float serve visual guide">
+                <img
+                  class="lesson-infographic"
+                  src="images/float-serve-ball-flight-accuracy.png"
+                  alt="Float serve ball flight and accuracy guide showing centre contact, little or no spin, and the opponent court target area"
+                />
+              </aside>
+
+              <div class="lesson-grid">
+                <div class="lesson-card">
+                  <strong>Firm Contact</strong>
+                  <p>Strike the centre of the ball with a firm, open hand.</p>
+                </div>
+                <div class="lesson-card">
+                  <strong>Minimal Spin</strong>
+                  <p>Keep the wrist stable so the ball leaves the hand without unnecessary rotation.</p>
+                </div>
+                <div class="lesson-card">
+                  <strong>Controlled Height</strong>
+                  <p>Send the ball safely over the net without giving the receiver extra time.</p>
+                </div>
+                <div class="lesson-card">
+                  <strong>Specific Target</strong>
+                  <p>Choose a zone or space between passers before beginning the serve.</p>
+                </div>
+              </div>
+
+              <h3>Accuracy Targets</h3>
+              <ul class="lesson-steps">
+                <li>Serve deep into Zone 1.</li>
+                <li>Serve deep into Zone 5.</li>
+                <li>Serve short into Zone 2 or Zone 4.</li>
+                <li>Target the space between two passers.</li>
+              </ul>
+
+              <nav class="lesson-navigation" aria-label="Lesson navigation">
+                <button class="lesson-nav-button previous" type="button" data-nav-video="9_1fXhVJTGU" data-nav-video-title="Float Serve Example">
+                  ← Previous Lesson
+                </button>
+                <span class="lesson-nav-progress">Lesson 3 of 6</span>
+                <button class="lesson-nav-button next" type="button" data-nav-lesson="common-mistakes">
+                  Common Mistakes →
+                </button>
+              </nav>
+            </div>
+
+
+          </div>
+        </article>
+      `,
+
+      "common-mistakes": `
+        <article class="lesson-article">
+          <div class="lesson-kicker">Lesson 4 · Technique Correction</div>
+          <h2 id="contentModalTitle">Common Float Serve Mistakes</h2>
+
+          <p>
+            Most float serve problems come from inconsistent preparation or from creating unwanted spin.
+            Correcting these errors will improve control before you try to increase power.
+          </p>
+
+          <div class="lesson-grid">
+            <div class="lesson-card">
+              <strong>Unstable Toss</strong>
+              <p>The ball is tossed too high, too far forward, or outside the hitting shoulder.</p>
+            </div>
+            <div class="lesson-card">
+              <strong>Soft Contact</strong>
+              <p>The hand collapses at contact instead of striking firmly through the centre of the ball.</p>
+            </div>
+            <div class="lesson-card">
+              <strong>Wrist Movement</strong>
+              <p>Snapping the wrist creates spin and removes the unpredictable float effect.</p>
+            </div>
+            <div class="lesson-card">
+              <strong>Poor Balance</strong>
+              <p>Leaning sideways or falling forward makes direction and accuracy inconsistent.</p>
+            </div>
+          </div>
+
+          <div class="lesson-note">
+            <p><strong>Watch the correction video:</strong> See the most common float serve errors and how to fix them.</p>
+            <button
+              class="content-action"
+              type="button"
+              onclick="closeContentLesson(); openVideo('ggfjgtwV92Y', 'Common Float Serve Mistakes');">
+              Watch Common Mistakes Video
+            </button>
+          </div>
+
+          <div class="lesson-warning">
+            <p><strong>Important:</strong> Do not chase speed before you can repeatedly produce a clean,
+            spin-free ball flight.</p>
+          </div>
+
+          <h3>Correction Checklist</h3>
+          <ul class="lesson-steps">
+            <li>Use the same starting position before every serve.</li>
+            <li>Keep the toss low and directly in front of the hitting shoulder.</li>
+            <li>Contact the middle of the ball with a firm palm.</li>
+            <li>Finish balanced and watch the ball's rotation.</li>
+          </ul>
+
+          <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <button class="lesson-nav-button previous" type="button" data-nav-lesson="ball-flight">
+              ← Ball Flight &amp; Accuracy
+            </button>
+            <span class="lesson-nav-progress">Lesson 4 of 6</span>
+            <button class="lesson-nav-button next" type="button" data-nav-lesson="practice-drill">
+              Practice Drill →
+            </button>
+          </nav>
+        </article>
+      `,
+
+      "practice-drill": `
+        <article class="lesson-article">
+          <div class="lesson-kicker">Lesson 5 · On-Court Practice</div>
+          <h2 id="contentModalTitle">Float Serve Accuracy Drill</h2>
+
+          <p>
+            This drill develops a repeatable starting position, clean contact, controlled ball flight,
+            and the ability to serve toward a chosen target.
+          </p>
+
+          <div class="lesson-note">
+            <p><strong>Equipment:</strong> One volleyball, a court, and four target zones marked with cones,
+            towels, or floor lines.</p>
+          </div>
+
+          <h3>Drill Instructions</h3>
+          <ol class="lesson-steps">
+            <li>Begin closer to the net and complete five controlled serves with minimal spin.</li>
+            <li>Move behind the end line when you can create a stable float trajectory.</li>
+            <li>Serve five balls toward deep Zone 1 and five balls toward deep Zone 5.</li>
+            <li>Serve five balls toward a short target in Zone 2 or Zone 4.</li>
+            <li>Finish with ten serves. Choose the target before every attempt and record the result.</li>
+          </ol>
+
+          <div class="lesson-grid">
+            <div class="lesson-card">
+              <strong>Beginner Goal</strong>
+              <p>6 accurate serves out of 10 attempts.</p>
+            </div>
+            <div class="lesson-card">
+              <strong>Advanced Goal</strong>
+              <p>8 accurate serves out of 10 attempts with minimal spin.</p>
+            </div>
+          </div>
+
+          <div class="lesson-warning">
+            <p>Quality is more important than volume. Stop and reset your technique when the toss or contact
+            becomes inconsistent.</p>
+          </div>
+
+          <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <button class="lesson-nav-button previous" type="button" data-nav-lesson="common-mistakes">
+              ← Common Mistakes
+            </button>
+            <span class="lesson-nav-progress">Lesson 5 of 6</span>
+            <button class="lesson-nav-button next" id="finishDrillButton" type="button">
+              I Completed This Drill →
+            </button>
+          </nav>
+        </article>
+      `,
+
+
+
+      "jump-float-takeoff": `
+        <article class="lesson-article">
+          <div class="lesson-kicker">Lesson 4 · Jump Float Serve</div>
+          <h2 id="contentModalTitle">Take-Off Mechanics</h2>
+
+          <p>
+            A controlled take-off gives the server height without sacrificing timing or balance. The goal is not
+            to jump as high as possible. The goal is to arrive behind the ball with the hitting shoulder ready and
+            the body moving forward under control.
+          </p>
+
+          <div class="lesson-note">
+            <p><strong>Key idea:</strong> Build speed through the approach, plant under control, and convert that
+            forward movement into a stable upward jump.</p>
+          </div>
+
+          <aside class="lesson-visuals" aria-label="Realistic jump float take-off mechanics sequence">
+            <img
+              class="lesson-infographic"
+              src="images/jump-float-takeoff.png"
+              alt="Realistic volleyball player demonstrating approach, plant, and take-off mechanics for a jump float serve"
+            />
+          </aside>
+
+          <div class="lesson-grid">
+            <div class="lesson-card"><strong>Controlled Final Steps</strong><p>Do not rush the last two steps. The rhythm should remain smooth and repeatable.</p></div>
+            <div class="lesson-card"><strong>Stable Plant</strong><p>Place both feet under the body so the hips and shoulders can stay aligned.</p></div>
+            <div class="lesson-card"><strong>Vertical Lift</strong><p>Jump upward with only a small amount of forward movement toward the court.</p></div>
+            <div class="lesson-card"><strong>Ready Shoulder</strong><p>Keep the hitting shoulder behind the ball as the body rises.</p></div>
+          </div>
+
+          <h3>Take-Off Checklist</h3>
+          <ul class="lesson-steps">
+            <li>Use the same approach distance before every serve.</li>
+            <li>Keep the chest tall during the final plant.</li>
+            <li>Push evenly through both legs.</li>
+            <li>Avoid jumping sideways or underneath the toss.</li>
+          </ul>
+
+          <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <button class="lesson-nav-button previous" type="button"
+              data-nav-video="ggfjgtwV92Y"
+              data-nav-video-title="Jump Float Serve Common Mistakes">
+              ← Previous Lesson
+            </button>
+
+            <span class="lesson-nav-progress">Lesson 4 of 6</span>
+
+            <button class="lesson-nav-button next" type="button"
+              data-nav-lesson="jump-float-contact">
+              Next Lesson →
+            </button>
+          </nav>
+        </article>
+      `,
+
+      "jump-float-contact": `
+        <article class="lesson-article">
+          <div class="lesson-kicker">Lesson 5 · Jump Float Serve</div>
+          <h2 id="contentModalTitle">Contact in the Air</h2>
+
+          <p>
+            The best jump float contact happens near the top of the jump, slightly in front of the hitting shoulder.
+            The hand should be firm and open so the ball leaves with little or no spin.
+          </p>
+
+          <div class="lesson-note">
+            <p><strong>Contact rule:</strong> Reach high, strike through the centre of the ball, and keep the wrist quiet.</p>
+          </div>
+
+          <aside class="lesson-visuals" aria-label="Jump float serve contact technique">
+            <img
+              class="lesson-infographic"
+              src="images/jump-float-contact.png"
+              alt="Volleyball player performing a jump float serve with a flat firm palm contacting the centre of the ball"
+            />
+          </aside>
+
+          <div class="lesson-grid">
+            <div class="lesson-card"><strong>Reach High</strong><p>Extend fully without lifting the shoulder toward the ear.</p></div>
+            <div class="lesson-card"><strong>Contact the Centre</strong><p>Strike through the middle of the ball to reduce rotation.</p></div>
+            <div class="lesson-card"><strong>Firm Palm</strong><p>Use a strong hand surface and avoid cushioning the ball.</p></div>
+            <div class="lesson-card"><strong>Quiet Wrist</strong><p>Do not snap the wrist or wrap the hand around the side of the ball.</p></div>
+          </div>
+
+          <div class="lesson-warning">
+            <p><strong>Common error:</strong> Reaching too far forward causes the body to collapse and sends the ball into the net.</p>
+          </div>
+
+          <h3>Contact Check</h3>
+          <ul class="lesson-steps">
+            <li>Watch whether the ball rotates immediately after contact.</li>
+            <li>Keep the elbow high before the arm extends.</li>
+            <li>Finish the hand toward the target without a wrist snap.</li>
+            <li>Land balanced enough to see the complete ball flight.</li>
+          </ul>
+
+          <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <span class="lesson-nav-spacer"></span>
+            <span class="lesson-nav-progress">Lesson 5 of 6</span>
+            <button class="lesson-nav-button next" type="button" data-nav-lesson="jump-float-landing">
+              Next Lesson →
+            </button>
+          </nav>
+        </article>
+      `,
+
+      "jump-float-landing": `
+        <article class="lesson-article">
+          <div class="lesson-kicker">Lesson 6 · Jump Float Serve</div>
+          <h2 id="contentModalTitle">Safe Landing</h2>
+
+          <p>
+            A safe landing protects the knees and ankles while keeping the server ready to enter the court and play defense.
+            The body should land softly, under control, and without twisting.
+          </p>
+
+          <div class="lesson-note">
+            <p><strong>Landing goal:</strong> Absorb the force through the ankles, knees, and hips while keeping the chest balanced.</p>
+          </div>
+
+          <aside class="lesson-visuals" aria-label="Safe landing mechanics">
+            <img
+              class="lesson-infographic"
+              src="images/jump-float-landing.png"
+              alt="Volleyball player demonstrating a safe two-foot landing after a jump float serve"
+            />
+          </aside>
+
+          <div class="lesson-grid">
+            <div class="lesson-card"><strong>Land on Both Feet</strong><p>Share the force instead of dropping onto one leg.</p></div>
+            <div class="lesson-card"><strong>Soft Knees</strong><p>Bend the knees and hips to absorb impact gradually.</p></div>
+            <div class="lesson-card"><strong>Stable Alignment</strong><p>Keep knees tracking in the same direction as the toes.</p></div>
+            <div class="lesson-card"><strong>Ready Position</strong><p>Finish balanced and immediately prepare for the next rally action.</p></div>
+          </div>
+
+          <div class="lesson-warning">
+            <p><strong>Avoid:</strong> stiff-legged landings, feet crossing, knees collapsing inward, or turning the body while landing.</p>
+          </div>
+
+          <h3>Landing Progression</h3>
+          <ul class="lesson-steps">
+            <li>Practice small two-foot jumps without a ball.</li>
+            <li>Hold the landing for two seconds to check balance.</li>
+            <li>Add the serving approach and jump without hitting.</li>
+            <li>Complete the full serve while maintaining the same soft landing.</li>
+          </ul>
+        
+
+          <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <button class="lesson-nav-button previous" type="button" data-nav-lesson="jump-float-contact">
+              ← Previous Lesson
+            </button>
+            <span class="lesson-nav-progress">Lesson 6 of 6</span>
+            <button class="lesson-nav-button next" type="button" data-nav-module="module4">
+              Next Module →
+            </button>
+          </nav>
+</article>
+      `,
+
+      "topspin-fundamentals": `
+        <article class="lesson-article">
+          <div class="lesson-kicker">Lesson 5 · Jump Topspin Serve</div>
+          <h2 id="contentModalTitle">Topspin Fundamentals</h2>
+
+          <p>
+            The jump topspin serve is the most aggressive serving technique in volleyball.
+            A fast approach, explosive jump, high contact point, and strong forward rotation
+            allow the ball to travel with speed while still dropping sharply into the court.
+          </p>
+
+          <div class="lesson-note">
+            <p>
+              <strong>Core principle:</strong> Power comes from the entire body, while topspin
+              controls the ball flight and brings it down inside the court.
+            </p>
+          </div>
+
+          <aside class="lesson-visuals" aria-label="Jump topspin serve fundamentals">
+            <img
+              class="lesson-infographic"
+              src="images/topspin-fundamentals.png"
+              alt="Professional volleyball player demonstrating jump topspin serve fundamentals"
+            />
+          </aside>
+
+          <div class="lesson-grid">
+            <div class="lesson-card"><strong>⚡ High Contact Point</strong><p>Reach fully and contact the ball near the highest point of the jump.</p></div>
+            <div class="lesson-card"><strong>🏐 Topspin Rotation</strong><p>Strike through the back of the ball and finish over it to create forward rotation.</p></div>
+            <div class="lesson-card"><strong>💪 Full-Body Power</strong><p>Use the legs, hips, torso, shoulder, and arm as one connected movement.</p></div>
+            <div class="lesson-card"><strong>🎯 Controlled Accuracy</strong><p>Choose a clear serving target before beginning the toss and approach.</p></div>
+          </div>
+
+          <h3>Complete Movement Sequence</h3>
+          <ol class="lesson-steps">
+            <li><strong>Toss:</strong> Place the ball high and in front of the hitting shoulder.</li>
+            <li><strong>Approach:</strong> Build controlled speed with a repeatable rhythm.</li>
+            <li><strong>Jump:</strong> Convert forward movement into an explosive upward take-off.</li>
+            <li><strong>Contact:</strong> Reach high and strike the back of the ball with a fast hand.</li>
+            <li><strong>Follow Through:</strong> Finish over the ball to create strong topspin.</li>
+            <li><strong>Landing:</strong> Land softly on both feet and enter the court under control.</li>
+          </ol>
+
+          <div class="lesson-grid">
+            <div class="lesson-card"><strong>✓ Consistent Toss</strong><p>Keep the toss in the same hitting window on every attempt.</p></div>
+            <div class="lesson-card"><strong>✓ Explosive Approach</strong><p>Accelerate smoothly without losing balance.</p></div>
+            <div class="lesson-card"><strong>✓ Maximum Reach</strong><p>Contact high and slightly in front of the hitting shoulder.</p></div>
+            <div class="lesson-card"><strong>✓ Fast Arm Swing</strong><p>Relax the arm before accelerating quickly toward the ball.</p></div>
+            <div class="lesson-card"><strong>✓ Strong Wrist Action</strong><p>Finish over the ball to create forward rotation.</p></div>
+            <div class="lesson-card"><strong>✓ Balanced Landing</strong><p>Absorb the landing through the ankles, knees, and hips.</p></div>
+          </div>
+
+          <div class="lesson-warning">
+            <h3>Common Beginner Mistakes</h3>
+            <p>
+              Tossing too far forward, contacting too low, jumping underneath the ball,
+              using only the arm, and hitting without enough topspin.
+            </p>
+          </div>
+
+          <div class="quiz-question">
+            <h3>Knowledge Check</h3>
+            <p>Why does topspin allow the ball to travel faster while still landing inside the court?</p>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="topspinCheck" value="a"> Because forward rotation makes the ball drop more sharply.</label>
+              <label class="quiz-option"><input type="radio" name="topspinCheck" value="b"> Because topspin removes all movement from the ball.</label>
+              <label class="quiz-option"><input type="radio" name="topspinCheck" value="c"> Because topspin makes the toss lower.</label>
+            </div>
+            <button class="content-action" id="topspinCheckButton" type="button">Check Answer</button>
+            <div class="quiz-result" id="topspinCheckResult"></div>
+          </div>
+
+          <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <button class="lesson-nav-button previous" type="button"
+              data-nav-video="KvH4CNRFego"
+              data-nav-video-title="Jump Serve Technique and Mistakes — Part 2">
+              ← Previous Lesson
+            </button>
+            <span class="lesson-nav-progress">Lesson 5 of 9</span>
+            <button class="lesson-nav-button next" type="button" data-nav-lesson="approach-jump">
+              Next Lesson →
+            </button>
+          </nav>
+        </article>
+      `,
+
+      "approach-jump": `
+        <article class="lesson-article">
+          <div class="lesson-kicker">Lesson 6 · Jump Topspin Serve</div>
+          <h2 id="contentModalTitle">Approach and Jump Timing</h2>
+
+          <p>
+            Every powerful jump serve begins with efficient footwork. A controlled approach builds momentum,
+            while correct jump timing transforms horizontal speed into explosive vertical power.
+          </p>
+
+          <div class="lesson-note">
+            <p>
+              <strong>Key idea:</strong> The serve is won before the ball is contacted.
+              Correct rhythm, acceleration, and timing determine your jump height and balance.
+            </p>
+          </div>
+
+          <aside class="lesson-visuals" aria-label="Approach and jump timing">
+            <img
+              class="lesson-infographic"
+              src="images/approach-jump.png"
+              alt="Volleyball player demonstrating approach and jump timing for a jump topspin serve"
+            />
+          </aside>
+
+          <div class="lesson-grid">
+            <div class="lesson-card">
+              <strong>🦶 Three-Step Approach</strong>
+              <p>Use a smooth and repeatable approach before every serve.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>⚡ Acceleration</strong>
+              <p>Increase speed gradually before planting the feet.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>🦘 Explosive Take-Off</strong>
+              <p>Convert forward momentum into a strong vertical jump.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>🎯 Perfect Timing</strong>
+              <p>Meet the ball near the highest point of the jump.</p>
+            </div>
+          </div>
+
+          <h3>Movement Sequence</h3>
+
+          <ol class="lesson-steps">
+            <li><strong>Ready Position:</strong> Begin balanced with the body relaxed and eyes on the target.</li>
+            <li><strong>First Step:</strong> Start under control and establish the serving rhythm.</li>
+            <li><strong>Acceleration Step:</strong> Increase speed without leaning or losing balance.</li>
+            <li><strong>Power Plant:</strong> Place the final steps under the body and prepare to jump.</li>
+            <li><strong>Arm Swing:</strong> Drive both arms to help create upward momentum.</li>
+            <li><strong>Jump:</strong> Explode upward instead of drifting too far forward.</li>
+            <li><strong>Ball Contact:</strong> Reach maximum height and contact the ball in front of the hitting shoulder.</li>
+          </ol>
+
+          <div class="lesson-grid">
+            <div class="lesson-card">
+              <strong>✓ Stay Relaxed</strong>
+              <p>Avoid unnecessary tension before the approach begins.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Consistent Rhythm</strong>
+              <p>Use the same footwork and tempo on every serve.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Jump Up</strong>
+              <p>Explode vertically instead of chasing the ball forward.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Eyes on the Toss</strong>
+              <p>Track the ball from the toss until contact.</p>
+            </div>
+          </div>
+
+          <div class="lesson-warning">
+            <h3>Common Mistakes</h3>
+            <p>
+              Running too fast, jumping underneath the ball, swinging the arms too early,
+              using a poor plant position, and changing the approach rhythm from serve to serve.
+            </p>
+          </div>
+
+          <div class="quiz-question">
+            <h3>Knowledge Check</h3>
+
+            <p>Which phase creates the greatest vertical power?</p>
+
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="approachQuiz" value="a">
+                The final plant and explosive take-off
+              </label>
+
+              <label class="quiz-option">
+                <input type="radio" name="approachQuiz" value="b">
+                The toss only
+              </label>
+
+              <label class="quiz-option">
+                <input type="radio" name="approachQuiz" value="c">
+                The landing
+              </label>
+            </div>
+
+            <button class="content-action" id="approachQuizButton" type="button">
+              Check Answer
+            </button>
+
+            <div class="quiz-result" id="approachQuizResult"></div>
+          </div>
+
+          <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <button class="lesson-nav-button previous" type="button" data-nav-lesson="topspin-fundamentals">
+              ← Previous Lesson
+            </button>
+
+            <span class="lesson-nav-progress">Lesson 6 of 9</span>
+
+            <button class="lesson-nav-button next" type="button" data-nav-lesson="powerful-arm-swing">
+              Next Lesson →
+            </button>
+          </nav>
+        </article>
+      `,
+
+      "powerful-arm-swing": `
+        <article class="lesson-article">
+          <div class="lesson-kicker">Lesson 7 · Jump Topspin Serve</div>
+          <h2 id="contentModalTitle">Powerful Arm Swing</h2>
+
+          <p>
+            A powerful jump topspin serve does not come from arm strength alone.
+            Maximum speed is created when the legs, hips, torso, shoulder, elbow,
+            and hand work together as one connected movement.
+          </p>
+
+          <p>
+            The hitting arm should stay relaxed during preparation and accelerate
+            only as the body rotates toward the ball. A relaxed arm can move faster
+            and transfer more energy than a tense arm.
+          </p>
+
+          <div class="lesson-note">
+            <p>
+              <strong>Key idea:</strong> Power begins from the ground and finishes through the hand.
+              The body creates momentum first, and the shoulder and arm transfer that energy into the ball.
+            </p>
+          </div>
+
+          <aside class="lesson-visuals" aria-label="Powerful arm swing technique">
+            <img
+              class="lesson-infographic"
+              src="images/arm-swing-techniques.png"
+              alt="Volleyball player demonstrating a powerful arm swing for a jump topspin serve"
+            />
+          </aside>
+
+          <div class="lesson-grid">
+            <div class="lesson-card">
+              <strong>💪 Relaxed Preparation</strong>
+              <p>Keep the hitting arm loose before accelerating toward the ball.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>🔄 Torso Rotation</strong>
+              <p>Rotate the hips and shoulders to create additional speed.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>⬆ High Elbow Position</strong>
+              <p>Keep the elbow high and behind the shoulder before extension.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>⚡ Fast Acceleration</strong>
+              <p>Accelerate the arm quickly during the final phase before contact.</p>
+            </div>
+          </div>
+
+          <h3>Movement Sequence</h3>
+
+          <ol class="lesson-steps">
+            <li><strong>Preparation:</strong> Keep the shoulders relaxed and draw the hitting arm back.</li>
+            <li><strong>Torso Rotation:</strong> Rotate the hips and chest toward the ball.</li>
+            <li><strong>Elbow Lead:</strong> Move the elbow forward before extending the forearm.</li>
+            <li><strong>Arm Extension:</strong> Extend quickly toward the contact point.</li>
+            <li><strong>Ball Contact:</strong> Strike the ball at maximum reach.</li>
+            <li><strong>Follow Through:</strong> Allow the arm to continue naturally across the body.</li>
+          </ol>
+
+          <div class="lesson-grid">
+            <div class="lesson-card">
+              <strong>✓ Stay Relaxed</strong>
+              <p>Avoid unnecessary tension before acceleration begins.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Lead with the Elbow</strong>
+              <p>Move the elbow forward before the forearm and hand accelerate.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Full Extension</strong>
+              <p>Contact the ball at maximum reach in front of the hitting shoulder.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Use the Torso</strong>
+              <p>Generate speed through body rotation instead of using only the shoulder.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Natural Follow Through</strong>
+              <p>Do not stop the arm immediately after contact.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Maintain Balance</strong>
+              <p>Keep the body controlled throughout the complete swing.</p>
+            </div>
+          </div>
+
+          <div class="lesson-warning">
+            <h3>Common Mistakes</h3>
+            <p>
+              Using only the arm, keeping the shoulder and elbow tense, dropping the elbow before contact,
+              contacting the ball behind the head, swinging too early, and stopping the arm after contact.
+            </p>
+          </div>
+
+          <div class="quiz-question">
+            <h3>Knowledge Check</h3>
+
+            <p>Where should most of the power for the arm swing begin?</p>
+
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="powerfulArmQuiz" value="a">
+                From the legs, hips, and torso before transferring through the arm
+              </label>
+
+              <label class="quiz-option">
+                <input type="radio" name="powerfulArmQuiz" value="b">
+                From the wrist only
+              </label>
+
+              <label class="quiz-option">
+                <input type="radio" name="powerfulArmQuiz" value="c">
+                From the shoulder without body rotation
+              </label>
+            </div>
+
+            <button class="content-action" id="powerfulArmQuizButton" type="button">
+              Check Answer
+            </button>
+
+            <div class="quiz-result" id="powerfulArmQuizResult"></div>
+          </div>
+
+          <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <button class="lesson-nav-button previous" type="button" data-nav-lesson="approach-jump">
+              ← Previous Lesson
+            </button>
+
+            <span class="lesson-nav-progress">Lesson 7 of 9</span>
+
+            <button class="lesson-nav-button next" type="button" data-nav-lesson="wrist-snap-rotation">
+              Next Lesson →
+            </button>
+          </nav>
+        </article>
+      `,
+
+      "wrist-snap-rotation": `
+        <article class="lesson-article">
+          <div class="lesson-kicker">Lesson 8 · Jump Topspin Serve</div>
+          <h2 id="contentModalTitle">Wrist Snap and Ball Rotation</h2>
+
+          <p>
+            The wrist snap is the final acceleration phase of the jump topspin serve.
+            It helps transfer speed from the arm into the ball and creates the forward
+            rotation needed for a fast, controlled serve.
+          </p>
+
+          <p>
+            Correct wrist action does not come from forcing the hand downward.
+            The arm accelerates first, the hand stays relaxed, and the wrist finishes
+            naturally over the top of the ball.
+          </p>
+
+          <div class="lesson-note">
+            <p>
+              <strong>Key idea:</strong> The arm creates speed. The wrist controls spin.
+              Contact the upper-back part of the ball and finish the hand forward and downward
+              to create topspin and help the ball drop sharply into the court.
+            </p>
+          </div>
+
+          <aside class="lesson-visuals" aria-label="Wrist snap and ball rotation technique">
+            <img
+              class="lesson-infographic"
+              src="images/wrist-snap-ball-rotation.png"
+              alt="Volleyball player demonstrating wrist snap and forward ball rotation during a jump topspin serve"
+            />
+          </aside>
+
+          <div class="lesson-grid">
+            <div class="lesson-card">
+              <strong>⚡ Fast Hand</strong>
+              <p>Accelerate the hand quickly during the final moment before contact.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>🏐 Contact Behind and Above the Ball</strong>
+              <p>Strike the upper-back surface of the ball instead of contacting underneath it.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✋ Relaxed Wrist</strong>
+              <p>Keep the wrist relaxed during the arm swing and allow it to snap naturally at contact.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>🔄 Forward Rotation</strong>
+              <p>Finish the hand over the ball to create strong forward spin.</p>
+            </div>
+          </div>
+
+          <h3>Movement Sequence</h3>
+
+          <ol class="lesson-steps">
+            <li><strong>Arm Acceleration:</strong> The shoulder, elbow, and forearm accelerate toward the ball.</li>
+            <li><strong>Open Hand:</strong> Keep the fingers spread and the palm firm.</li>
+            <li><strong>High Contact:</strong> Contact the ball at maximum reach.</li>
+            <li><strong>Brush Over the Ball:</strong> Move the hand over the upper-back surface of the ball.</li>
+            <li><strong>Wrist Snap:</strong> Allow the wrist to finish forward and downward.</li>
+            <li><strong>Follow Through:</strong> Continue the arm naturally across the body.</li>
+          </ol>
+
+          <div class="lesson-grid">
+            <div class="lesson-card">
+              <strong>✓ Relax Before Contact</strong>
+              <p>Keep the hand and wrist loose until the final acceleration phase.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Contact in Front</strong>
+              <p>Strike the ball in front of the hitting shoulder.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Firm Palm</strong>
+              <p>Use a strong hand surface with the fingers spread.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Finish Over the Ball</strong>
+              <p>Direct the hand forward and downward to create topspin.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Complete Follow Through</strong>
+              <p>Do not stop the arm immediately after contact.</p>
+            </div>
+
+            <div class="lesson-card">
+              <strong>✓ Watch the Rotation</strong>
+              <p>Observe the ball after every serve to confirm forward spin.</p>
+            </div>
+          </div>
+
+          <div class="lesson-warning">
+            <h3>Common Mistakes</h3>
+            <p>
+              Contacting underneath the ball, using a stiff wrist, snapping too early,
+              contacting behind the head, striking only with the fingers, and stopping
+              the hand immediately after contact.
+            </p>
+          </div>
+
+          <div class="quiz-question">
+            <h3>Knowledge Check</h3>
+
+            <p>What creates topspin during a jump serve?</p>
+
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="wristSnapQuiz" value="a">
+                Contacting the upper-back part of the ball and finishing the hand over it
+              </label>
+
+              <label class="quiz-option">
+                <input type="radio" name="wristSnapQuiz" value="b">
+                Contacting underneath the ball with a stiff wrist
+              </label>
+
+              <label class="quiz-option">
+                <input type="radio" name="wristSnapQuiz" value="c">
+                Stopping the arm immediately after contact
+              </label>
+            </div>
+
+            <button class="content-action" id="wristSnapQuizButton" type="button">
+              Check Answer
+            </button>
+
+            <div class="quiz-result" id="wristSnapQuizResult"></div>
+          </div>
+
+          <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <button class="lesson-nav-button previous" type="button" data-nav-lesson="powerful-arm-swing">
+              ← Previous Lesson
+            </button>
+
+            <span class="lesson-nav-progress">Lesson 8 of 9</span>
+
+            <button
+              class="lesson-nav-button next"
+              type="button"
+              data-nav-lesson="jump-serve-skill-check">
+              Next Lesson →
+            </button>
+          </nav>
+        </article>
+      `,
+
+      "jump-serve-skill-check": `
+        <form class="lesson-article" id="jumpServeSkillCheck">
+          <div class="lesson-kicker">Lesson 9 · Jump Topspin Serve</div>
+          <h2 id="contentModalTitle">Jump Serve Skill Check</h2>
+
+          <p>
+            Complete all eight questions. You need at least 7 correct answers
+            to pass the Jump Topspin Serve module.
+          </p>
+
+          <div class="lesson-note">
+            <p>
+              <strong>Passing score:</strong> 80% — at least 7 correct answers out of 8.
+            </p>
+          </div>
+
+          <div class="quiz-question">
+            <h3>1. What is the main purpose of a jump topspin serve?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="jsq1" value="a"> Increase the height of the ball</label>
+              <label class="quiz-option"><input type="radio" name="jsq1" value="b"> Create speed and topspin that make the ball drop quickly</label>
+              <label class="quiz-option"><input type="radio" name="jsq1" value="c"> Slow down the rally</label>
+              <label class="quiz-option"><input type="radio" name="jsq1" value="d"> Make the toss easier</label>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <h3>2. Where should the server contact the ball?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="jsq2" value="a"> Behind the head</label>
+              <label class="quiz-option"><input type="radio" name="jsq2" value="b"> Above the non-hitting shoulder</label>
+              <label class="quiz-option"><input type="radio" name="jsq2" value="c"> At maximum reach, slightly in front of the hitting shoulder</label>
+              <label class="quiz-option"><input type="radio" name="jsq2" value="d"> Close to the chest</label>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <h3>3. Which approach rhythm is correct for a right-handed player?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="jsq3" value="a"> Right – Left</label>
+              <label class="quiz-option"><input type="radio" name="jsq3" value="b"> Left – Right – Left</label>
+              <label class="quiz-option"><input type="radio" name="jsq3" value="c"> Left – Left – Right</label>
+              <label class="quiz-option"><input type="radio" name="jsq3" value="d"> Right – Right – Left</label>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <h3>4. Which arm swing technique resembles pulling back a bowstring?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="jsq4" value="a"> Straight Arm Swing</label>
+              <label class="quiz-option"><input type="radio" name="jsq4" value="b"> Circular Swing</label>
+              <label class="quiz-option"><input type="radio" name="jsq4" value="c"> Bow and Arrow Swing</label>
+              <label class="quiz-option"><input type="radio" name="jsq4" value="d"> Side Swing</label>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <h3>5. What creates topspin during a jump serve?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="jsq5" value="a"> Hitting underneath the ball</label>
+              <label class="quiz-option"><input type="radio" name="jsq5" value="b"> Contacting the upper-back part of the ball and finishing over it</label>
+              <label class="quiz-option"><input type="radio" name="jsq5" value="c"> Keeping the wrist stiff</label>
+              <label class="quiz-option"><input type="radio" name="jsq5" value="d"> Stopping the arm after contact</label>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <h3>6. What should the non-hitting arm do before contact?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="jsq6" value="a"> Stay behind the body</label>
+              <label class="quiz-option"><input type="radio" name="jsq6" value="b"> Extend forward and upward for balance and aiming</label>
+              <label class="quiz-option"><input type="radio" name="jsq6" value="c"> Hang beside the body</label>
+              <label class="quiz-option"><input type="radio" name="jsq6" value="d"> Swing backward</label>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <h3>7. Which landing technique is the safest after serving?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="jsq7" value="a"> Land on one leg</label>
+              <label class="quiz-option"><input type="radio" name="jsq7" value="b"> Land with locked knees</label>
+              <label class="quiz-option"><input type="radio" name="jsq7" value="c"> Land on both feet with bent knees</label>
+              <label class="quiz-option"><input type="radio" name="jsq7" value="d"> Land on the heels only</label>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <h3>8. What is the most important principle of wrist snap?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="jsq8" value="a"> Force the wrist downward</label>
+              <label class="quiz-option"><input type="radio" name="jsq8" value="b"> Flick only with the fingers</label>
+              <label class="quiz-option"><input type="radio" name="jsq8" value="c"> Let the relaxed wrist finish naturally after the arm accelerates</label>
+              <label class="quiz-option"><input type="radio" name="jsq8" value="d"> Keep the wrist completely rigid</label>
+            </div>
+          </div>
+
+          <button class="content-action" type="submit">
+            Submit Skill Check
+          </button>
+
+          <div class="quiz-result" id="jumpServeSkillCheckResult"></div>
+
+          <button
+            class="content-action quiz-next-action"
+            id="jumpServeSkillCheckContinue"
+            type="button"
+            data-nav-module="servingFinalQuizModule"
+            style="display:none;">
+            Continue to Serving Final Assessment →
+          </button>
+
+          <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <button class="lesson-nav-button previous" type="button" data-nav-lesson="wrist-snap-rotation">
+              ← Previous Lesson
+            </button>
+
+            <span class="lesson-nav-progress">Lesson 9 of 9</span>
+
+            <span class="lesson-nav-spacer"></span>
+          </nav>
+        </form>
+      `,
+
+      "quiz": `
+        <form class="lesson-article" id="floatServeQuiz">
+          <div class="lesson-kicker">Lesson 6 · Knowledge Check</div>
+          <h2 id="contentModalTitle">Float Serve Quiz</h2>
+
+          <div class="quiz-question">
+            <h3>1. What creates the unpredictable movement of a float serve?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="q1" value="a"> Heavy topspin</label>
+              <label class="quiz-option"><input type="radio" name="q1" value="b"> Little or no ball rotation</label>
+              <label class="quiz-option"><input type="radio" name="q1" value="c"> A very high toss</label>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <h3>2. Where should the server contact the ball?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="q2" value="a"> Through the centre with a firm hand</label>
+              <label class="quiz-option"><input type="radio" name="q2" value="b"> Under the ball with a loose wrist</label>
+              <label class="quiz-option"><input type="radio" name="q2" value="c"> On the side with wrist snap</label>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <h3>3. What should you do before beginning each accuracy serve?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="q3" value="a"> Serve as quickly as possible</label>
+              <label class="quiz-option"><input type="radio" name="q3" value="b"> Choose a specific target</label>
+              <label class="quiz-option"><input type="radio" name="q3" value="c"> Change the toss every time</label>
+            </div>
+          </div>
+
+          <button class="content-action" type="submit">Submit Quiz</button>
+          <div class="quiz-result" id="quizResult"></div>
+
+          <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <button class="lesson-nav-button previous" type="button" data-nav-lesson="practice-drill">
+              ← Practice Drill
+            </button>
+            <span class="lesson-nav-progress">Lesson 6 of 6</span>
+            <span class="lesson-nav-spacer" aria-hidden="true"></span>
+          </nav>
+        </form>
+      `
+    };
+
+    function updateFloatServeProgress(){
+      if(floatServeProgress.quizPassed){
+        floatServeProgress.practiceComplete = true;
+        localStorage.setItem("floatServePracticeComplete", "true");
+
+        practiceCompleteButton.disabled = true;
+        practiceCompleteButton.classList.remove("interactive");
+        practiceCompleteButton.classList.add("completed");
+        practiceCompleteButton.querySelector("strong").innerHTML = '<span class="lesson-icon-badge icon-complete">✓</span>Practice Complete';
+        practiceStatus.textContent = "Completed";
+      } else {
+        practiceCompleteButton.disabled = true;
+        practiceCompleteButton.classList.remove("interactive", "completed");
+        practiceCompleteButton.querySelector("strong").innerHTML = '<span class="lesson-icon-badge icon-complete">✓</span>Mark Practice Complete';
+        practiceStatus.textContent = "Complete Quiz";
+      }
+    }
+
+    function openContentLesson(lessonId){
+      closeVideo();
+      contentModalBody.innerHTML = lessonContent[lessonId];
+      contentModal.classList.add("open");
+      contentModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+
+      contentModalBody.querySelectorAll("[data-nav-lesson]").forEach((button) => {
+        button.addEventListener("click", () => {
+          transitionToLesson(button.dataset.navLesson);
+        });
+      });
+
+      contentModalBody.querySelectorAll("[data-nav-video]").forEach((button) => {
+        button.addEventListener("click", () => {
+          closeContentLesson();
+          openVideo(button.dataset.navVideo, button.dataset.navVideoTitle);
+        });
+      });
+
+      contentModalBody.querySelectorAll("[data-nav-module]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const targetModule = document.getElementById(button.dataset.navModule);
+          closeContentLesson();
+
+          if(targetModule){
+            document.querySelectorAll(".course-module").forEach((module) => {
+              module.open = false;
+            });
+
+            targetModule.open = true;
+
+            setTimeout(() => {
+              targetModule.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+              });
+            }, 120);
+          }
+        });
+      });
+
+      if(lessonId === "practice-drill"){
+        const finishDrillButton = document.getElementById("finishDrillButton");
+
+        function activateQuizTransition(){
+          finishDrillButton.textContent = "Continue to Quiz →";
+          finishDrillButton.disabled = false;
+          finishDrillButton.onclick = () => transitionToLesson("quiz");
+        }
+
+        if(floatServeProgress.drillOpened){
+          activateQuizTransition();
+        } else {
+          finishDrillButton.addEventListener("click", () => {
+            floatServeProgress.drillOpened = true;
+            localStorage.setItem("floatServeDrillOpened", "true");
+            updateFloatServeProgress();
+
+            finishDrillButton.textContent = "Drill Completed ✓";
+            finishDrillButton.disabled = true;
+
+            setTimeout(() => {
+              activateQuizTransition();
+            }, 650);
+          }, { once:true });
+        }
+      }
+
+      if(lessonId === "jump-serve-skill-check"){
+        const skillCheckForm = document.getElementById("jumpServeSkillCheck");
+        const skillCheckResult = document.getElementById("jumpServeSkillCheckResult");
+        const skillCheckContinue = document.getElementById("jumpServeSkillCheckContinue");
+
+        if(skillCheckForm && skillCheckResult && skillCheckContinue){
+          skillCheckForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const correctAnswers = {
+              jsq1: "b",
+              jsq2: "c",
+              jsq3: "b",
+              jsq4: "c",
+              jsq5: "b",
+              jsq6: "b",
+              jsq7: "c",
+              jsq8: "c"
+            };
+
+            let score = 0;
+            let answered = 0;
+
+            Object.entries(correctAnswers).forEach(([question, correctAnswer]) => {
+              const selected = skillCheckForm.querySelector(`input[name="${question}"]:checked`);
+
+              if(selected){
+                answered += 1;
+
+                if(selected.value === correctAnswer){
+                  score += 1;
+                }
+              }
+            });
+
+            skillCheckResult.classList.remove("show", "success", "error");
+            skillCheckContinue.style.display = "none";
+
+            if(answered < 8){
+              skillCheckResult.textContent = `Please answer all 8 questions. You have answered ${answered}.`;
+              skillCheckResult.classList.add("show", "error");
+              return;
+            }
+
+            const percentage = Math.round((score / 8) * 100);
+
+            if(score >= 7){
+              localStorage.setItem("jumpServeSkillCheckPassed", "true");
+              skillCheckResult.innerHTML =
+                `🎉 Congratulations!<br><br>` +
+                `Score: ${score}/8 (${percentage}%)<br>` +
+                `You passed the Jump Topspin Serve module.<br>` +
+                `Module Complete ✓`;
+              skillCheckResult.classList.add("show", "success");
+              skillCheckContinue.style.display = "inline-flex";
+            } else {
+              localStorage.setItem("jumpServeSkillCheckPassed", "false");
+              skillCheckResult.innerHTML =
+                `Score: ${score}/8 (${percentage}%)<br><br>` +
+                `Passing score is 80%. Please review the lessons and try again.`;
+              skillCheckResult.classList.add("show", "error");
+            }
+          });
+        }
+      }
+
+      if(lessonId === "wrist-snap-rotation"){
+        const wristSnapQuizButton = document.getElementById("wristSnapQuizButton");
+        const wristSnapQuizResult = document.getElementById("wristSnapQuizResult");
+
+        if(wristSnapQuizButton && wristSnapQuizResult){
+          wristSnapQuizButton.addEventListener("click", () => {
+            const selected = document.querySelector('input[name="wristSnapQuiz"]:checked');
+
+            wristSnapQuizResult.classList.remove("show", "success", "error");
+
+            if(!selected){
+              wristSnapQuizResult.textContent = "Choose an answer before checking.";
+              wristSnapQuizResult.classList.add("show", "error");
+              return;
+            }
+
+            if(selected.value === "a"){
+              wristSnapQuizResult.textContent = "Correct. Contacting the upper-back part of the ball and finishing over it creates topspin.";
+              wristSnapQuizResult.classList.add("show", "success");
+            } else {
+              wristSnapQuizResult.textContent = "Not quite. Review the contact point and the hand finish over the ball.";
+              wristSnapQuizResult.classList.add("show", "error");
+            }
+          });
+        }
+      }
+
+      if(lessonId === "powerful-arm-swing"){
+        const powerfulArmQuizButton = document.getElementById("powerfulArmQuizButton");
+        const powerfulArmQuizResult = document.getElementById("powerfulArmQuizResult");
+
+        if(powerfulArmQuizButton && powerfulArmQuizResult){
+          powerfulArmQuizButton.addEventListener("click", () => {
+            const selected = document.querySelector('input[name="powerfulArmQuiz"]:checked');
+
+            powerfulArmQuizResult.classList.remove("show", "success", "error");
+
+            if(!selected){
+              powerfulArmQuizResult.textContent = "Choose an answer before checking.";
+              powerfulArmQuizResult.classList.add("show", "error");
+              return;
+            }
+
+            if(selected.value === "a"){
+              powerfulArmQuizResult.textContent = "Correct. Power begins from the legs, hips, and torso before transferring through the arm.";
+              powerfulArmQuizResult.classList.add("show", "success");
+            } else {
+              powerfulArmQuizResult.textContent = "Not quite. Review how the body creates and transfers momentum.";
+              powerfulArmQuizResult.classList.add("show", "error");
+            }
+          });
+        }
+      }
+
+      if(lessonId === "approach-jump"){
+        const approachQuizButton = document.getElementById("approachQuizButton");
+        const approachQuizResult = document.getElementById("approachQuizResult");
+
+        if(approachQuizButton && approachQuizResult){
+          approachQuizButton.addEventListener("click", () => {
+            const selected = document.querySelector('input[name="approachQuiz"]:checked');
+
+            approachQuizResult.classList.remove("show", "success", "error");
+
+            if(!selected){
+              approachQuizResult.textContent = "Choose an answer before checking.";
+              approachQuizResult.classList.add("show", "error");
+              return;
+            }
+
+            if(selected.value === "a"){
+              approachQuizResult.textContent = "Correct. The final plant and explosive take-off create the greatest vertical power.";
+              approachQuizResult.classList.add("show", "success");
+            } else {
+              approachQuizResult.textContent = "Not quite. Review the final plant and take-off phase.";
+              approachQuizResult.classList.add("show", "error");
+            }
+          });
+        }
+      }
+
+      if(lessonId === "topspin-fundamentals"){
+        const checkButton = document.getElementById("topspinCheckButton");
+        const checkResult = document.getElementById("topspinCheckResult");
+
+        if(checkButton && checkResult){
+          checkButton.addEventListener("click", () => {
+            const selected = document.querySelector('input[name="topspinCheck"]:checked');
+            checkResult.classList.remove("show", "success", "error");
+
+            if(!selected){
+              checkResult.textContent = "Choose an answer before checking.";
+              checkResult.classList.add("show", "error");
+            } else if(selected.value === "a"){
+              checkResult.textContent = "Correct. Topspin creates forward rotation and helps the ball drop sharply into the court.";
+              checkResult.classList.add("show", "success");
+            } else {
+              checkResult.textContent = "Not quite. Review how forward rotation changes the ball flight.";
+              checkResult.classList.add("show", "error");
+            }
+          });
+        }
+      }
+
+      if(lessonId === "quiz"){
+        const quizForm = document.getElementById("floatServeQuiz");
+        quizForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          const answers = new FormData(quizForm);
+          const score =
+            (answers.get("q1") === "b" ? 1 : 0) +
+            (answers.get("q2") === "a" ? 1 : 0) +
+            (answers.get("q3") === "b" ? 1 : 0);
+
+          const quizResult = document.getElementById("quizResult");
+          quizResult.className = "quiz-result show " + (score === 3 ? "success" : "error");
+
+          if(score === 3){
+            floatServeProgress.quizPassed = true;
+            floatServeProgress.practiceComplete = true;
+            localStorage.setItem("floatServeQuizPassed", "true");
+            localStorage.setItem("floatServePracticeComplete", "true");
+            updateFloatServeProgress();
+
+            quizResult.innerHTML = `
+              <div>Excellent — 3/3. Module 2 is complete. Moving to Module 3…</div>
+            `;
+
+            setTimeout(goToModule3, 900);
+          } else {
+            quizResult.textContent =
+              "Your score is " + score + "/3. Review the lessons and try again. You need 3/3 to pass.";
+          }
+        });
+      }
+    }
+
+    function transitionToLesson(lessonId){
+      contentModalBody.classList.add("lesson-exit");
+
+      setTimeout(() => {
+        contentModalBody.classList.remove("lesson-exit");
+        contentModalBody.classList.add("lesson-enter");
+        openContentLesson(lessonId);
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            contentModalBody.classList.remove("lesson-enter");
+          });
+        });
+      }, 220);
+    }
+
+    function closeContentLesson(){
+      contentModal.classList.remove("open");
+      contentModal.setAttribute("aria-hidden", "true");
+      contentModalBody.innerHTML = "";
+      document.body.classList.remove("modal-open");
+    }
+
+    contentLessonButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        openContentLesson(button.dataset.contentLesson);
+      });
+    });
+
+    contentModal.addEventListener("click", (event) => {
+      if(event.target === contentModal){
+        closeContentLesson();
+      }
+    });
+
+    function goToModule3(){
+      if(!floatServeProgress.quizPassed) return;
+
+      closeContentLesson();
+
+      const module2 = document.getElementById("module2");
+      const module3 = document.getElementById("module3");
+
+      if(module2) module2.open = false;
+      module3.open = true;
+
+      setTimeout(() => {
+        module3.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 120);
+    }
+
+    updateFloatServeProgress();
+
+    const videoModal = document.getElementById("videoModal");
+    const videoFrame = document.getElementById("videoFrame");
+    const videoModalTitle = document.getElementById("videoModalTitle");
+    const videoModalClose = document.getElementById("videoModalClose");
+    const videoButtons = document.querySelectorAll("[data-video-id]");
+
+    function openVideo(videoId, videoTitle){
+      closeVideo();
+
+      videoModalTitle.textContent = videoTitle;
+      videoFrame.src =
+        "https://www.youtube.com/embed/" +
+        encodeURIComponent(videoId) +
+        "?autoplay=1&rel=0";
+
+      videoModal.classList.add("open");
+      videoModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      videoModalClose.focus();
+    }
+
+    function closeVideo(){
+      videoFrame.src = "";
+      videoModal.classList.remove("open");
+      videoModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+    }
+
+    videoButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        openVideo(button.dataset.videoId, button.dataset.videoTitle);
+      });
+    });
+
+    videoModalClose.addEventListener("click", closeVideo);
+
+    videoModal.addEventListener("click", (event) => {
+      if(event.target === videoModal){
+        closeVideo();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if(event.key === "Escape"){
+        if(videoModal.classList.contains("open")) closeVideo();
+        if(contentModal.classList.contains("open")) closeContentLesson();
+      }
+    });
+
+    document.querySelectorAll(".course-module").forEach((module) => {
+      module.addEventListener("toggle", () => {
+        if(!module.open){
+          closeVideo();
+        }
+      });
+    });
+
+
+    const servingCourseProgressCircle = document.getElementById("servingCourseProgressCircle");
+    const servingCourseProgressValue = document.getElementById("servingCourseProgressValue");
+    const servingCourseProgressStatus = document.getElementById("servingCourseProgressStatus");
+    const heroNextModuleButton = document.getElementById("heroNextModuleButton");
+
+    function updateServingHeroProgress(){
+      const quizPassed = localStorage.getItem("servingFinalQuizPassed") === "true";
+      const progress = quizPassed ? 100 : 0;
+
+      servingCourseProgressCircle.style.background =
+        "conic-gradient(var(--energy) " + progress + "%, rgba(255,255,255,.12) " + progress + "%)";
+
+      servingCourseProgressValue.textContent = progress + "%";
+      servingCourseProgressStatus.textContent = quizPassed ? "Completed" : "In Progress";
+      heroNextModuleButton.style.display = quizPassed ? "inline-block" : "none";
+    }
+
+    updateServingHeroProgress();
+
+    const servingFinalQuiz = document.getElementById("servingFinalQuiz");
+    const servingFinalQuizResult = document.getElementById("servingFinalQuizResult");
+    const servingNextModuleButton = document.getElementById("servingNextModuleButton");
+
+    function unlockServingNextModule(score){
+      localStorage.setItem("servingFinalQuizPassed", "true");
+      localStorage.setItem("servingFinalQuizScore", String(score));
+      servingNextModuleButton.style.display = "inline-flex";
+      updateServingHeroProgress();
+    }
+
+    if(localStorage.getItem("servingFinalQuizPassed") === "true"){
+      const savedScore = localStorage.getItem("servingFinalQuizScore") || "8";
+      servingFinalQuizResult.className = "quiz-result show success";
+      servingFinalQuizResult.textContent =
+        "Quiz already passed: " + savedScore + "/10. The next module is unlocked.";
+      servingNextModuleButton.style.display = "inline-flex";
+    }
+
+    servingFinalQuiz.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const answers = new FormData(servingFinalQuiz);
+      const correctAnswers = {
+        fq1: "b",
+        fq2: "b",
+        fq3: "a",
+        fq4: "b",
+        fq5: "b",
+        fq6: "b",
+        fq7: "a",
+        fq8: "b",
+        fq9: "a",
+        fq10: "a"
+      };
+
+      let score = 0;
+
+      Object.entries(correctAnswers).forEach(([question, correctAnswer]) => {
+        if(answers.get(question) === correctAnswer){
+          score += 1;
+        }
+      });
+
+      const percentage = score * 10;
+      const passed = percentage >= 80;
+
+      servingFinalQuizResult.className =
+        "quiz-result show " + (passed ? "success" : "error");
+
+      if(passed){
+        servingFinalQuizResult.textContent =
+          "Excellent — " + score + "/10 (" + percentage + "%). You passed the Serving course. The next module is unlocked.";
+        unlockServingNextModule(score);
+      } else {
+        servingFinalQuizResult.textContent =
+          "Your score is " + score + "/10 (" + percentage + "%). You need at least 80% to continue. Review the lessons and try again.";
+        servingNextModuleButton.style.display = "none";
+      }
+
+      servingFinalQuizResult.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    });
+
+  </script>
 
 </body>
 </html>

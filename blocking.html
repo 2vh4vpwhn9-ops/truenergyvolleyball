@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Blocking | True Energy Volleyball</title>
+
+  <style>
+    :root{
+      --bg:#050505;
+      --card:rgba(18,18,18,.88);
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#a8a8a8;
+      --energy:#c8ff00;
+      --blue:#128cff;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(200,255,0,.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(18,140,255,.16), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 7%;
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.72);
+      backdrop-filter:blur(14px);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .logo{
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:.5px;
+    }
+
+    .logo span{color:var(--energy)}
+
+    nav{
+      display:flex;
+      gap:24px;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    nav a:hover,
+    nav a.active{color:var(--energy)}
+
+    .page{
+      max-width:1200px;
+      margin:0 auto;
+      padding:55px 22px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:24px;
+      margin-bottom:28px;
+    }
+
+    .hero-box,
+    .progress-box,
+    .panel{
+      background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 20px 70px rgba(0,0,0,.35);
+    }
+
+    .eyebrow{
+      color:var(--energy);
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:12px;
+    }
+
+    h1{
+      font-size:58px;
+      line-height:.95;
+      margin-bottom:18px;
+    }
+
+    h1 span{color:var(--energy)}
+
+    .hero p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+      max-width:680px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .stat{
+      background:rgba(0,0,0,.35);
+      border:1px solid var(--line);
+      padding:16px;
+      border-radius:18px;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:22px;
+      color:var(--energy);
+      margin-bottom:5px;
+    }
+
+    .stat small{color:var(--muted)}
+
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:15px 24px;
+      border-radius:999px;
+      background:var(--energy);
+      color:#000;
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:13px;
+      border:none;
+      cursor:pointer;
+    }
+
+    .progress-circle{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      margin:10px auto 22px;
+      background:conic-gradient(var(--energy) 0%, rgba(255,255,255,.12) 0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .progress-inner{
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      background:#090909;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+    }
+
+    .progress-inner strong{font-size:32px}
+    .progress-inner small{color:var(--muted)}
+
+    .progress-list{
+      display:grid;
+      gap:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .progress-list div{
+      display:flex;
+      justify-content:space-between;
+      border-bottom:1px solid var(--line);
+      padding-bottom:10px;
+    }
+
+    .fundamentals-image{
+      margin-bottom:28px;
+      padding:0;
+      overflow:hidden;
+    }
+
+    .fundamentals-image img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .layout{
+      display:block;
+      margin-top:24px;
+    }
+
+    .course-module{
+      margin-bottom:12px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(0,0,0,.25);
+      overflow:hidden;
+      transition:.25s;
+    }
+
+    .course-module[open]{
+      border-color:var(--energy);
+      box-shadow:0 0 28px rgba(200,255,0,.08);
+    }
+
+    .course-module summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px;
+      user-select:none;
+    }
+
+    .course-module summary::-webkit-details-marker{display:none}
+
+    .module-heading small{
+      display:block;
+      color:var(--energy);
+      font-weight:900;
+      text-transform:uppercase;
+      font-size:11px;
+      margin-bottom:5px;
+    }
+
+    .module-heading h3{font-size:18px}
+
+    .module-arrow{
+      width:28px;
+      height:28px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      color:var(--energy);
+      transition:.25s;
+    }
+
+    .course-module[open] .module-arrow{
+      transform:rotate(180deg);
+      border-color:var(--energy);
+    }
+
+    .module-lessons{
+      display:grid;
+      gap:14px;
+      padding:18px;
+      border-top:1px solid var(--line);
+    }
+
+    .lesson-block{
+      display:grid;
+      gap:10px;
+      padding:16px;
+      border:1px solid rgba(200,255,0,.35);
+      border-radius:14px;
+      background:rgba(200,255,0,.06);
+    }
+
+    .lesson-description{
+      color:var(--muted);
+      line-height:1.65;
+      font-size:14px;
+    }
+
+    .module-lesson{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      width:100%;
+      padding:12px 14px;
+      border:1px solid rgba(200,255,0,.35);
+      border-radius:12px;
+      color:var(--muted);
+      background:rgba(200,255,0,.06);
+      font-size:13px;
+      text-align:left;
+      font-family:inherit;
+      cursor:pointer;
+    }
+
+    .module-lesson:hover{
+      border-color:var(--energy);
+      background:rgba(200,255,0,.1);
+      transform:translateY(-1px);
+    }
+
+    .module-lesson strong{
+      color:var(--text);
+      font-size:13px;
+    }
+
+    .lesson-status{
+      color:var(--energy);
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    #blockingFinalQuiz{
+      display:grid;
+      gap:18px;
+      padding-top:18px;
+    }
+
+    #blockingFinalQuiz h2{
+      font-size:34px;
+    }
+
+    .final-quiz-intro{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .quiz-question{
+      display:grid;
+      gap:10px;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(0,0,0,.27);
+    }
+
+    .quiz-question h3{
+      font-size:17px;
+      line-height:1.45;
+    }
+
+    .quiz-question label{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:12px;
+      color:var(--muted);
+      cursor:pointer;
+    }
+
+    .quiz-question label:hover{
+      border-color:rgba(200,255,0,.5);
+      background:rgba(200,255,0,.05);
+    }
+
+    .quiz-question input{
+      margin-top:3px;
+      accent-color:var(--energy);
+    }
+
+    .quiz-result{
+      display:none;
+      padding:16px;
+      border-radius:14px;
+      font-weight:800;
+      line-height:1.5;
+    }
+
+    .quiz-result.show{display:block}
+
+    .quiz-result.success{
+      color:var(--energy);
+      border:1px solid rgba(200,255,0,.45);
+      background:rgba(200,255,0,.08);
+    }
+
+    .quiz-result.error{
+      color:#ff8d8d;
+      border:1px solid rgba(255,92,92,.45);
+      background:rgba(255,92,92,.08);
+    }
+
+    .video-modal{
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(0,0,0,.88);
+      backdrop-filter:blur(10px);
+    }
+
+    .video-modal.open{display:flex}
+
+    .video-modal-card{
+      position:relative;
+      width:min(100%, 520px);
+      max-height:92vh;
+      overflow:auto;
+      padding:24px;
+      border:1px solid rgba(200,255,0,.48);
+      border-radius:24px;
+      background:linear-gradient(145deg, rgba(28,38,31,.98), rgba(10,17,24,.98));
+      box-shadow:0 30px 100px rgba(0,0,0,.65);
+    }
+
+    .video-modal-card h2{
+      padding-right:52px;
+      margin-bottom:18px;
+      font-size:28px;
+    }
+
+    .video-modal-close{
+      position:absolute;
+      top:16px;
+      right:16px;
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:#111;
+      color:var(--energy);
+      font-size:24px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .video-wrapper{
+      width:min(100%, 430px);
+      aspect-ratio:9 / 16;
+      margin:0 auto;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(200,255,0,.45);
+      background:#000;
+    }
+
+    .video-wrapper iframe{
+      display:block;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    body.modal-open{overflow:hidden}
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      margin-top:40px;
+      font-size:13px;
+    }
+
+    @media(max-width:900px){
+      header{
+        flex-direction:column;
+        gap:16px;
+      }
+
+      nav{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:520px){
+      .stats{grid-template-columns:1fr}
+      h1{font-size:38px}
+
+      .course-module summary{align-items:flex-start}
+
+      .video-modal{padding:12px}
+      .video-modal-card{
+        padding:18px;
+        border-radius:18px;
+      }
+      .video-modal-card h2{font-size:22px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo">True<span>Energy</span>Volleyball</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html">Courses</a>
+      <a href="blocking.html" class="active">Blocking</a>
+      <a href="index.html">About</a>
+      <a href="index.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <section class="hero">
+      <div class="hero-box">
+        <div class="eyebrow">Blocking Course</div>
+        <h1>Master Your <span>Blocking</span></h1>
+
+        <p>
+          Learn the essential blocking technique through real video demonstrations,
+          clear explanations, and a final knowledge check.
+        </p>
+
+        <div class="stats">
+          <div class="stat"><strong>3</strong><small>Technique Lessons</small></div>
+          <div class="stat"><strong>3</strong><small>Video Lessons</small></div>
+          <div class="stat"><strong>10</strong><small>Final Quiz Questions</small></div>
+          <div class="stat"><strong>80%</strong><small>Passing Score</small></div>
+        </div>
+
+        <a class="btn" href="#modules">View Course</a>
+      </div>
+
+      <div class="progress-box">
+        <div class="eyebrow">Your Progress</div>
+
+        <div class="progress-circle" id="blockingCourseProgressCircle">
+          <div class="progress-inner">
+            <strong id="blockingCourseProgressValue">0%</strong>
+            <small id="blockingCourseProgressStatus">In Progress</small>
+          </div>
+        </div>
+
+        <div class="progress-list">
+          <div><span>Video Lessons</span><strong>3</strong></div>
+          <div><span>Passing Score</span><strong>80%</strong></div>
+        </div>
+
+        <a
+          class="btn"
+          id="blockingNextCourseButton"
+          href="defence.html"
+          style="display:none; width:100%; text-align:center;">
+          Next Course
+        </a>
+      </div>
+    </section>
+
+    <section class="panel fundamentals-image" aria-label="Blocking fundamentals overview">
+      <img
+        src="images/blocking-fundamentals.png"
+        alt="Blocking fundamentals showing ready position, block timing, and hand penetration"
+      />
+    </section>
+
+    <section class="layout" id="modules">
+      <div class="panel">
+
+        <div class="eyebrow">Course Lessons</div>
+
+        <details class="course-module" open>
+          <summary>
+            <div class="module-heading">
+              <small>Module 1</small>
+              <h3>Blocking Fundamentals</h3>
+            </div>
+
+            <span class="module-arrow">⌄</span>
+          </summary>
+
+          <div class="module-lessons">
+
+            <div class="lesson-block">
+              <p class="lesson-description">
+                Learn the basic blocking stance, foot position, and how to read the setter before the attack develops.
+              </p>
+
+              <button class="module-lesson" type="button"
+                data-video-id="1KdE-era7tw"
+                data-video-title="Blocking Technique — Lesson 1">
+                <strong>▶ Blocking Technique — Lesson 1</strong>
+                <span class="lesson-status">Watch</span>
+              </button>
+            </div>
+
+            <div class="lesson-block">
+              <p class="lesson-description">
+                Focus on jump timing, body control, and reaching over the net while staying square to the hitter.
+              </p>
+
+              <button class="module-lesson" type="button"
+                data-video-id="sYcIM9Aq2Ns"
+                data-video-title="Blocking Technique — Lesson 2">
+                <strong>▶ Blocking Technique — Lesson 2</strong>
+                <span class="lesson-status">Watch</span>
+              </button>
+            </div>
+
+            <div class="lesson-block">
+              <p class="lesson-description">
+                Develop strong hand penetration, firm wrists, and the correct hand angle to seal the attack.
+              </p>
+
+              <button class="module-lesson" type="button"
+                data-video-id="IyCQAPsqp6s"
+                data-video-title="Blocking Technique — Lesson 3">
+                <strong>▶ Blocking Technique — Lesson 3</strong>
+                <span class="lesson-status">Watch</span>
+              </button>
+            </div>
+
+            <button class="btn" type="button" data-next-module="blockingFinalQuizModule">
+              Final Quiz →
+            </button>
+          </div>
+        </details>
+
+        <details class="course-module" id="blockingFinalQuizModule">
+          <summary>
+            <div class="module-heading">
+              <small>Final Quiz</small>
+              <h3>Blocking Knowledge Check</h3>
+            </div>
+
+            <span class="module-arrow">⌄</span>
+          </summary>
+
+          <div class="module-lessons">
+            <form id="blockingFinalQuiz">
+              <div class="eyebrow">Final Course Assessment</div>
+              <h2>Blocking Mastery Quiz</h2>
+
+              <p class="final-quiz-intro">
+                Answer all 10 questions. You need at least 8 correct answers to pass.
+              </p>
+
+              <div class="quiz-question">
+                <h3>1. What is the best starting position for a blocker?</h3>
+                <label><input type="radio" name="bq1" value="a"> Balanced stance with knees bent and hands ready</label>
+                <label><input type="radio" name="bq1" value="b"> Standing tall with hands down</label>
+                <label><input type="radio" name="bq1" value="c"> Leaning backward away from the net</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>2. What should the blocker watch first?</h3>
+                <label><input type="radio" name="bq2" value="a"> The crowd</label>
+                <label><input type="radio" name="bq2" value="b"> The setter and the developing attack</label>
+                <label><input type="radio" name="bq2" value="c"> The floor</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>3. Why is block timing important?</h3>
+                <label><input type="radio" name="bq3" value="a"> It helps the blocker meet the ball at the correct moment</label>
+                <label><input type="radio" name="bq3" value="b"> It makes the blocker land earlier</label>
+                <label><input type="radio" name="bq3" value="c"> It removes the need to read the attacker</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>4. What should the hands do over the net?</h3>
+                <label><input type="radio" name="bq4" value="a"> Stay close to the body</label>
+                <label><input type="radio" name="bq4" value="b"> Press forward and penetrate over the net</label>
+                <label><input type="radio" name="bq4" value="c"> Move behind the head</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>5. How should the fingers be positioned?</h3>
+                <label><input type="radio" name="bq5" value="a"> Spread and strong</label>
+                <label><input type="radio" name="bq5" value="b"> Closed tightly together</label>
+                <label><input type="radio" name="bq5" value="c"> Relaxed and pointing down</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>6. What helps seal the attacking angle?</h3>
+                <label><input type="radio" name="bq6" value="a"> Strong wrists and correct hand position</label>
+                <label><input type="radio" name="bq6" value="b"> Turning away from the hitter</label>
+                <label><input type="radio" name="bq6" value="c"> Keeping the hands below the net</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>7. What should the blocker do during the jump?</h3>
+                <label><input type="radio" name="bq7" value="a"> Stay square to the hitter and reach upward</label>
+                <label><input type="radio" name="bq7" value="b"> Rotate away from the net</label>
+                <label><input type="radio" name="bq7" value="c"> Pull the arms down early</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>8. What is important during landing?</h3>
+                <label><input type="radio" name="bq8" value="a"> Land under control with balanced body position</label>
+                <label><input type="radio" name="bq8" value="b"> Land with locked knees</label>
+                <label><input type="radio" name="bq8" value="c"> Land while turning away from the court</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>9. Why should the blocker stay light on the feet?</h3>
+                <label><input type="radio" name="bq9" value="a"> To move quickly and adjust to the attack</label>
+                <label><input type="radio" name="bq9" value="b"> To avoid using the legs</label>
+                <label><input type="radio" name="bq9" value="c"> To stay far from the net</label>
+              </div>
+
+              <div class="quiz-question">
+                <h3>10. What creates an effective block?</h3>
+                <label><input type="radio" name="bq10" value="a"> Positioning, timing, and strong hand penetration</label>
+                <label><input type="radio" name="bq10" value="b"> Jumping as early as possible every time</label>
+                <label><input type="radio" name="bq10" value="c"> Using only arm strength</label>
+              </div>
+
+              <button class="btn" type="submit">Submit Final Quiz</button>
+
+              <div class="quiz-result" id="blockingFinalQuizResult"></div>
+
+              <a
+                class="btn"
+                id="blockingFinalNextButton"
+                href="defence.html"
+                style="display:none;">
+                Next Course →
+              </a>
+            </form>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-card" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+      <button class="video-modal-close" id="videoModalClose" type="button" aria-label="Close video">×</button>
+      <h2 id="videoModalTitle">Blocking Video</h2>
+
+      <div class="video-wrapper">
+        <iframe
+          id="videoFrame"
+          src=""
+          title="Blocking lesson | True Energy Volleyball"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 True Energy Volleyball. All rights reserved.
+  </footer>
+
+  <script>
+    const videoModal = document.getElementById("videoModal");
+    const videoFrame = document.getElementById("videoFrame");
+    const videoModalTitle = document.getElementById("videoModalTitle");
+    const videoModalClose = document.getElementById("videoModalClose");
+    const videoButtons = document.querySelectorAll("[data-video-id]");
+    const courseModules = document.querySelectorAll(".course-module");
+
+    function openVideo(videoId, videoTitle){
+      closeVideo();
+
+      videoModalTitle.textContent = videoTitle;
+      videoFrame.src =
+        "https://www.youtube.com/embed/" +
+        encodeURIComponent(videoId) +
+        "?autoplay=1&rel=0";
+
+      videoModal.classList.add("open");
+      videoModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      videoModalClose.focus();
+    }
+
+    function closeVideo(){
+      videoFrame.src = "";
+      videoModal.classList.remove("open");
+      videoModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+    }
+
+    videoButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        openVideo(button.dataset.videoId, button.dataset.videoTitle);
+      });
+    });
+
+    videoModalClose.addEventListener("click", closeVideo);
+
+    videoModal.addEventListener("click", (event) => {
+      if(event.target === videoModal){
+        closeVideo();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if(event.key === "Escape" && videoModal.classList.contains("open")){
+        closeVideo();
+      }
+    });
+
+    courseModules.forEach((module) => {
+      module.addEventListener("toggle", () => {
+        if(module.open){
+          courseModules.forEach((otherModule) => {
+            if(otherModule !== module){
+              otherModule.open = false;
+            }
+          });
+        } else {
+          closeVideo();
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-next-module]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = document.getElementById(button.dataset.nextModule);
+        if(!target) return;
+
+        courseModules.forEach((module) => {
+          module.open = module === target;
+        });
+
+        target.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+      });
+    });
+
+    const blockingFinalQuiz = document.getElementById("blockingFinalQuiz");
+    const blockingFinalQuizResult = document.getElementById("blockingFinalQuizResult");
+    const blockingFinalNextButton = document.getElementById("blockingFinalNextButton");
+    const blockingNextCourseButton = document.getElementById("blockingNextCourseButton");
+    const blockingProgressCircle = document.getElementById("blockingCourseProgressCircle");
+    const blockingProgressValue = document.getElementById("blockingCourseProgressValue");
+    const blockingProgressStatus = document.getElementById("blockingCourseProgressStatus");
+
+    function updateBlockingProgress(){
+      const passed = localStorage.getItem("blockingFinalQuizPassed") === "true";
+
+      if(passed){
+        blockingProgressCircle.style.background =
+          "conic-gradient(var(--energy) 100%, rgba(255,255,255,.12) 0)";
+        blockingProgressValue.textContent = "100%";
+        blockingProgressStatus.textContent = "Completed";
+        blockingNextCourseButton.style.display = "inline-block";
+        blockingFinalNextButton.style.display = "inline-block";
+      } else {
+        blockingProgressCircle.style.background =
+          "conic-gradient(var(--energy) 0%, rgba(255,255,255,.12) 0)";
+        blockingProgressValue.textContent = "0%";
+        blockingProgressStatus.textContent = "In Progress";
+        blockingNextCourseButton.style.display = "none";
+        blockingFinalNextButton.style.display = "none";
+      }
+    }
+
+    blockingFinalQuiz.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const correctAnswers = {
+        bq1:"a",
+        bq2:"b",
+        bq3:"a",
+        bq4:"b",
+        bq5:"a",
+        bq6:"a",
+        bq7:"a",
+        bq8:"a",
+        bq9:"a",
+        bq10:"a"
+      };
+
+      let score = 0;
+      let answered = 0;
+
+      Object.entries(correctAnswers).forEach(([question, answer]) => {
+        const selected = blockingFinalQuiz.querySelector(
+          `input[name="${question}"]:checked`
+        );
+
+        if(selected){
+          answered += 1;
+
+          if(selected.value === answer){
+            score += 1;
+          }
+        }
+      });
+
+      blockingFinalQuizResult.classList.remove("show", "success", "error");
+      blockingFinalNextButton.style.display = "none";
+
+      if(answered < 10){
+        blockingFinalQuizResult.textContent =
+          `Please answer all 10 questions. You have answered ${answered}.`;
+        blockingFinalQuizResult.classList.add("show", "error");
+        return;
+      }
+
+      const percentage = score * 10;
+
+      if(score >= 8){
+        localStorage.setItem("blockingFinalQuizPassed", "true");
+
+        blockingFinalQuizResult.innerHTML =
+          `🎉 Congratulations!<br><br>` +
+          `Score: ${score}/10 (${percentage}%)<br>` +
+          `You passed the Blocking course.<br>` +
+          `Course Complete ✓`;
+
+        blockingFinalQuizResult.classList.add("show", "success");
+        blockingFinalNextButton.style.display = "inline-block";
+        updateBlockingProgress();
+      } else {
+        localStorage.setItem("blockingFinalQuizPassed", "false");
+
+        blockingFinalQuizResult.innerHTML =
+          `Score: ${score}/10 (${percentage}%)<br><br>` +
+          `Passing score is 80%. Please review the video lessons and try again.`;
+
+        blockingFinalQuizResult.classList.add("show", "error");
+        updateBlockingProgress();
+      }
+    });
+
+    updateBlockingProgress();
+  </script>
+
+</body>
+</html>
